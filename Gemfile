@@ -40,6 +40,10 @@ gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'omniauth-bdfzer', github: 'cassiuschen/omniauth-bdfzer'
 
+# Middleware & Delayed jobs
+gem 'sinatra'
+gem 'sidekiq'
+
 # uploader
 gem 'carrierwave'
 gem 'mini_magick'
