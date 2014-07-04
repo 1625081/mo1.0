@@ -10,6 +10,48 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ * require_tree .
  *= require_self
  */
+ @import "semantic-ui";
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 60px;
+    margin-bottom: 60px;
+}
+
+.container:before,.container:after {
+    content: " ";
+    display: table
+}
+
+.container:after {
+    clear: both
+}
+
+@media (min-width: 768px) {
+    .container {
+        width:720px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width:940px
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width:1140px
+    }
+}
+html {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.hidden {display: none !important;}
