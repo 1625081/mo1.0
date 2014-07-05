@@ -1,18 +1,43 @@
-h2
-  | Sign in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  div
-    = f.label :login
-    br
-    = f.text_field :login, autofocus: true
-  div
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  div
-    = f.submit "Sign in"
-= render "devise/shared/links"
+.container.page-container
+  .sign-form
+    .body
+      h2
+        | 登录
+      .ui.two.column.middle.aligned.relaxed.grid
+        .column
+          .center.aligned.column
+            = link_to omniauth_authorize_path(:user, :bdfzer), :class => "huge green ui labeled icon button"
+              i.signup.icon
+              | 北附人账号登录
+        .ui.vertical.divider Or
+        .column
+          = form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => "ui form"}) do |f|
+            .field
+              label 
+                | 电子邮箱 或 账号名 / E-Mail or UserName
+              .ui.left.labeled.icon.input
+                = f.text_field :login, autofocus: true
+                i.mail.icon
+            .field
+              label 
+                | 密码 / Password
+              .ui.left.labeled.icon.input
+                = f.password_field :password, autocomplete: "off"
+                i.lock.icon
+            .inline.field
+              .ui.slider.checkbox
+                = f.check_box :remember_me
+                label 
+                  | 记住账户？
+              label
+            .ui.error.message
+              .header
+                = devise_error_messages!
+            = f.submit "登录", class: "ui blue submit button"
+          .ui.horizontal.icon.divider
+            i.circular.heart.icon
+          = link_to new_registration_path(:user), :class => "ui black button"
+            | 注册
+          = link_to "忘记密码?", new_password_path(:user), :class => "ui purple button"
+
+    

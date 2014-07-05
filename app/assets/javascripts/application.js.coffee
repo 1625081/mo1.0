@@ -45,6 +45,7 @@ window.base =
 	Init : () ->
 		$('.ui.dropdown').dropdown()
 		$('.ui.modal').modal()
+		$('.ui.checkbox').checkbox()
 
 $ ->
 	#window.base.Init()
