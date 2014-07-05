@@ -32,4 +32,14 @@
 		background-color: #eee !important;
 		color: #333;
 	}
+	.item.user-info {
+		span.avatar {
+			display: inline-block;
+			background-image: none;
+			max-width: 20px;
+			img {
+				max-height: 20px;
+			}
+		}
+	}
 }

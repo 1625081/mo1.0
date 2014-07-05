@@ -1,0 +1,24 @@
+.page-container#profile-page
+  .profile-header-container
+    .profile-info
+      .container
+        .avatar
+          = image_tag 'demo/avatar.jpg'
+        .main-info
+          h1.title = current_user.nickname
+          p.sub-info
+            | 1234597 人浏览 - 2002 人关注 - 管理员
+          .actions.ui.buttons
+            a.ui.button.red.tiny
+              | 关注
+            a.ui.button.purple.tiny 应该还可以有一个按钮
+            a.ui.button.green.tiny 点赞
+    .profile-tab
+      .ui.menu.inverted
+        .container
+          a.item.active
+            | 全部
+          a.item
+            | 照片
+
+

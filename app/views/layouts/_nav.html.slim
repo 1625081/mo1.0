@@ -1,10 +1,10 @@
 .ui.black.inverted.menu.top-bar
   .container
     a.logo.item href='/'
-    a class="item #{'active' if action_name == 'index'}"
+    a class="item #{'active' if action_name == 'index' && controller_name == 'home'}" href='/'
       i.home.icon
       | 首页
-    a class="item #{'active' if action_name == 'timeline'}"
+    = link_to profile_index_path, :class => "item #{'active' if action_name == 'timeline' && controller_name == 'home'}"
       i.globe.basic.icon
       | 时间轴
     .item.just-not-mobile
@@ -13,8 +13,9 @@
         i.search.link.icon
     .right.menu
       - if current_user
-        .item
-          = current_user.username
+        = link_to profile_index_path, :class => "item user-info"
+          span.avatar
+            = image_tag 'demo/avatar.jpg'
         .ui.dropdown.item
           i.setting.icon
           .menu

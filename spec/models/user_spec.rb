@@ -17,4 +17,15 @@ RSpec.describe User, :type => :model do
 
     expect(users.map {|u| u.power}).to eq(['user', 'editor', 'leader', 'admin'])
   end
+
+  it 'can work out nickname' do
+    spiderman = User.create!(email: 'spiderman@test.com', username: 'spiderman', password: 'asdfghjkl', password_confirmation: 'asdfghjkl')
+    batman = User.create!(email: 'batman@test.com', username: 'batman', password: 'asdfghjkl', password_confirmation: 'asdfghjkl', power: 1)
+    result = []
+    batman.profile.nickname = "Bat Man"
+    result << spiderman.nickname
+    result << batman.nickname
+
+    expect(result).to eq(["spiderman", "Bat Man"])
+  end
 end

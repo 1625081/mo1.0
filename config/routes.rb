@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'profile/index'
+
+  get 'profile/edit'
+
+  get 'profile/show'
+
+  get 'profile/update'
+
   root 'home#index'
   get 'timeline' => 'home#timeline'
 

@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
     editor: 1,
     leader: 2,
     admin: 3
-  } 
+  }
+
+  after_create do
+    self.profile = Profile.new
+  end
 
   def login=(login)
     @login = login
@@ -19,6 +23,10 @@ class User < ActiveRecord::Base
 
   def login
     @login || self.username || self.email
+  end
+
+  def nickname
+    (self.profile.nickname)?(self.profile.nickname ):(self.username)
   end
 
   def self.find_for_database_authentication(warden_conditions)
