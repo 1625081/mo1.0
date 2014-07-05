@@ -12,46 +12,91 @@
  *
  * require_tree .
  *= require_self
+ *= require home
  */
- @import "semantic-ui";
+@import "semantic-ui";
+@import "colors";
+@import "mix-in";
+
+body {
+	margin: 0 !important;
+	background-color: $bg-gray;
+}
 
 .container {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 60px;
-    margin-bottom: 60px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 60px;
+	margin-bottom: 60px;
+}
+
+.page-container {
+	margin-top: 50px;
+	margin-bottom: 30px;
 }
 
 .container:before,.container:after {
-    content: " ";
-    display: table
+	content: " ";
+	display: table
 }
 
 .container:after {
-    clear: both
+	clear: both
 }
 
 @media (min-width: 768px) {
-    .container {
-        width:720px
-    }
+	.container {
+		width:720px
+	}
+	.just-mobile {
+		visibility: true;
+	}
+	.just-pad, .just-computer {
+		visibility: false;
+	}
+	.just-not-mobile {
+		visibility: false;
+	}
 }
 
 @media (min-width: 992px) {
-    .container {
-        width:940px
-    }
+	.container {
+		width:940px
+	}
+	.just-pad {
+		visibility: true;
+	}
+	.just-mobile, .just-computer {
+		visibility: false;
+	}
+	.just-not-mobile {
+		visibility: true;
+	}
 }
 
 @media (min-width: 1200px) {
-    .container {
-        width:1140px
-    }
+	.container {
+		width:1140px
+	}
+	.just-computer {
+		visibility: true;
+	}
+	.just-pad, .just-mobile {
+		visibility: false;
+	}
+	.just-not-mobile {
+		visibility: true;
+	}
 }
+
+
+
 html {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
 .hidden {display: none !important;}
+
+@import "sign-form";

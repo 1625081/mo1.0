@@ -1,0 +1,36 @@
+.container.page-container
+  .sign-form
+    .body
+      h2
+        | 注册账户
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "ui form"}) do |f|
+        .field
+          label 
+            | 电子邮箱 / E-Mail
+          .ui.left.labeled.icon.input
+            = f.email_field :email, autofocus: true, placeholder: 'username@example.com'
+            i.mail.icon
+        .field
+          label 
+            | 账号名 / UserName
+          .ui.left.labeled.icon.input
+            = f.text_field :username, autofocus: true, placeholder: '全小写英文，不得出现符号'
+            i.user.icon
+        .field
+          label 
+            | 密码 / Password
+          .ui.left.labeled.icon.input
+            = f.password_field :password, autocomplete: "off"
+            i.lock.icon
+        .field
+          label 
+            | 密码确认 / Password Confirmation
+          .ui.left.labeled.icon.input
+            = f.password_field :password_confirmation, autocomplete: "off"
+            i.lock.icon
+        .ui.error.message
+          .header
+            = devise_error_messages!
+        = f.submit "注册", class: "ui blue submit button"
+    .bottom
+      = render "devise/shared/links"

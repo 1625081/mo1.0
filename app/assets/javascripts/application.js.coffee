@@ -40,3 +40,14 @@ window.App.config(["$httpProvider", (provider) ->
     provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
     provider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 ])
+
+window.base = 
+	Init : () ->
+		$('.ui.dropdown').dropdown()
+		$('.ui.modal').modal()
+
+$ ->
+	#window.base.Init()
+	if $.turbo.isReady == true
+		window.base.Init()
+		$(".timeago").timeago()

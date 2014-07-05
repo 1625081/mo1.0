@@ -1,3 +1,35 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "colors";
+.top-bar {
+	border-radius: 0 !important;
+	height: 50px !important;
+	background-color: $bg-black !important;
+	top: 0;
+	box-shadow: 0px 1.5px 5px #aaa;
+	border-bottom: 1px #111;
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+	.container {
+		padding-top: 0px !important;
+		margin-bottom: 0px !important;
+	}
+	.logo {
+		width: 75px;
+		background: transparent asset-url('logo.png') center center no-repeat;
+	}
+	.item {
+		height: 50px;
+		padding: 17px 25px !important;
+	}
+	input {
+		background-color: #333 !important;
+		color: #aaa;
+	}
+	input:focus {
+		background-color: #eee !important;
+		color: #333;
+	}
+}

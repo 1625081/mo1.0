@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'home/index'
-
-  get 'home/timeline'
+  root 'home#index'
+  get 'timeline' => 'home#timeline'
 
   devise_for :users
+  devise_scope :user do
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :sign_out
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
