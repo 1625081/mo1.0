@@ -1,0 +1,17 @@
+
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, :class => "ui test modal transition hidden scrolling form", :id => "forget-password" }) do |f|
+  i.close.icon
+  .header
+    | 找回密码
+  .content
+    .field
+      label 
+        | 电子邮箱 / UserName
+      .ui.left.labeled.icon.input
+        = f.email_field :login, autofocus: true
+        i.mail.icon
+    .ui.error.message
+      .header
+        = devise_error_messages!
+  .actions
+    = f.submit "发送找回密码邮件", class: "ui red submit button"

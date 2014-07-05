@@ -42,6 +42,11 @@ window.App.config(["$httpProvider", (provider) ->
 ])
 
 window.base = 
+	ShowModal : (self_name) ->
+		raw_modal_name = $("##{self_name}").data('modal-name')
+		modal_name = "##{raw_modal_name}"
+		$("##{self_name}").click ->
+			$(modal_name).modal 'show'
 	Init : () ->
 		$('.ui.dropdown').dropdown()
 		$('.ui.modal').modal()

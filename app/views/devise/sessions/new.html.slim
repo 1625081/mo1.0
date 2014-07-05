@@ -38,6 +38,8 @@
             i.circular.heart.icon
           = link_to new_registration_path(:user), :class => "ui black button"
             | 注册
-          = link_to "忘记密码?", new_password_path(:user), :class => "ui purple button"
+          a.ui.purple.button#modal-forget data-modal-name="forget-password" 忘记密码？
+= render 'devise/passwords/new_modal'
 
-    
+javascript:
+  window.base.ShowModal('modal-forget');
