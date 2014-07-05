@@ -15,8 +15,12 @@
       - if current_user
         .item
           = current_user.username
-        .item
+        .ui.dropdown.item
           i.setting.icon
+          .menu
+            = link_to edit_user_registration_path, :class => "item"
+              i.user.icon
+              | 账户设置
         = link_to destroy_user_session_path, class: "item", :method => :delete
           i.sign.out.icon
       - else

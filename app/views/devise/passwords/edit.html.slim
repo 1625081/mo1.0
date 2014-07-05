@@ -1,16 +1,21 @@
-h2
-  | Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  div
-    = f.label :password, "New password"
-    br
-    = f.password_field :password, autofocus: true, autocomplete: "off"
-  div
-    = f.label :password_confirmation, "Confirm new password"
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  div
-    = f.submit "Change my password"
-= render "devise/shared/links"
+.container.page-container
+  .sign-form
+    .body
+      h2
+        | 重置密码
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, :class => "ui form" }) do |f|
+        = f.hidden_field :reset_password_token
+        .field
+          label 
+            | 新密码 / New Password
+          .ui.left.labeled.icon.input
+            = f.password_field :password, autocomplete: "off"
+            i.lock.icon
+        .field
+          label 
+            | 确认新密码 / Confirm New Password
+          .ui.left.labeled.icon.input
+            = f.password_field :password_confirmation, autocomplete: "off"
+            i.lock.icon
+        .field
+          = f.submit "修改密码", class: "ui blue submit button"
