@@ -1,2 +1,30 @@
-h1 Profile#edit
-p Find me in app/views/profile/edit.html.slim
+= render 'profile/header'
+.container
+  = form_for @profile, html: { :class => "ui form" } do |f|
+    .two.fields
+      .field.inline
+        label 头像
+        = f.file_field :avatar
+    .three.fields
+      .field.inline
+        label 昵称
+        = f.text_field :nickname
+      .field.inline
+        label 性别
+        .ui.selection.dropdown
+          = f.hidden_field :sex
+          .default.text 选择性别
+          i.dropdown.icon
+          .menu.ui.transition.hidden
+            .item data-value="male" 男
+            .item data-value="female" 女
+      .field.inline
+        label 生日
+        = f.date_field :birthday
+    .field
+      label 个人描述
+      = f.text_area :description
+    .field
+      = f.submit "更新信息", :class => "ui black button"
+
+

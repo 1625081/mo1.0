@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     (self.profile.nickname)?(self.profile.nickname ):(self.username)
   end
 
+  def avatar
+    self.profile.avatar.url || "demo/avatar.jpg"
+  end
+
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

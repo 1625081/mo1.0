@@ -1,0 +1,31 @@
+= render 'profile/header'
+.container
+  - if @user == current_user
+    = button_to "修改", edit_path, :class => 'ui button green', :id => 'edit_profile'
+  table.ui.basic.table
+  	thead
+  	  tr
+  	    th 用户名
+  	    th = @user.username
+  	  tr
+  	    th 用户ID
+  	    th = @user.id
+  	  tr
+  	    th 用户身份
+  	    th = t @user.power
+  	  tr
+  	    th 电子邮箱
+  	    th = @user.email
+  	tbody
+  	  tr
+  	    th 昵称
+  	    th = @user.nickname
+  	  tr
+  	    th 性别
+  	    th = t @user.profile.sex
+  	  tr
+  	    th 生日
+  	    th = @user.profile.birthday.to_s
+  	  tr
+  	    th 描述
+  	    th = @user.profile.description

@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'profile/index'
+  get 'profile' => "profile#index"
+  get 'profile/:id' => "profile#show"
+  get 'profile/:id/detail' => "profile#detail", as: :profile_detail
 
-  get 'profile/edit'
+  get 'edit' => "profile#edit"
+  patch 'profile' => "profile#update"
+  put 'profile' => "profile#update"
 
-  get 'profile/show'
-
-  get 'profile/update'
 
   root 'home#index'
   get 'timeline' => 'home#timeline'

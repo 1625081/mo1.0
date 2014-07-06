@@ -4,7 +4,7 @@
     a class="item #{'active' if action_name == 'index' && controller_name == 'home'}" href='/'
       i.home.icon
       | 首页
-    = link_to profile_index_path, :class => "item #{'active' if action_name == 'timeline' && controller_name == 'home'}"
+    = link_to timeline_path, :class => "item #{'active' if action_name == 'timeline' && controller_name == 'home'}"
       i.globe.basic.icon
       | 时间轴
     .item.just-not-mobile
@@ -13,15 +13,18 @@
         i.search.link.icon
     .right.menu
       - if current_user
-        = link_to profile_index_path, :class => "item user-info"
+        = link_to profile_path, :class => "item user-info"
           span.avatar
-            = image_tag 'demo/avatar.jpg'
+            = image_tag current_user.avatar
         .ui.dropdown.item
           i.setting.icon
           .menu
             = link_to edit_user_registration_path, :class => "item"
               i.user.icon
               | 账户设置
+            = link_to edit_path, :class => "item"
+              i.user.icon
+              | 用户信息设置
         = link_to destroy_user_session_path, class: "item", :method => :delete
           i.sign.out.icon
       - else
