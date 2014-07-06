@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Score:
+  = @image.score
+p
+  strong File:
+  = @image.file
+p
+  strong Like:
+  = @image.like
+p
+  strong Favorate:
+  = @image.favorate
+p
+  strong Public:
+  = @image.public
+p
+  strong Title:
+  = @image.title
+p
+  strong Description:
+  = @image.description
+
+= link_to 'Edit', edit_image_path(@image)
+'|
+= link_to 'Back', images_path

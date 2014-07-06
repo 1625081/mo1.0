@@ -1,0 +1,33 @@
+h1 Listing images
+
+table
+  thead
+    tr
+      th Score
+      th File
+      th Like
+      th Favorate
+      th Public
+      th Title
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @images.each do |image|
+      tr
+        td = image.score
+        td = image.file
+        td = image.like
+        td = image.favorate
+        td = image.public
+        td = image.title
+        td = image.description
+        td = link_to 'Show', image
+        td = link_to 'Edit', edit_image_path(image)
+        td = link_to 'Destroy', image, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Image', new_image_path

@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706100849) do
+ActiveRecord::Schema.define(version: 20140706125841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "images", force: true do |t|
+    t.float    "score",       default: 0.0
+    t.string   "file"
+    t.integer  "like",                      array: true
+    t.integer  "favorate",                  array: true
+    t.boolean  "public"
+    t.string   "title",       default: ""
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "profiles", force: true do |t|
     t.string   "nickname"

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :images
+
   get 'profile' => "profile#index"
   get 'profile/:id' => "profile#show"
   get 'profile/:id/detail' => "profile#detail", as: :profile_detail
