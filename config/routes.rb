@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'profile/:id/detail' => "profile#detail", as: :profile_detail
 
   get 'edit' => "profile#edit"
+  post 'edit' => "profile#edit"
+  patch 'edit' => 'profile#edit'
   patch 'profile' => "profile#update"
   put 'profile' => "profile#update"
 
