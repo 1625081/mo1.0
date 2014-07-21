@@ -82,6 +82,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     hashie (3.2.0)
     hike (1.2.3)
+    httpi (2.2.4)
+      rack
     i18n (0.6.11)
     jbuilder (2.1.3)
       activesupport (>= 3.0.0, < 5)
@@ -268,6 +270,9 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    youku (0.0.4)
+      httpi
+      multi_json (~> 1.0)
 
 PLATFORMS
   ruby
@@ -311,3 +316,4 @@ DEPENDENCIES
   spring
   turbolinks
   uglifier (>= 1.3.0)
+  youku
