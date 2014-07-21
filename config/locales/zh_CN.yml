@@ -27,3 +27,12 @@ zh_CN:
 
   male: "男孩纸"
   female: "女孩纸"
+
+  image:
+    upload:
+      title: "上传图片"
+      sub-title: "将图片拖动于此或点击下方按钮上传"
+      add-image: "添加图片"
+      start: "开始上传"
+      reset: "清空图片"
+      input_title: "在此处键入标题"

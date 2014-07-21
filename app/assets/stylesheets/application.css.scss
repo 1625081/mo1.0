@@ -13,10 +13,12 @@
  * require_tree .
  *= require_self
  *= require home
+ *= require jquery-ui
  */
 @import "semantic-ui";
 @import "colors";
 @import "mix-in";
+
 
 body {
 	margin: 0 !important;
@@ -101,3 +103,4 @@ html {
 
 @import "sign-form";
 @import "profile";
+@import "uploader";

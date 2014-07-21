@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 # FrontEnd
 gem 'semantic-ui-sass'
 gem 'angularjs-rails'
+gem 'jquery-ui-rails'
 
 # User System
 gem 'devise'
@@ -53,6 +54,7 @@ gem 'sidekiq'
 gem 'carrierwave'
 gem 'carrierwave-qiniu'
 gem 'mini_magick'
+gem 'jquery-file-upload-railed'
 
 group :development do
   gem 'rack-mini-profiler'

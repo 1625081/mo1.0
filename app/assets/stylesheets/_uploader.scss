@@ -1,0 +1,18 @@
+.segment.upload-area {
+	border: none;
+	box-shadow: none;
+	top: -25px;
+	background-color: transparent;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#dropzone.fade {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    opacity: 1;
+}

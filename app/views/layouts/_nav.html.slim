@@ -16,6 +16,13 @@
         = link_to profile_path, :class => "item user-info"
           span.avatar
             = image_tag current_user.avatar
+        - unless current_user.user?
+          .ui.dropdown.item
+            i.add.icon
+            .menu
+              = link_to new_image_path, class: "item"
+                i.photo.icon
+                | 上传照片
         .ui.dropdown.item
           i.setting.icon
           .menu

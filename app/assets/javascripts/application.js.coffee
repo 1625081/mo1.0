@@ -13,6 +13,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.turbolinks
+#= require jquery-ui
 #= require turbolinks
 #= require semantic-ui
 # require_tree .
@@ -24,6 +25,7 @@
 #= require angular-sanitize
 #= require angular-cookies
 #= require angular-route
+#= require jquery-file-upload
 #= require_self
 #= require_tree ./angular
 #= require_tree ./angular/services
@@ -37,8 +39,8 @@ window.App = angular.module('Mo', [
 	'ngResource'
 ])
 window.App.config(["$httpProvider", (provider) ->
-    provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
-    provider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+	provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+	provider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 ])
 
 window.base = 
