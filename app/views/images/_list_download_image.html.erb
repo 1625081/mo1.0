@@ -1,0 +1,20 @@
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+  <div class="item">
+    {% if (file.image) { %}
+      <div class="image">
+        <img src="{%=file.image%}" alt="{%=file.name%}" href="{%=file.url%}"/>
+      </div>
+    {% } %}
+    <div class="content">
+      <div class="name">{%=file.name%}</div>
+      <p class="description">
+        {% if (file.error) { %}
+          上传失败！
+        {% } %}
+        <i class="checkmark red icon"></i>
+      </p>
+    </div>
+  </div>
+{% } %}
+</script>

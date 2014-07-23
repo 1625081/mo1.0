@@ -13,7 +13,7 @@
  * require_tree .
  *= require_self
  *= require home
- *= require jquery-ui
+ * require jquery-ui
  */
 @import "semantic-ui";
 @import "colors";
@@ -104,3 +104,28 @@ html {
 @import "sign-form";
 @import "profile";
 @import "uploader";
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
+}
