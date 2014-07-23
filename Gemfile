@@ -78,3 +78,4 @@ gem 'puma'
 
 # New Relic
 gem 'newrelic_rpm'
+gem 'rubyntlm', '~> 0.4.0'

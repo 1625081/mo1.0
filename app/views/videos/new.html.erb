@@ -1,0 +1,22 @@
+<h1>New Video</h1>
+
+<%= form_for :video, url: videos_path do |f| %>  
+<p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :owner %><br>
+    <%= f.text_field :owner %>
+  </p>
+   
+   <p>
+    <%= f.label :youkuid %><br>
+    <%= f.text_field :youkuid %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

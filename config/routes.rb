@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :images
+  resources :videos
 
   get 'profile' => "profile#index"
   get 'profile/:id' => "profile#show"
