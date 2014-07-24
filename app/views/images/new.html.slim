@@ -1,5 +1,5 @@
 .container 
-  = form_for Image.new, :html => { :multipart => true, :id => "fileupload", :class => 'ui raised segment' } do |f|
+  = form_for @image, :html => { :multipart => true, :id => "fileupload", :class => 'ui raised segment' } do |f|
     .ui.ribbon.label.red 上传照片
     .ui.center.aligned.segment.upload-area.fileupload-buttonbar#dropzone
       .ui.icon.header#empty-status
@@ -43,20 +43,6 @@ javascript:
             dropZone: $('#dropzone'),
             sequentialUploads: true,
 
-        });
-        // 
-        // Load existing files:
-        $.getJSON($('#fileupload').prop('action'), function (files) {
-          var fu = $('#fileupload').data('blueimp-fileupload'), 
-            template;
-          //fu._adjustMaxNumberOfFiles(-files.length);
-          template = fu._renderDownload(files)
-            .appendTo($('#fileupload .files'));
-          // Force reflow:
-          fu._reflow = fu._transition && template.length &&
-            template[0].offsetWidth;
-          template.addClass('in');
-          $('#loading').remove();
         });
     });
 

@@ -25,8 +25,9 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
-
+    @image = Image.new
+    @image.title = ""
+    @image.file = params["image"]["file"].first
     if @image.save
       respond_to do |format|
         format.html {  
@@ -75,6 +76,10 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:score, :file, :like, :favorate, :public, :title, :description)
+      params.require(:image).permit(:file, :public, :title, :description)
+    end
+
+    def upload_image_params
+      params[:image].permit(:file)
     end
 end
