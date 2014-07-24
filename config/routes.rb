@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'timeline' => 'home#timeline'
+  get 'video' => 'home#video'
 
   devise_for :users
   devise_scope :user do
