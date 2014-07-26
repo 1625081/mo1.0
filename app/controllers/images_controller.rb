@@ -26,7 +26,6 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
     @image = Image.new
-    @image.title = ""
     @image.file = params["image"]["file"].first
     if @image.save
       respond_to do |format|
