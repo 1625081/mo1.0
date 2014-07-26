@@ -24,6 +24,11 @@ def destroy
  
   redirect_to videos_path
 end
+
+def upload
+
+end	
+
 private
   def video_params
     params.require(:video).permit(:title,:owner,:youkuid)
