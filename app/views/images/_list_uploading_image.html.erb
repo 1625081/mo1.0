@@ -1,14 +1,12 @@
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <div class="item" id="ul">
-        {% if (file.thumb_url) { %}
             <div class="image">
                 <img src="{%=file.thumb_url%}">
                 <a class="star ui corner label" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
                     <i class="remove icon"></i>
                 </a>
             </div>
-        {% } %}
         <div class="content">
             <div class="name">
                 {%=file.name%}
