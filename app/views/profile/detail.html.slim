@@ -1,5 +1,5 @@
 = render 'profile/header'
-.container
+.container#profile_detail
   - if @user == current_user
     = button_to "修改", edit_path, :class => 'ui button green', :id => 'edit_profile'
   table.ui.basic.table
