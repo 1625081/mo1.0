@@ -1,3 +1,4 @@
+//profile_header:
 #profile-page {
 	background-color: #222;
 	.profile-header-container {
@@ -75,7 +76,43 @@
 		}
 	}
 }
+
 #edit_profile {
 	position: absolute;
 	top: 350px;
+}
+
+//profile_detail
+#profile_detail {
+	//background-color: #f7f8fa !important; //same as bg
+	#profile_detail_t {
+		#profile_detail_us {
+			font-family:  Georgia !important;
+		}
+		.v {
+			font-weight: normal;
+		}
+		th:first-child {
+			text-align: right;
+			width: 20%;
+		}
+		th:last-child {
+			text-align: left;
+			padding-left: 35px;
+		}
+		//Problems: Y cant change position?
+		/*#edit_profile {
+			position: relative;
+			left: 1000px;
+			top: 1090px;
+		}*
+		#profile_detail_changing_buttom {
+			column-span: all;
+		}*/
+	}
+	#profile_detail_afttable_image {
+		position: absolute;
+		left: 800px;
+		top:480px;
+	}
 }
