@@ -27,12 +27,12 @@
   	  tr
   	    th 描述
   	    th.v = @user.profile.description
-        //@user.avatar
     - if @user == current_user
-      tfoot#button
+      tfoot
         tr
           th#profile_detail_changing_buttom colspan="3"
-            div.ui.blue.labeled.icon.button id='edit_profile'
-              i.user.icon
-              '修改
+            a href = edit_path
+              div.ui.blue.labeled.icon.button id='edit_profile'
+                i.user.icon
+                | 修改
   img#profile_detail_afttable_image src = @user.avatar
