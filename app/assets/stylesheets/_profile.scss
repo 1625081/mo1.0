@@ -1,4 +1,4 @@
-//profile_header:
+//*profile_header:
 #profile-page {
 	background-color: #222;
 	.profile-header-container {
@@ -76,11 +76,13 @@
 		}
 	}
 }
+//*/
 
-
-//profile_detail
+//*profile_detail
 #profile_detail {
 	//background-color: #f7f8fa !important; //same as bg
+	width: 80%;
+	left: 10%;
 	#profile_detail_t {
 		thead#profile_detail_uc {
 			font-family:  Georgia;
@@ -89,10 +91,12 @@
 			font-weight: normal;
 		}
 		th:first-child {
+			//for 表头
 			text-align: right;
 			width: 20%;
 		}
 		th:last-child {
+			//for 内容
 			text-align: left;
 			padding-left: 35px;
 		}
@@ -102,7 +106,7 @@
 		}
 	}
 	
-	div.ui.blue.labeled.icon.button#edit_profile {
+	.ui.black.labeled.icon.button#edit_profile {
 		position: absolute;
 		left: 650px;
 		top: -40px;
@@ -116,9 +120,4 @@
 		width: 150px;
 	}
 }
-
-//profile_edit_page
-#edit_profile {
-	position: absolute;
-	top: 350px;
-}
+//*/
