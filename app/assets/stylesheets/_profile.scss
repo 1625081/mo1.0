@@ -82,10 +82,10 @@
 #profile_detail {
 	//background-color: #f7f8fa !important; //same as bg
 	#profile_detail_t {
-		#profile_detail_us {
+		thead#profile_detail_uc {
 			font-family:  Georgia;
 		}
-		.v {
+		th.v {
 			font-weight: normal;
 		}
 		th:first-child {
@@ -96,21 +96,24 @@
 			text-align: left;
 			padding-left: 35px;
 		}
-		//Problems: Y cant change position?
-		/*#edit_profile {
-			position: relative;
-			left: 1000px;
-			top: 1090px;
-		}*/
 		#profile_detail_changing_buttom {
 			position: relative;
 
 		}
 	}
-	#profile_detail_afttable_image {
+	
+	div.ui.blue.labeled.icon.button#edit_profile {
 		position: absolute;
-		left: 800px;
-		top:480px;
+		left: 650px;
+		top: -40px;
+	}
+
+	img#profile_detail_afttable_image {
+		position: absolute;
+		left: 634px;
+		top: -200px;
+		height: 150px;
+		width: 150px;
 	}
 }
 

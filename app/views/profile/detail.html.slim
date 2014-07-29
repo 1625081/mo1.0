@@ -20,7 +20,7 @@
   	    th.v = @user.nickname
   	  tr
   	    th 性别
-  	    th.v = t @user.profile.sex
+  	    th.v = t @user.profile.sex unless @user.profile.sex = 'Zh Cn'
   	  tr
   	    th 生日
   	    th.v = @user.profile.birthday.to_s
@@ -31,8 +31,8 @@
       tfoot
         tr
           th#profile_detail_changing_buttom colspan="3"
+            img#profile_detail_afttable_image src = @user.avatar
             a href = edit_path
-              div.ui.blue.labeled.icon.button id='edit_profile'
+              div.ui.blue.labeled.icon.button#edit_profile
                 i.user.icon
                 | 修改
-  img#profile_detail_afttable_image src = @user.avatar
