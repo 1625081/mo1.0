@@ -80,10 +80,29 @@
 
 //*profile_detail
 #profile_detail {
-	//background-color: #f7f8fa !important; //same as bg
 	width: 80%;
 	left: 10%;
+	a.profile_detail_overbutton_a{
+		position: absolute;
+		right: -19px;
+		top: 30px;
+		z-index: 0;
+	}
+
+	img#profile_detail_afttable_image {
+		position: absolute;
+		left: 810px;
+		top: 420px;
+		height: 100px;
+		width: 100px;
+		z-index: 1;
+	}
+
+	
 	#profile_detail_t {
+		table-layout: fixed;
+		top: -45px;
+		z-index: 0;
 		thead#profile_detail_uc {
 			font-family:  Georgia;
 		}
@@ -99,25 +118,14 @@
 			//for 内容
 			text-align: left;
 			padding-left: 35px;
+			word-break: break-all;
+			word-wrap:break-word;
 		}
 		#profile_detail_changing_buttom {
 			position: relative;
 
 		}
-	}
-	
-	.ui.black.labeled.icon.button#edit_profile {
-		position: absolute;
-		left: 650px;
-		top: -40px;
-	}
 
-	img#profile_detail_afttable_image {
-		position: absolute;
-		left: 634px;
-		top: -200px;
-		height: 150px;
-		width: 150px;
 	}
 }
 //*/

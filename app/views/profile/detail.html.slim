@@ -1,6 +1,7 @@
 = render 'profile/header'
 .container#profile_detail
   table.ui.tale.segment#profile_detail_t
+    img#profile_detail_afttable_image src = @user.avatar
   	thead#profile_detail_uc
   	  tr
   	    th 用户名
@@ -20,7 +21,7 @@
   	    th.v = @user.nickname
   	  tr
   	    th 性别
-  	    th.v = t @user.profile.sex unless @user.profile.sex = 'Zh Cn'
+  	    th.v = t @user.profile.sex
   	  tr
   	    th 生日
   	    th.v = @user.profile.birthday.to_s
@@ -30,9 +31,8 @@
     tfoot
       tr
         th#profile_detail_changing_buttom colspan="3"
-          img#profile_detail_afttable_image src = @user.avatar
           - if @user == current_user
-            a href = edit_path
+            a.profile_detail_overbutton_a href = edit_path
               .ui.black.labeled.icon.button#edit_profile
                 i.user.icon
                 | 更新
