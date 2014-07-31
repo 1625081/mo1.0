@@ -78,7 +78,7 @@
 }
 //*/
 
-//*profile_detail
+//*profile_detail:
 #profile_detail {
 	width: 80%;
 	left: 10%;
@@ -122,7 +122,7 @@
 			word-break: break-all;
 			word-wrap:break-word;
 		}
-		#profile_detail_changing_buttom {
+		#profile_detail_changing_button {
 			position: relative;
 
 		}
@@ -130,3 +130,22 @@
 	}
 }
 //*/
+
+//*profile_edit:
+#profile_edit {
+	top: -100px;
+	.field.inline#profile_edit_infields_inline {
+		label {
+			display: inline-block !important;
+		}
+	}
+	.ui.selection.dropdown {
+		padding: 0.45em 1em !important;
+	}
+	#profile_edit_infields_intext_button {
+		position: absolute;
+		right: 0px;
+		text-align: right;
+
+	}
+}

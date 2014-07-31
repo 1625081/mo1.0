@@ -1,11 +1,14 @@
 = render 'profile/header'
 .container#profile_edit
   = form_for @profile, html: { :class => "ui form" } do |f|
-    .two.fields
-      .field.inline
+    //.two.fields
+      //.field.inline
+        //label 头像
+        //= f.file_field :avatar
+    .four.fields
+      .field.inline#profile_edit_infields_inline
         label 头像
         = f.file_field :avatar
-    .three.fields
       .field.inline
         label 昵称
         = f.text_field :nickname
@@ -24,5 +27,5 @@
     .field
       label 个人描述
       = f.text_area :description 
-    .field
+    .field#profile_edit_infields_intext_button
       = f.submit "更新信息", :class => "ui black button"
