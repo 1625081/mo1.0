@@ -78,23 +78,27 @@
 }
 //*/
 
+//*profile_container both details & edit
+.profile_container {
+	width: 70%;
+	left: 15%;
+}
+
 //*profile_detail:
 #profile_detail {
-	width: 80%;
-	left: 10%;
 	a.profile_detail_overbutton_a{
 		position: absolute;
 		right: -19px;
-		top: 30px;
+		top: 40px;
 		z-index: 0;
 	}
 
 	img#profile_detail_afttable_image {
 		position: absolute;
-		left: 810px;
-		top: 420px;
-		height: 100px;
-		width: 100px;
+		left: 60%;
+		top: 395px;
+		height: 200px;
+		width: 200px;
 		z-index: 1;
 	}
 
@@ -105,6 +109,10 @@
 		z-index: 0;
 		thead#profile_detail_uc {
 			font-family:  Georgia;
+		}
+		th {
+			vertical-align: top;
+			height: 10px; 
 		}
 		th.v {
 			font-weight: normal;
@@ -133,7 +141,9 @@
 
 //*profile_edit:
 #profile_edit {
-	top: -100px;
+	.ui.form {
+		top: -50px;
+	}
 	.field.inline#profile_edit_infields_inline {
 		label {
 			display: inline-block !important;

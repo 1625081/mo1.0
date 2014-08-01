@@ -1,5 +1,5 @@
 = render 'profile/header'
-.container#profile_detail
+.container#profile_detail.profile_container
   table.ui.tale.segment#profile_detail_t
     img#profile_detail_afttable_image src = @user.avatar
   	thead#profile_detail_uc
@@ -27,7 +27,11 @@
   	    th.v = @user.profile.birthday.to_s
   	  tr
   	    th 描述
-  	    th.v = @user.profile.description
+        - usrdscpt = @user.profile.description
+        - if usrdscpt == ""
+          th.v = "本人懒懒的，啥都没写。"
+        - else
+  	      th.v = @user.profile.description
     tfoot
       tr
         th#profile_detail_changing_button colspan="3"
