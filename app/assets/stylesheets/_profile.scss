@@ -82,8 +82,9 @@
 .profile_container {
 	width: 70%;
 	left: 15%;
+	right: 15%;
 }
-
+//*/
 //*profile_detail:
 #profile_detail {
 	a.profile_detail_overbutton_a{
@@ -95,10 +96,10 @@
 
 	img#profile_detail_afttable_image {
 		position: absolute;
-		left: 60%;
+		left: 59%;
 		top: 395px;
-		height: 200px;
-		width: 200px;
+		height: 150px;
+		width: 150px;
 		z-index: 1;
 	}
 
@@ -141,6 +142,8 @@
 
 //*profile_edit:
 #profile_edit {
+	
+	min-width:770px;
 	.ui.form {
 		top: -50px;
 	}

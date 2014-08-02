@@ -1,4 +1,5 @@
 = render 'profile/header'
+.leftbox#profile_detail_left.profile.left.box
 .container#profile_detail.profile_container
   table.ui.tale.segment#profile_detail_t
     img#profile_detail_afttable_image src = @user.avatar
@@ -40,3 +41,4 @@
               .ui.black.labeled.icon.button#edit_profile
                 i.user.icon
                 | 更新
+.rightbox#profile_detail_right.profile.right.box

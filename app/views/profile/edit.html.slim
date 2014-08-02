@@ -1,4 +1,5 @@
 = render 'profile/header'
+.leftbox#profile_edit_left.profile.left.box
 .container#profile_edit.profile_container
   = form_for @profile, html: { :class => "ui form" } do |f|
     .two.fields
@@ -26,3 +27,4 @@
       = f.text_area :description
     .field#profile_edit_infields_intext_button
       = f.submit "更新信息", :class => "ui black button"
+.rightbox#profile_edit_right.profile.right.box
