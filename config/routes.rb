@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :images
+  post 'images/qiniu_callback' => 'images#qiniu_callback'
 
   get 'profile' => "profile#index"
   get 'profile/:id' => "profile#show"

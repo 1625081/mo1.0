@@ -57,7 +57,7 @@ gem 'mini_magick'
 gem 'jquery-file-upload-railed'
 
 # 七牛云存储
-gem 'qiniu-rs'
+gem 'qiniu'
 
 # Image meta info
 gem 'exifr' #https://github.com/remvee/exifr/

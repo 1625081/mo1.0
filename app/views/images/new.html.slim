@@ -1,5 +1,6 @@
 .container 
-  = form_for @image, :html => { :multipart => true, :id => "fileupload", :class => 'ui raised segment' } do |f|
+  form.ui.raised.segment#fileupload accept-charset="UTF-8" method="post" action="http://upload.qiniu.com/" multipart="multipart"
+    input type="hidden" name="auth" value="#{@upload_token}"
     .ui.ribbon.label.red 上传照片
     .ui.center.aligned.segment.upload-area.fileupload-buttonbar#dropzone
       .ui.icon.header#empty-status
@@ -10,7 +11,7 @@
       span.ui.blue.button.tiny.fileinput-button.fileinput-button#fileinput-button
         i.add.icon
         = t 'image.upload.add-image'
-        = f.file_field :file, 'data-sequential-uploads' => "true", :id => "photo-image", 'multiple' => "multiple"
+        input accept="image/jpg, image/jpeg" data-sequential-uploads="true" id="photo-image" multiple="multiple" name="file" type="file"
       .fileupload-loading
     .ui.center.aligned.segment.upload-area
       .ui.three.items#files_container data-toggle="modal-gallery" data-target="#modal-gallery"

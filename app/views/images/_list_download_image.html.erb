@@ -1,17 +1,18 @@
+<!-- These Code is writen by Miclle from Miclle.com. -->
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
-  <div class="item" id="dl">
-      <div class="image">
-        <img src="{%=file.thumb_url%}" alt="{%=file.name%}" href="{%=file.url%}"/>
-      </div>
-    <div class="content">
-      <div class="name">{%=file.name%}</div>
-      <p class="description">
-        {% if (file.error) { %}
-          上传！
-        {% } %}
-        <i class="checkmark red icon"></i>
-      </p>
+  <div class="template template-download fade">
+    <div class="preview">
+    {% if (file.error) { %}
+      <span class="">上传失败！</span>
+    {% } %}
+    {% if (file.image) { %}
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" target="_blank"><img src="{%=file.image%}" alt="{%=file.name%}" /></a>
+    {% } %}
+    </div>
+    <div class="exif">
+      <div class="caption">{%=file.name%}</div>
+      <div class="extra"><i class="checkmark red icon"></i></div>
     </div>
   </div>
 {% } %}

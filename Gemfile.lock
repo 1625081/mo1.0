@@ -146,11 +146,6 @@ GEM
       mime-types (~> 1.19)
       rest-client (~> 1.6)
       ruby-hmac (~> 0.4)
-    qiniu-rs (3.4.10)
-      json (~> 1.7)
-      mime-types (~> 1.19)
-      rest-client (~> 1.6)
-      ruby-hmac (~> 0.4)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -303,7 +298,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma
-  qiniu-rs
+  qiniu
   quiet_assets
   rack-mini-profiler
   rails (= 4.1.4)
