@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
   include Rails.application.routes.url_helpers
-  mount_uploader :file, ImageUploader
+  #mount_uploader :file, ImageUploader
 
   def to_jq_upload
     {
