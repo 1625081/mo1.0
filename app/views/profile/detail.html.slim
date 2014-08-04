@@ -1,5 +1,4 @@
 = render 'profile/header'
-.leftbox#profile_detail_left.profile.left.box
 .container#profile_detail.profile_container
   table.ui.tale.segment#profile_detail_t
     img#profile_detail_afttable_image src = @user.avatar
@@ -28,9 +27,9 @@
   	    th.v = @user.profile.birthday.to_s
   	  tr
   	    th 描述
-        - usrdscpt = @user.profile.description
-        - if usrdscpt == ""
-          th.v = "本人懒懒的，啥都没写。"
+        - if @user.profile.description == ""
+          th.v#profile_detail_form_empty = "本人懒懒的，啥都没写。"
+
         - else
   	      th.v = @user.profile.description
     tfoot
@@ -41,4 +40,3 @@
               .ui.black.labeled.icon.button#edit_profile
                 i.user.icon
                 | 更新
-.rightbox#profile_detail_right.profile.right.box
