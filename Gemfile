@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -78,6 +78,12 @@ end
 gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Redis
+gem 'redis'
+gem 'redis-objects'
+gem 'redis-store'
+gem 'redis-cache'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

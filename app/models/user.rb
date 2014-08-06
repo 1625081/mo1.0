@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_one :profile
   has_many :images
+
+  include Redis::Objects
+  counter :viewer
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_accessor :login

@@ -1,7 +1,13 @@
 class Image < ActiveRecord::Base
   belongs_to :user
+  has_one :score
   include Rails.application.routes.url_helpers
   #mount_uploader :file, ImageUploader
+
+  after_create do
+    self.score = Score.new liker: [], favor: [], viewer: 0, editor_rec: []
+    self.save
+  end
 
   def to_jq_upload
     {
@@ -27,7 +33,9 @@ class Image < ActiveRecord::Base
     end
   end
 
-  exif_include :camera
+  exif_include :camera, :aperture, :iso, :focal_length,
+               :width, :height, :token_at, :exposure_time,
+               :size, :color_space
 
   ##### WARNING !!!!! THIS IS A MONKEY PATH WORKING WITH UNKNOW ERORS !!!! #######
   #def method_missing(m,*a)  

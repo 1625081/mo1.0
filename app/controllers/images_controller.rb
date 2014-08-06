@@ -15,6 +15,7 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   def show
     @user = User.where("id = ?", @image.user_id.to_i).last
+    @image.score.viewer.increment
   end
 
   # GET /images/new
@@ -84,7 +85,7 @@ class ImagesController < ApplicationController
       @image.focal_length = params[:exif].focal_length if params[:exif].focal_length
       @image.width = params[:width] if params[:width]
       @image.height = params[:height] if params[:height]
-      @image.taken_at = params[:exif].taken_at if params[:exif].taken_at
+      @image.token_at = params[:exif].taken_at if params[:exif].taken_at
       @image.exposure_time = params[:exif].exposure_time if params[:exif].exposure_time
       @image.size = params[:size] if params[:size]
       @image.color_space = params[:color_space] if params[:color_space]  
