@@ -1,3 +1,6 @@
+require 'digest'
+require 'base64'
+
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
@@ -11,10 +14,13 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @user = User.where("id = ?", @image.user_id.to_i).last
   end
 
   # GET /images/new
   def new
+    @key = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Time.now.to_s + rand.to_s)))
+    #auth = Qiniu::Auth::PutPolicy.new
     @upload_token = Qiniu.generate_upload_token({ 
       :scope         => "mo-elements",
       :callback_url  => "http://mo.thecmw.cn/images/qiniu_callback",
@@ -68,7 +74,7 @@ class ImagesController < ApplicationController
     begin
       @user = User.where(:id => params[:user]).first
 
-      @image = @user.images.create(
+      @image = @user.images.new(
                                     :file         =>  params[:url],
                                     :exif           =>  {},
                                   )

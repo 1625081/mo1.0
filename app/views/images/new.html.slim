@@ -1,6 +1,7 @@
 .container 
   form.ui.raised.segment#fileupload accept-charset="UTF-8" method="post" action="http://upload.qiniu.com/" multipart="multipart"
-    input type="hidden" name="auth" value="#{@upload_token}"
+    input type="hidden" name="token" value="#{@upload_token}"
+    input type="hidden" name="key" value="#{@key}"
     .ui.ribbon.label.red 上传照片
     .ui.center.aligned.segment.upload-area.fileupload-buttonbar#dropzone
       .ui.icon.header#empty-status
@@ -15,12 +16,10 @@
       .fileupload-loading
     .ui.center.aligned.segment.upload-area
       .ui.three.items#files_container data-toggle="modal-gallery" data-target="#modal-gallery"
-    button.ui.green.button type="submit"
-      = t 'image.upload.start'
-    button.ui.button type="reset"
-      = t 'image.upload.reset'
-    .ui.blue.progress
-      .bar style="width: 0%"
+    /button.ui.green.button type="submit"
+      /= t 'image.upload.start'
+    /button.ui.button type="reset"
+      /= t 'image.upload.reset'
 
 = render 'images/list_uploading_image'
 = render 'images/list_download_image'

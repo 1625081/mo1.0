@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_one :profile
+  has_many :images
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_accessor :login

@@ -1,4 +1,5 @@
 class Image < ActiveRecord::Base
+  belongs_to :user
   include Rails.application.routes.url_helpers
   #mount_uploader :file, ImageUploader
 

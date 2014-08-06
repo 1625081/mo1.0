@@ -1,27 +1,65 @@
-p#notice = notice
+header#show_page 
+  .container
+    .main-info
+      .avatar 
+        = image_tag @user.avatar
+      .text
+        .title 
+          h1 = @image.title
+        .author = @user.nickname
+    .score-control
+      #score
+        .score 
+          .rating 85.7
+          .label 得分
+        .data
+          table
+            tbody
+              tr
+                td 浏览
+                td.viewers 1992
+              tr.middle
+                td 喜欢
+                td.likes 307
+              tr
+                td 收藏
+                td.favors 196
+      #action_control.ui.buttons
+        .like.ui.icon.button.youtube
+          i.icon.thumbs.up
+        .favor.ui.icon.button.teal
+          i.icon.heart
+        .share.ui.icon.button.twitter
+          i.icon.share
+#show_content
+  .element
+    .container
+      .left#go-left
+      .right#go-right
+      img src="#{@image.file}" class="full-img"
+  .detail
+    .container
+      .ui.grid
+        .twelve.wide.column
+          .ui.horizontal.segment.description
+            span.ui.label 描述
+            p = @image.description
+        .four.wide.column
+          .detail-info
+            .ui.label 详情
+            div
+              dl.exif
+                - if @image.exif
+                  - @image.exif.each do |key, value|
+                    .meta-data
+                      dt = t key
+                      dd = value
+                - else
+                  .meta-data
+                    dt EXIF信息
+                    dd 暂无
+              dl.other
+                .meta-data
+                  dt 版权协议
+                  dd CC
 
-p
-  strong Score:
-  = @image.score
-p
-  strong File:
-  = @image.file
-p
-  strong Like:
-  = @image.like
-p
-  strong Favorate:
-  = @image.favorate
-p
-  strong Public:
-  = @image.public
-p
-  strong Title:
-  = @image.title
-p
-  strong Description:
-  = @image.description
-
-= link_to 'Edit', edit_image_path(@image)
-'|
-= link_to 'Back', images_path
