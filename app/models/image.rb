@@ -33,6 +33,11 @@ class Image < ActiveRecord::Base
     end
   end
 
+  def like (user)
+    score.liker += [user.id]
+    score.save
+  end
+
   exif_include :camera, :aperture, :iso, :focal_length,
                :width, :height, :token_at, :exposure_time,
                :size, :color_space

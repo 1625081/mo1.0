@@ -16,6 +16,14 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'timeline' => 'home#timeline'
 
+  namespace :api do
+    namespace :v1 do
+      get 'score' => 'score#get_score'
+      get 'score/like'
+      get 'score/favor'
+    end
+  end
+
   devise_for :users
   devise_scope :user do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :sign_out
