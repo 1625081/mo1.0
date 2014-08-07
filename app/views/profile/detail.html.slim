@@ -36,7 +36,7 @@
       tr
         th#profile_detail_changing_button colspan="3"
           - if @user == current_user
-            a.profile_detail_overbutton_a href = edit_path
+            = link_to edit_path, :class => "profile_detail_overbutton_a"
               .ui.black.labeled.icon.button#edit_profile
                 i.user.icon
                 | 更新
