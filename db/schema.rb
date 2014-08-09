@@ -11,21 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706125841) do
+ActiveRecord::Schema.define(version: 20140806084346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "images", force: true do |t|
-    t.float    "score",       default: 0.0
     t.string   "file"
-    t.integer  "like",                      array: true
-    t.integer  "favorate",                  array: true
-    t.boolean  "public"
+    t.boolean  "public",      default: false
     t.string   "title",       default: ""
-    t.text     "description"
+    t.text     "description", default: ""
+    t.integer  "user_id"
+    t.boolean  "persional",   default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "exif"
   end
 
   create_table "profiles", force: true do |t|
@@ -40,6 +41,17 @@ ActiveRecord::Schema.define(version: 20140706125841) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "scores", force: true do |t|
+    t.float    "score",      default: 0.0
+    t.integer  "liker",                    array: true
+    t.integer  "favor",                    array: true
+    t.integer  "viewer"
+    t.integer  "editor_rec",               array: true
+    t.integer  "image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -56,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140706125841) do
     t.string   "username",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "viewer"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

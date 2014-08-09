@@ -1,0 +1,135 @@
+.mo.item {
+	position: relative !important;
+	line-height: 0 !important;
+	display: inline-block;
+	width: 250px !important;
+	height: 250px !important;
+	margin: 10px !important;
+	background-color: #f7f8fa !important;
+	overflow: hidden !important;
+	border: none !important;
+	padding: 0 !important;
+	min-height: 250px !important;
+	border-radius: 0 !important;
+	.thumb {
+		display: block;
+		cursor: pointer;
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+	.details {
+		opacity: 0;
+		position: absolute;
+		overflow: hidden;
+		white-space: nowrap;
+		bottom: 0px;
+		color: white;
+		background: black;
+		background: rgba(0,0,0,0.6);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.6)));
+		background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.6)));
+		background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%);
+		width: 100%;
+		height: 75px;
+		text-shadow: 0px 0px 1px #000;
+		-webkit-transition: 0.2s opacity;
+		transition: 0.2s opacity;
+		.inside {
+			position: relative;
+			height: 100%;
+			-webkit-transition: 0.28s bottom;
+			transition: 0.28s bottom;
+			bottom: -10px;
+			a {
+				overflow: hidden;
+				white-space: word-wrap;
+				text-overflow: ellipsis;
+				color: white;
+			}
+			a:before {
+				-webkit-box-sizing: content-box;
+				-moz-box-sizing: content-box;
+				box-sizing: content-box;
+				content: " ";
+				width: 100%;
+				padding: 1px 3px;
+				border-radius: 3px;
+				height: 100%;
+				position: absolute;
+				top: -1px;
+				left: -3px;
+				display: block;
+				background-color: rgba(255,255,255,0);
+				z-index: 1;
+				-webkit-transition: 0.1s;
+				transition: 0.1s;
+			}
+			a:hover:before {
+				background-color: rgba(255,255,255,0.2);
+			}
+			.title {
+				max-width: 192px;
+				opacity: 0;
+				height: 22px;
+				bottom: -20px;
+				font-size: 18px;
+				line-height: 20px;
+				font-weight: 500;
+				position: absolute;
+				white-space: word-wrap;
+				text-overflow: ellipsis;
+				top: 28px;
+				left: 12px;
+				-webkit-transition: 0.1s;
+				transition: 0.1s;
+				a {
+					height: 22px;
+				}
+			}
+			.info {
+				max-width: 200px;
+				font-size: 13px;
+				line-height: 13px;
+				font-weight: 200;
+				position: absolute;
+				bottom: 8px;
+				left: 13px;
+				a {
+					height: 15px;
+				}
+			}
+			.rating {
+				position: absolute;
+				font-weight: 300;
+				font-size: 30px;
+				line-height: 46px;
+				height: 50px;
+				bottom: -20px;
+				right: 10px;
+				text-align: right;
+				opacity: 0;
+				-webkit-transition: 0.2s;
+				transition: 0.2s;
+				
+			}
+
+		}
+	}
+	.details:hover {
+		opacity: 1;
+		.inside {
+			.title {
+				bottom: 10px;
+				opacity: 1;
+			}
+			.rating {
+				bottom: 10px;
+				opacity: 1;
+			}
+		}
+	}
+}

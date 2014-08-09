@@ -7,7 +7,7 @@
         .main-info
           h1.title = @user.nickname
           p.sub-info
-            | 1234597 人浏览 - 2002 人关注 - 
+            | #{@user.viewer.value} 人浏览 - 2002 人关注 - 
             = t @user.power
           .actions.ui.buttons
             a.ui.button.red.tiny

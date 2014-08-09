@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :images
+  post 'images/qiniu_callback' => 'images#qiniu_callback'
 
   get 'profile' => "profile#index"
   get 'profile/:id' => "profile#show"
@@ -14,6 +15,14 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'timeline' => 'home#timeline'
+
+  namespace :api do
+    namespace :v1 do
+      get 'score' => 'score#get_score'
+      get 'score/like'
+      get 'score/favor'
+    end
+  end
 
   devise_for :users
   devise_scope :user do

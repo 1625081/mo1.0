@@ -1,1 +1,22 @@
 = render 'profile/header'
+.container#profile_content
+  .ui.four.items
+    - for item in @items
+      .mo.item#squire
+        .actions
+        a.thumb
+          img src="#{item.file}?imageView/1/w/300/h/300/q/100/format/JPG"
+        .details
+          .inside
+            .title 
+              = link_to item.title, image_path(item)
+            .rating = item.score.score
+      .mo.item#squire
+        .actions
+        a.thumb
+          img src="#{item.file}?imageView/1/w/300/h/300/q/100/format/JPG"
+        .details
+          .inside
+            .title 
+              = link_to item.title, image_path(item)
+            .rating = item.score.score || 0.0

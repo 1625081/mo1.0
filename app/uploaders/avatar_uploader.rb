@@ -6,13 +6,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :qiniu
-  # storage :fog
-
-  self.qiniu_bucket = "cmw-mo"
-  self.qiniu_bucket_domain = "cmw-mo.qiniudn.com"
-  self.qiniu_protocal = 'http'
-  self.qiniu_can_overwrite = true
+  if Rails.env.production?
+    storage :qiniu
+    # storage :fog
+    self.qiniu_bucket = "cmw-mo"
+    self.qiniu_bucket_domain = "cmw-mo.qiniudn.com"
+    self.qiniu_protocal = 'http'
+    self.qiniu_can_overwrite = true
+  else
+    storage :file
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

@@ -1,18 +1,21 @@
-#require 'carrierwave/processing/mini_magick'
+require 'carrierwave/processing/mini_magick'
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  #include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :qiniu
-  # storage :fog
-
-  self.qiniu_bucket = "cmw-mo"
-  self.qiniu_bucket_domain = "cmw-mo.qiniudn.com"
-  self.qiniu_protocal = 'http'
-  self.qiniu_can_overwrite = true
+  if Rails.env.production?
+    storage :qiniu
+    # storage :fog
+    self.qiniu_bucket = "cmw-mo"
+    self.qiniu_bucket_domain = "cmw-mo.qiniudn.com"
+    self.qiniu_protocal = 'http'
+    self.qiniu_can_overwrite = true
+  else
+    storage :file
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -36,9 +39,17 @@ class ImageUploader < CarrierWave::Uploader::Base
 #  end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
-  # end
+  version :thumb do
+    process :resize_to_fit => [300, 300]
+  end
+
+  version :large do
+    process :resize_to_fit => [1024, 1024]
+  end
+
+  version :xlarge do
+    process :resize_to_fit => [1600, 1600]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -61,7 +72,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   def qiniu_async_ops
       commands = []
-      %W(small xlarge large).each do |style|
+      %W(thumb xlarge large).each do |style|
         commands << "http://#{self.qiniu_bucket_domain}/#{self.store_dir}/#{self.file_id}-#{style}.#{self.file_type}"
       end
       commands

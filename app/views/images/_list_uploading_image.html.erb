@@ -1,31 +1,20 @@
+<!-- These Code is writen by Miclle from Miclle.com. -->
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
-    <div class="item">
-    	{% if (file.thumbnail_url) { %}
-    		<div class="image">
-    			<img src="{%=file.thumbnail_url%}">
-    			<a class="star ui corner label" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
-    				<i class="remove icon"></i>
-    			</a>
-    		</div>
-    	{% } %}
-        <div class="content">
-        	<div class="name">
-        		{%=file.name%}
-        	</div>
-        	<div class="description">
-        		{%=o.formatFileSize(file.size)%}
-        		{% if (file.error) { %}
-        			{%=locale.fileupload.error%}
-        			{%=locale.fileupload.errors[file.error] || file.error%}
-        		{% } else if (o.files.valid && !i) { %}
-        			<div class="ui green progress">
-        				<div class="bar" style="width: 0%;">
-        				</div>
-        			</div>
-        		{% } %}
-        	</div>
-        </div>
+  <div class="template template-upload fade">
+    {% if (!i) { %}
+    <div class="cancel ui corner label icon"><i class="trash icon"></i></div>
+    {% } %}
+    <div class="preview">
+    {% if (file.error) { %}
+      <div class="error"><span class="label label-important">{%=file.error%}</span> {%= file.error%}</div>
+    {% } %}
     </div>
+    <div class="exif">
+      <div class="caption">{%=file.name%}</div>
+      <div class="extra">{%=o.formatFileSize(file.size)%}</div>
+      <div class="ui striped progress green progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>
+    </div>
+  </div>
 {% } %}
 </script>
