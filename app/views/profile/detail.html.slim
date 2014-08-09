@@ -1,31 +1,42 @@
 = render 'profile/header'
-.container
-  - if @user == current_user
-    = button_to "修改", edit_path, :class => 'ui button green', :id => 'edit_profile'
-  table.ui.basic.table
-  	thead
+.container#profile_detail.profile_container
+  table.ui.tale.segment#profile_detail_t
+    img#profile_detail_afttable_image src = @user.avatar
+  	thead#profile_detail_uc
   	  tr
   	    th 用户名
-  	    th = @user.username
+  	    th.v = @user.username
   	  tr
   	    th 用户ID
-  	    th = @user.id
+  	    th.v = @user.id
   	  tr
   	    th 用户身份
-  	    th = t @user.power
+  	    th.v = t @user.power
   	  tr
   	    th 电子邮箱
-  	    th = @user.email
-  	tbody
+  	    th.v = @user.email
+  	tbody#profile_detail_c
   	  tr
   	    th 昵称
-  	    th = @user.nickname
+  	    th.v = @user.nickname
   	  tr
   	    th 性别
-  	    th = t @user.profile.sex
+  	    th.v = t @user.profile.sex
   	  tr
   	    th 生日
-  	    th = @user.profile.birthday.to_s
+  	    th.v = @user.profile.birthday.to_s
   	  tr
   	    th 描述
-  	    th = @user.profile.description
+        - if @user.profile.description == ""
+          th.v#profile_detail_form_empty = "本人懒懒的，啥都没写。"
+
+        - else
+  	      th.v = @user.profile.description
+    tfoot
+      tr
+        th#profile_detail_changing_button colspan="3"
+          - if @user == current_user
+            = link_to edit_path, :class => "profile_detail_overbutton_a"
+              .ui.black.labeled.icon.button#edit_profile
+                i.user.icon
+                | 更新
