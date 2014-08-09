@@ -17,7 +17,7 @@ class ImagesController < ApplicationController
     @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
     @user = User.where("id = ?", @image.user_id.to_i).last
     @element = @image
-    @image.score.viewer.increment
+    @image.score.viewer.increment unless @user == current_user
   end
 
   # GET /images/new

@@ -9,6 +9,10 @@ class Image < ActiveRecord::Base
     self.save
   end
 
+  def mo_id
+    "photo_#{id}"
+  end
+
   def to_jq_upload
     {
       "size" => file.size,

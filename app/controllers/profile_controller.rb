@@ -3,6 +3,9 @@ class ProfileController < ApplicationController
 
   def index
     @user = current_user
+    @items = []
+    @items += @user.images.all
+    @items.sort_by {|i| i.created_at}
   end
 
   def edit
@@ -12,7 +15,7 @@ class ProfileController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @user.viewer.increment
+    @user.viewer.increment unless @user == current_user
   end
 
   def detail
