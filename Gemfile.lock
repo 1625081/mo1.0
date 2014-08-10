@@ -5,6 +5,14 @@ GIT
     omniauth-bdfzer (0.2.1)
       omniauth-oauth2 (~> 1.1)
 
+GIT
+  remote: git://github.com/rubycas/rubycas-client.git
+  revision: b6692b942f69f8c088ef4fdbc14a8e9310e5271d
+  branch: master
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -321,6 +329,7 @@ DEPENDENCIES
   redis-objects
   redis-store
   rspec-rails (~> 3.0.0)
+  rubycas-client!
   rubyntlm (~> 0.4.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

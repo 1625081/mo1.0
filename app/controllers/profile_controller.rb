@@ -1,11 +1,29 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit, :update]
-
+  before_action CASClient::Frameworks::Rails::Filter, only: :verify_identity
   def index
     @user = current_user
     @items = []
     @items += @user.images.all
     @items.sort_by {|i| i.created_at}
+  end
+
+  def verify_identity
+    @user = User.where('id = ?', require_to_verify).last
+    if @user
+      if session[:cas_user]
+        @user.pku_id = session[:cas_user]
+        if @user.save
+          redirect_to edit_user_registration_path
+        else
+          raise UnknownError
+        end
+      else
+        raise UnableToVerify
+      end
+    else
+      raise WrongParamError
+    end
   end
 
   def edit
@@ -42,5 +60,9 @@ class ProfileController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:avatar, :nickname, :description, :birthday, :sex)
+    end
+
+    def require_to_verify
+      Base64::decode64 params[:user_id]
     end
 end

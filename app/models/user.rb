@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     self.profile = Profile.new
   end
 
+  def is_verify?
+    !!(pku_id)
+  end
+
   def login=(login)
     @login = login
   end

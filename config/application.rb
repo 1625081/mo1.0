@@ -22,3 +22,8 @@ module Mo
     config.i18n.default_locale = :zh_CN
   end
 end
+
+CASClient::Frameworks::Rails::Filter.configure(
+  cas_base_url: "http://bdfz-cas.pkuschool.edu.cn/cas",
+  enable_single_sign_out: true
+)

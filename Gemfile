@@ -41,6 +41,7 @@ gem 'jquery-ui-rails'
 
 # User System
 gem 'devise'
+gem 'rubycas-client', github: 'rubycas/rubycas-client', branch: 'master'
 gem 'cancancan'
 gem 'omniauth'
 gem 'omniauth-oauth2'

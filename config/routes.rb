@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch 'edit' => 'profile#edit'
   patch 'profile' => "profile#update"
   put 'profile' => "profile#update"
+  get 'verify' => "profile#verify_identity", as: :verify_identity
 
 
   root 'home#index'
