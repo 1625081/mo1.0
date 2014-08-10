@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20140806084346) do
     t.hstore   "exif"
   end
 
+  create_table "musics", force: true do |t|
+    t.string   "title"
+    t.string   "file"
+    t.string   "user_id"
+    t.string   "src"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", force: true do |t|
     t.string   "nickname"
     t.text     "description"
@@ -73,5 +82,13 @@ ActiveRecord::Schema.define(version: 20140806084346) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "videos", force: true do |t|
+    t.string   "title"
+    t.string   "owner"
+    t.integer  "youkuid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

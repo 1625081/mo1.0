@@ -4,4 +4,7 @@ class HomeController < ApplicationController
 
   def timeline
   end
+  
+  def video
+  end
 end

@@ -17,7 +17,7 @@ gem 'slim-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'libv8'
-
+gem 'youku'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
@@ -90,3 +90,4 @@ gem 'redis-cache'
 
 # New Relic
 gem 'newrelic_rpm'
+gem 'rubyntlm', '~> 0.4.0'
