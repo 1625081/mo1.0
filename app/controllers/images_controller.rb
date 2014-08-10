@@ -1,3 +1,6 @@
+require 'digest'
+require 'base64'
+
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
@@ -12,11 +15,23 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   
   def show
+    @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
+    @user = User.where("id = ?", @image.user_id.to_i).last
+    @element = @image
+    @image.score.viewer.increment unless @user == current_user
   end
 
   # GET /images/new
   def new
-    @image = Image.new
+    @key = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Time.now.to_s + rand.to_s)))
+    #auth = Qiniu::Auth::PutPolicy.new
+    @upload_token = Qiniu.generate_upload_token({ 
+      :scope         => "mo-elements",
+      :callback_url  => "http://mo.thecmw.cn/images/qiniu_callback",
+      :callback_body => "user=#{current_user.id}&url=$(key)&size=$(fsize)&exif=$(exif)&width=$(imageInfo.width)&height=$(imageInfo.height)&type=$(suffix)&color_space=$(imageAve)",
+      :customer      => current_user.id.to_s,
+      :fsize_limit   => 20971520.to_s
+    })
   end
 
   # GET /images/1/edit
@@ -26,8 +41,8 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
-
+    @image = Image.new
+    @image.file = params["image"]["file"].first
     if @image.save
       respond_to do |format|
         format.html {  
@@ -58,6 +73,37 @@ class ImagesController < ApplicationController
     end
   end
 
+  # POST /images/qiniu/callback
+  def qiniu_callback
+    begin
+      @user = User.where(:id => params[:user]).first
+
+      @image = @user.images.new(
+                                    :file         =>  params[:url],
+                                    :exif           =>  {},
+                                  )
+      @image.camera = params[:exif].model if params[:exif].model
+      @image.aperture = params[:exif].f_number if params[:exif].f_number
+      @image.iso = params[:exif].iso if params[:exif].iso
+      @image.focal_length = params[:exif].focal_length if params[:exif].focal_length
+      @image.width = params[:width] if params[:width]
+      @image.height = params[:height] if params[:height]
+      @image.token_at = params[:exif].taken_at if params[:exif].taken_at
+      @image.exposure_time = params[:exif].exposure_time if params[:exif].exposure_time
+      @image.size = params[:size] if params[:size]
+      @image.color_space = params[:color_space] if params[:color_space]  
+
+      if @image.save
+        render :json => {:success => true, :files => [{:image => @image.file, :name => @image.title, :url => image_url(@image)}]}
+      else
+        raise Exception
+      end
+    rescue Exception => e
+      render :json => {:success => false, :message => "上传失败!"}
+    end
+  end
+
+
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
@@ -76,6 +122,10 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:score, :file, :like, :favorate, :public, :title, :description)
+      params.require(:image).permit(:file, :public, :title, :description, :exif)
+    end
+
+    def upload_image_params
+      params[:image].permit(:file)
     end
 end

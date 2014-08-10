@@ -1,0 +1,151 @@
+header#show_page {
+	background-color: #222;
+	height: 105px;
+	margin-bottom: 5px;
+	color: #eee;
+	margin-top: 50px;
+	.container {
+		padding: 0;
+	}
+	.main-info {
+		display: inline-block;
+		padding-top: 20px;
+		.avatar {
+			display: inline-block;
+			img {
+				width: 60px;
+				border-radius: 3px;
+				display: inline-block;
+			}
+		}
+		.text {
+			display: inline-block;
+			margin-left: 10px;
+			h1 {
+				margin-top: 0;
+				margin-bottom: 5px;
+			}
+			.author {
+				margin-bottom: 5px;
+			}
+		}
+	}
+	.score-control {
+		padding-top: 20px;
+		display: inline-block;
+		float: right;
+		div {display: inline-block;}
+		#score {
+			.score {
+				display: inline-block;
+				.rating {
+					display: block;
+					font-size: 38px;
+					margin-bottom: 6px;
+				}
+				.label {
+					display: block;
+					font-size: 10px;
+					text-align: right;
+					position: relative;
+					top: -6px;
+					right: 2px;
+				}
+			}
+			.data {
+				margin-left: 15px;
+				border: none;
+				tr {
+					td {padding: 3px 0 2px 8px;}
+					td:first-child {
+						padding: 3px 0 2px 8px;
+						font-size: 12px;
+						color: #71767a;
+					}
+					td:last-child {
+						color: #eee;
+						font-size: 12px;
+					}
+				}
+			}
+		}
+		#action_control {
+			height: 60px;
+			display: inline-block;
+			position: relative;
+			top: -24px;
+			margin-left: 40px;
+			.button {
+				height: 100%;
+				i {padding-top: 10px;}
+			}
+		}
+	}
+}
+
+#show_content {
+	padding-top: 5px;
+	.element {
+		.container {padding-top: 0;margin-bottom: 10px;}
+		text-align: center;
+		display: inline-block;
+		width: 100%;
+		img {
+			max-height: 900px;
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			text-align: center;
+		}
+	}
+	.detail {
+		background-color: white;
+		.container {
+			padding-top: 5px;
+		}
+		.segment {
+			line-height: 20px;
+			font-size: 15px;
+		}
+		.detail-info {
+			.exif {
+				margin-right: 10px;
+				float: left;
+				margin-top: 15px;
+			}
+			dl {
+				margin: 0;
+				margin-top: 5px;
+				display: inline-block;
+				.meta-data {
+					min-height: 20px;
+					display: block;
+					font-size: 12px;
+					dt {
+						width: 85px;
+						margin: 0;
+						padding: 0;
+						color: #71767a;
+						margin-right: 5px;
+						line-height: 14px;
+						font-weight: 800;
+						float: left;
+						display: inline-block;
+					}
+					dd {
+						width: 140px;
+						overflow: hidden;
+						float: left;
+						display: inline-block;
+						line-height: 14px;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						color: #71767a;
+						margin: 0;
+						padding: 0;
+					}
+				}
+			}
+		}
+	}
+}

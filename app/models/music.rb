@@ -4,9 +4,9 @@ class Music < ActiveRecord::Base
   def to_jq_upload
     {
       "name" => read_attribute(:music),
-      "size" =>music.size,
-      "url" =>music.url,
-      "thumbnail_url" =>music.thumb.url,
+      "size" =>@music.file.size,
+      "url" =>@music.file.url,
+      "thumbnail_url" =>@music.file.thumb.url,
       "delete_url" => music_path(:id => id),
       "delete_type" => "DELETE" 
     }

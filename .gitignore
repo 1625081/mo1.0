@@ -16,3 +16,7 @@
 /tmp
 /public/assets
 .env
+
+.DS_Store
+/public/uploads
+/public/test
