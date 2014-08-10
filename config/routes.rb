@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :musics
   resources :videos
+  get 'youku' => 'videos#upload_to_youku', as: :upload_to_youku
 
   post 'images/qiniu_callback' => 'images#qiniu_callback'
 
