@@ -29,12 +29,10 @@ class MusicsController < ApplicationController
     if @music.save
       respond_to do |format|
         format.html {  
-          render :json => [@music.to_jq_upload].to_json, 
-          :content_type => 'text/html',
-          :layout => false
+          redirect_to @music
         }
         format.json {  
-          render :json => [@music.to_jq_upload].to_json           
+          render :json => @music           
         }
       end
     else 
