@@ -1,0 +1,99 @@
+= javascript_include_tag "js-template"
+= javascript_include_tag "js-load_image"
+.container 
+  = form_for Music.new, :html => { :multipart => true, :id => "fileupload", :class => 'ui raised segment' } do |f|
+    /input type="hidden" name='token' value="#{Rails.application.secrets.qiniu.upload_key}"
+    .ui.ribbon.label.red 上传music
+    .ui.center.aligned.segment.upload-area#dropzone
+      .ui.icon.header#empty-status
+        i.cloud.upload.icon
+        = t 'music.upload.title'
+        /.sub.header = t 'music.upload.sub-title'
+      br#empty-status
+      a.ui.blue.button.tiny#empty-status
+        i.add.icon
+        = t 'music.upload.add-music'
+        = f.file_field :file, style: 'display:none'
+      .fileupload-loading
+    .ui.center.aligned.segment.upload-area
+      .ui.three.items data-toggle="modal-gallery" data-target="#modal-gallery"
+    button.ui.green.button type="submit"
+      = t 'music.upload.start'
+    button.ui.button type="reset"
+      = t 'music.upload.reset'
+    .ui.blue.progress
+      .bar style="width: 0%"
+
+= render 'musics/list_uploading_music'
+
+javascript:
+  var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+  };
+
+  
+
+  $(function () {
+        $('#fileupload').fileupload({
+            dataType: 'json',
+            dropZone: $('#dropzone')
+        });
+        // 
+        // Load existing files:
+        $.getJSON($('#fileupload').prop('action'), function (files) {
+          var fu = $('#fileupload').data('blueimp-fileupload'), 
+            template;
+          fu._adjustMaxNumberOfFiles(-files.length);
+          template = fu._renderDownload(files)
+            .appendTo($('#fileupload .files'));
+          // Force reflow:
+          fu._reflow = fu._transition && template.length &&
+            template[0].offsetWidth;
+          template.addClass('in');
+          $('#loading').remove();
+        });
+    });
+
+  $(document).bind('dragover', function (e) {
+    var dropZone = $('#dropzone'),
+        timeout = window.dropZoneTimeout;
+    if (!timeout) {
+        dropZone.addClass('in');
+    } else {
+        clearTimeout(timeout);
+    }
+    var found = false,
+        node = e.target;
+    do {
+        if (node === dropZone[0]) {
+            found = true;
+            break;
+        }
+        node = node.parentNode;
+    } while (node != null);
+    if (found) {
+        dropZone.hide();
+    } else {
+        dropZone.show();
+    }
+    window.dropZoneTimeout = setTimeout(function () {
+        window.dropZoneTimeout = null;
+        dropZone.show();
+    }, 100);
+  });
+
+  $('#fileupload').bind('fileuploadsubmit', function (e, data) {
+    var inputs = data.context.find(':input');
+    if (inputs.filter(function () {
+            return !this.value && $(this).prop('required');
+        }).first().focus().length) {
+        data.context.find('button').prop('disabled', false);
+        return false;
+    }
+    data.formData = inputs.serializeArray();
+  });
