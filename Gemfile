@@ -17,7 +17,12 @@ gem 'slim-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'libv8'
+
 gem 'youku'
+
+#simditor is a front-end article frame
+gem 'simditor-rails', '~> 1.0.1'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
