@@ -30,12 +30,26 @@ class VideosController < ApplicationController
   def upload
   end 
 
+  def update
+  @video = Video.find(params[:id])
+ 
+    if @video.update(video_params)
+      redirect_to @video
+    else
+      render 'edit'
+    end
+  end
+
+  def edit
+    @video = Video.find(params[:id])
+  end
+
   private
   def set_video
     @video = Video.find(params[:id])
   end
 
   def video_params
-    params.require(:video).permit(:title,:owner,:youkuid)
+    params.require(:video).permit(:title,:user_id,:youkuid)
   end
 end

@@ -1,6 +1,6 @@
 .container
   h3 = @video.title
-  p = @video.owner
+  p = @video.user_id
   #youkuplayer style="width:480px;height:400px"
   = link_to 'Back', videos_path
   script type="text/javascript" src="http://player.youku.com/jsapi"
