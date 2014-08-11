@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @music.title
+p
+  strong File:
+  = @music.file  
+p
+  strong User:
+  = @music.user_id
+p
+  strong Src:
+  = @music.src
+
+= link_to 'Edit', edit_music_path(@music)
+'|
+= link_to 'Back', musics_path

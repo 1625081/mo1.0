@@ -11,19 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706125841) do
+ActiveRecord::Schema.define(version: 20140810031642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "images", force: true do |t|
-    t.float    "score",       default: 0.0
     t.string   "file"
-    t.integer  "like",                      array: true
-    t.integer  "favorate",                  array: true
-    t.boolean  "public"
+    t.boolean  "public",      default: false
     t.string   "title",       default: ""
-    t.text     "description"
+    t.text     "description", default: ""
+    t.integer  "user_id"
+    t.boolean  "persional",   default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.hstore   "exif"
+  end
+
+  create_table "musics", force: true do |t|
+    t.string   "title"
+    t.string   "file"
+    t.string   "user_id"
+    t.string   "src"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,6 +51,17 @@ ActiveRecord::Schema.define(version: 20140706125841) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "scores", force: true do |t|
+    t.float    "score",      default: 0.0
+    t.integer  "liker",                    array: true
+    t.integer  "favor",                    array: true
+    t.integer  "viewer"
+    t.integer  "editor_rec",               array: true
+    t.integer  "image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -56,9 +77,20 @@ ActiveRecord::Schema.define(version: 20140706125841) do
     t.string   "username",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "viewer"
+    t.string   "pku_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "videos", force: true do |t|
+    t.string   "title"
+    t.string   "owner"
+    t.integer  "youkuid"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

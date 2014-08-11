@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   resources :images
+  
+  resources :musics
+  resources :videos
+  get 'youku' => 'videos#upload_to_youku', as: :upload_to_youku
+
+  post 'images/qiniu_callback' => 'images#qiniu_callback'
 
   get 'profile' => "profile#index"
   get 'profile/:id' => "profile#show"
@@ -10,10 +16,25 @@ Rails.application.routes.draw do
   patch 'edit' => 'profile#edit'
   patch 'profile' => "profile#update"
   put 'profile' => "profile#update"
+  get 'verify' => "profile#verify_identity", as: :verify_identity
 
 
   root 'home#index'
   get 'timeline' => 'home#timeline'
+
+  
+  get 'upload' => 'home#upload'
+  get 'video' => 'home#video'
+  get 'music' => 'musics#new'
+
+
+  namespace :api do
+    namespace :v1 do
+      get 'score' => 'score#get_score'
+      get 'score/like'
+      get 'score/favor'
+    end
+  end
 
   devise_for :users
   devise_scope :user do
@@ -74,3 +95,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+

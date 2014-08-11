@@ -1,0 +1,19 @@
+<!-- These Code is writen by Miclle from Miclle.com. -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+  <div class="template template-download fade">
+    <div class="preview">
+    {% if (file.error) { %}
+      <span class="">上传失败！</span>
+    {% } %}
+    {% if (file.image) { %}
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" target="_blank"><img src="{%=file.image%}" alt="{%=file.name%}" /></a>
+    {% } %}
+    </div>
+    <div class="exif">
+      <div class="caption">{%=file.name%}</div>
+      <div class="extra"><i class="checkmark red icon"></i></div>
+    </div>
+  </div>
+{% } %}
+</script>

@@ -40,7 +40,15 @@
         .field
           = f.submit "更新信息", :class => "ui black button"
     .bottom
-      h2 注销账户
+      h2 style="margin-bottom: -20px;" 验证身份 
+      - if current_user.is_verify?
+        .ui.green.horizontal.label style="margin-left: 100px;" 已通过认证
+        = current_user.pku_id
+      - else
+        .ui.red.horizontal.label style="margin-left: 100px;" 尚未认证
+      p 请确认你已登录北大附中内网，点击下方按钮进行认证。
+      = link_to "认证身份", "/verify?user_id=#{Base64::encode64(current_user.id.to_s)}", class: "ui blue button"
+      h2 style="margin-bottom: 0px;" 注销账户
       p
         | 注销账户是不可逆的，一旦误操作，我们将无法帮助你恢复。
       = button_to "注销我的账号", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "ui red button"

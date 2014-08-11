@@ -1,3 +1,4 @@
+//*profile_header:
 #profile-page {
 	background-color: #222;
 	.profile-header-container {
@@ -16,7 +17,9 @@
 			width: 100%;
 			height: 200px;
 			background: -linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
-			background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+			background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);//Safari & Chrome
+			background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);//Firefox
+			background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);//Opera
 			color: #eee;
 			.avatar {
 				display: inline-block;
@@ -29,7 +32,10 @@
 					margin: 0;
 					box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
 					border-radius: 3px;
+					box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
 					-webkit-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+					-moz-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+					-o-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
 				}
 			}
 			.main-info {
@@ -75,7 +81,94 @@
 		}
 	}
 }
-#edit_profile {
-	position: absolute;
-	top: 350px;
+
+//*/
+
+//*profile_container both details & edit
+.profile_container {
+	width: 70%;
+	left: 15%;
+	right: 15%;
+}
+//*/
+//*profile_detail:
+#profile_detail {
+	a.profile_detail_overbutton_a{
+		position: absolute;
+		right: -19px;
+		top: 40px;
+		z-index: 0;
+	}
+
+	img#profile_detail_afttable_image {
+		position: absolute;
+		left: 59%;
+		top: 415px;
+		height: 150px;
+		width: 150px;
+		z-index: 1;
+	}
+
+	
+	#profile_detail_t {
+		table-layout: fixed;
+		top: -45px;
+		z-index: 0;
+		thead#profile_detail_uc {
+			font-family:  Georgia;
+		}
+		th {
+			vertical-align: top;
+			height: 10px; 
+		}
+		th.v {
+			font-weight: normal;
+			color: #000;
+		}
+		th:first-child {
+			//for 表头
+			text-align: right;
+			vertical-align: top;
+			width: 20%;
+		}
+		th:last-child {
+			//for 内容
+			text-align: left;
+			padding-left: 35px;
+			word-break: break-all;
+			word-wrap:break-word;
+		}
+		th.v#profile_detail_form_empty {
+			color: #bbb !important;
+			font-style: oblique;
+		}
+		#profile_detail_changing_button {
+			position: relative;
+
+		}
+	}
+}
+//*/
+
+//*profile_edit:
+#profile_edit {
+	margin-bottom: 0px;
+	min-width:770px;
+	.ui.form {
+		top: -70px;
+	}
+	.field.inline#profile_edit_infields_inline {
+		label {
+			display: inline-block !important;
+		}
+	}
+	.ui.selection.dropdown {
+		padding: 0.45em 1em !important;
+	}
+	#profile_edit_infields_intext_button {
+		position: absolute;
+		right: 0px;
+		text-align: right;
+
+	}
 }

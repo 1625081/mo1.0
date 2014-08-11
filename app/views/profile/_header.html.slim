@@ -5,9 +5,15 @@
         .avatar
           = image_tag @user.avatar
         .main-info
-          h1.title = @user.nickname
+          h1.title
+            = @user.nickname
+            |    
+            - if @user.is_verify?
+              i.icon.basic.id.small.red data-content="该用户已通过身份认证."
+              javascript:
+                $('i.id.icon').popup();
           p.sub-info
-            | 1234597 人浏览 - 2002 人关注 - 
+            | #{@user.viewer.value} 人浏览 - 2002 人关注 - 
             = t @user.power
           .actions.ui.buttons
             a.ui.button.red.tiny

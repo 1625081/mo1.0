@@ -1,30 +1,28 @@
-= javascript_include_tag "js-template"
-= javascript_include_tag "js-load_image"
 .container 
-  = form_for Image.new, :html => { :multipart => true, :id => "fileupload", :class => 'ui raised segment' } do |f|
-    /input type="hidden" name='token' value="#{Rails.application.secrets.qiniu.upload_key}"
+  form.ui.raised.segment#fileupload accept-charset="UTF-8" method="post" action="http://upload.qiniu.com/" multipart="multipart"
+    input type="hidden" name="token" value="#{@upload_token}"
+    input type="hidden" name="key" value="#{@key}"
     .ui.ribbon.label.red 上传照片
-    .ui.center.aligned.segment.upload-area#dropzone
+    .ui.center.aligned.segment.upload-area.fileupload-buttonbar#dropzone
       .ui.icon.header#empty-status
         i.cloud.upload.icon
         = t 'image.upload.title'
         .sub.header = t 'image.upload.sub-title'
       br#empty-status
-      a.ui.blue.button.tiny#empty-status
+      span.ui.blue.button.tiny.fileinput-button.fileinput-button#fileinput-button
         i.add.icon
         = t 'image.upload.add-image'
-        = f.file_field :file, style: 'display:none'
+        input accept="image/jpg, image/jpeg" data-sequential-uploads="true" id="photo-image" multiple="multiple" name="file" type="file"
       .fileupload-loading
     .ui.center.aligned.segment.upload-area
-      .ui.three.items data-toggle="modal-gallery" data-target="#modal-gallery"
-    button.ui.green.button type="submit"
-      = t 'image.upload.start'
-    button.ui.button type="reset"
-      = t 'image.upload.reset'
-    .ui.blue.progress
-      .bar style="width: 0%"
+      .ui.three.items#files_container data-toggle="modal-gallery" data-target="#modal-gallery"
+    /button.ui.green.button type="submit"
+      /= t 'image.upload.start'
+    /button.ui.button type="reset"
+      /= t 'image.upload.reset'
 
 = render 'images/list_uploading_image'
+= render 'images/list_download_image'
 
 javascript:
   var fileUploadErrors = {
@@ -36,26 +34,15 @@ javascript:
     emptyResult: 'Empty file upload result'
   };
 
-  
-
   $(function () {
         $('#fileupload').fileupload({
+            limitMultiFileUploadSize: 21000000,
+            filesContainer: $('#files_container'),
+            autoUpload: true,
             dataType: 'json',
-            dropZone: $('#dropzone')
-        });
-        // 
-        // Load existing files:
-        $.getJSON($('#fileupload').prop('action'), function (files) {
-          var fu = $('#fileupload').data('blueimp-fileupload'), 
-            template;
-          fu._adjustMaxNumberOfFiles(-files.length);
-          template = fu._renderDownload(files)
-            .appendTo($('#fileupload .files'));
-          // Force reflow:
-          fu._reflow = fu._transition && template.length &&
-            template[0].offsetWidth;
-          template.addClass('in');
-          $('#loading').remove();
+            dropZone: $('#dropzone'),
+            sequentialUploads: true,
+
         });
     });
 

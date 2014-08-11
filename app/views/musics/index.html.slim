@@ -1,0 +1,26 @@
+h1 Listing musics
+
+table
+  thead
+    tr
+      th Title
+      th User
+      th Src
+      th
+      th
+      th
+
+  tbody
+    - @musics.each do |music|
+      tr
+        td = music.title
+        td = music.user_id
+        td = music.file
+        td = music.src
+        td = link_to 'Show', music
+        td = link_to 'Edit', edit_music_path(music)
+        td = link_to 'Destroy', music, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Music', new_music_path

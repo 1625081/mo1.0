@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -17,7 +17,7 @@ gem 'slim-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'libv8'
-
+gem 'youku'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
@@ -41,6 +41,7 @@ gem 'jquery-ui-rails'
 
 # User System
 gem 'devise'
+gem 'rubycas-client', github: 'rubycas/rubycas-client', branch: 'master'
 gem 'cancancan'
 gem 'omniauth'
 gem 'omniauth-oauth2'
@@ -55,6 +56,12 @@ gem 'carrierwave'
 gem 'carrierwave-qiniu'
 gem 'mini_magick'
 gem 'jquery-file-upload-railed'
+
+# 七牛云存储
+gem 'qiniu'
+
+# Image meta info
+gem 'exifr' #https://github.com/remvee/exifr/
 
 group :development do
   gem 'rack-mini-profiler'
@@ -73,8 +80,15 @@ gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Redis
+gem 'redis'
+gem 'redis-objects'
+gem 'redis-store'
+gem 'redis-cache'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
 # New Relic
 gem 'newrelic_rpm'
+gem 'rubyntlm', '~> 0.4.0'
