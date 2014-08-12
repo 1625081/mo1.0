@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140811065122) do
   create_table "musics", force: true do |t|
     t.string   "title"
     t.string   "file"
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "src"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,0 +1,25 @@
+<h1> vsdfsdfsdfsf              </h1>
+<h2>   NEW   VIDEO         </h2>
+
+<%= form_for :video, url: videos_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </p>
+ 
+   <p>
+    <%= f.label :youkuid %><br>
+    <%= f.text_field :youkuid %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Upload' ,upload_to_youku_path %>

@@ -3,7 +3,7 @@ class CreateMusics < ActiveRecord::Migration
     create_table :musics do |t|
       t.string :title
       t.string :file
-      t.string :user_id
+      t.integer :user_id
       t.string :src
 
       t.timestamps
