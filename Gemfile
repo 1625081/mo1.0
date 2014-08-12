@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -22,6 +22,7 @@ gem 'youku'
 
 #simditor is a front-end article frame
 gem 'simditor-rails', '~> 1.0.1'
+gem 'font-awesome-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

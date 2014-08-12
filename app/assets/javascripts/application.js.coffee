@@ -19,6 +19,7 @@
 # require_tree .
 #= require timeago
 #= require angular
+#= require simditor
 #= require angular-animate
 #= require angular-resource
 #= require angular-touch

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :articles
+
+  resources :ariticles
+
   resources :images
   
   resources :musics
