@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   after_create do
     self.profile = Profile.new
+    self.profile.sex = "unknow"
+    self.profile.save
   end
 
   def is_verify?
