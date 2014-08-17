@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811065122) do
+ActiveRecord::Schema.define(version: 20140817125320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140811065122) do
   create_table "musics", force: true do |t|
     t.string   "title"
     t.string   "file"
-    t.integer  "user_id"
+    t.string   "user_id"
     t.string   "src"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140811065122) do
     t.integer  "viewer"
     t.string   "pku_id"
     t.integer  "follower",                                         array: true
+    t.integer  "following",                                        array: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

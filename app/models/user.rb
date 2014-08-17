@@ -18,13 +18,42 @@ class User < ActiveRecord::Base
   }
 
   after_create do
+    self.follower = []
+    self.following = []
     self.profile = Profile.new
     self.profile.sex = "unknow"
     self.profile.save
+    self.save
+  end
+
+  def follow(user)
+    self.following += [user.id]
+    self.following.uniq!
+    user.follower += [self.id]
+    user.follower.uniq!
+    self.save
+    user.save
+  end
+
+  def unfollow(user)
+    self.following -= [user.id]
+    self.following.uniq!
+    user.follower -= [self.id]
+    user.follower.uniq!
+    self.save
+    user.save
   end
 
   def is_verify?
     !!(pku_id)
+  end
+
+  def is_followed_by(user)
+    self.follower.include? user.id
+  end
+
+  def is_following(user)
+    user.follower.include? self.id
   end
 
   def login=(login)

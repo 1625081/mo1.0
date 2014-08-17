@@ -41,6 +41,10 @@ class ProfileController < ApplicationController
     @profile = @user.profile
   end
 
+  def follow
+  end
+
+
   # PATCH/PUT /profiles
   # PATCH/PUT /profiles.json
   def update
