@@ -1,0 +1,42 @@
+.flash {
+	width: 100%;
+	color: white;
+	position: fixed;
+	text-align: center;
+	#flash_content {
+		background-color: #00B5AD;
+		height: 30px;
+		width: 100%;
+		z-index: 10000;
+		opacity: 0.9;
+		span {
+			margin-top: 5px;
+			font-size: 18px;
+			display: inline-block;
+		}
+		#close_flash {
+			float: right;
+			padding-top: 5px;
+		}
+	}
+}
+
+.flash-warning {
+	background-color: #CC181E !important;
+}
+
+.flash-info {
+	background-color: #4092CC !important;
+}
+
+
+//$flash-colors: (
+//	warning: #CC181E,
+//	info: #4092CC
+//);
+
+//@each $header, $color in $flash-colors {
+//	.flash-#{$header} {
+//		background-color: $color !important;
+//	}
+//}

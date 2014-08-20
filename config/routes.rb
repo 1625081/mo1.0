@@ -34,6 +34,8 @@ Rails.application.routes.draw do
       get 'score' => 'score#get_score'
       get 'score/like'
       get 'score/favor'
+      get 'test/notice'
+      get 'test/warning'
     end
   end
 

@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
       if session[:cas_user]
         @user.pku_id = session[:cas_user]
         if @user.save
-          redirect_to edit_user_registration_path
+          redirect_to edit_user_registration_path, info: '用户认证成功！'
         else
           raise UnknownError
         end
@@ -51,10 +51,10 @@ class ProfileController < ApplicationController
     @profile = current_user.profile
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'profile was successfully updated.' }
+        format.html { redirect_to @profile, notice: '资料更新成功！' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', warning: '资料更新时发生错误，请重试！' }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end

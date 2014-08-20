@@ -54,6 +54,18 @@ window.base =
 		modal_name = "##{raw_modal_name}"
 		$("##{self_name}").click ->
 			$(modal_name).modal 'show'
+	CloseFlash : () ->
+		$('a#close_flash').click ->
+			$(this).parent().fadeTo 600, 0, ->
+				$(this).remove()
+	Notice : (content) ->
+		$('#flash_container').append('<div class="flash-info" id="flash_content"><span>' + content + '</span><a id="close_flash"><i class="close icon"></i></a></div>')
+			.children().first().fadeIn 3000, ->
+				window.base.CloseFlash()
+	Warning : (content) ->
+		$('#flash_container').append('<div class="flash-warning" id="flash_content"><span>' + content + '</span><a id="close_flash"><i class="close icon"></i></a></div>')
+			.children().first().fadeIn 3000, ->
+				window.base.CloseFlash()
 	Init : () ->
 		$('.ui.dropdown').dropdown()
 		$('.ui.modal').modal()

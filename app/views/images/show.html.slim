@@ -50,6 +50,7 @@ header#show_page ng-controller="ScoreController"
           .ui.horizontal.segment.description
             span.ui.label 描述
             p = @image.description
+            a.ui.blue.button href='/api/v1/test/notice?content=这是一个测试！' 测试
         .four.wide.column
           .detail-info
             .ui.label 详情
