@@ -13,13 +13,20 @@
               javascript:
                 $('i.id.icon').popup();
           p.sub-info
-            | #{@user.viewer.value} 人浏览 - 2002 人关注 - 
+            | #{@user.viewer.value} 人浏览 -  
+            - if @user.follower
+              = @user.follower.size
+              |  人关注 - 
             = t @user.power
           .actions.ui.buttons
-            a.ui.button.red.tiny
-              | 关注
-            a.ui.button.purple.tiny 应该还可以有一个按钮
-            a.ui.button.green.tiny 点赞
+            - if current_user
+              - unless @user == current_user
+                - unless current_user.is_following @user
+                  = link_to follow_path(@user), :class => "ui button red tiny", remote: true
+                    | 关注
+                - else
+                  a.ui.button.red.tiny
+                    | 取消关注
     .profile-tab
       .ui.menu.inverted
         .container

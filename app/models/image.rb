@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
 
   after_create do
     self.score = Score.new liker: [], favor: [], viewer: 0, editor_rec: []
-    self.save
+    self.score.save
   end
 
   def mo_id

@@ -1,0 +1,11 @@
+.flash#flash_container
+  - flash.each do |k,v|
+    #flash_content class="flash-#{k}"
+      span == v
+      a#close_flash
+        i.close.icon
+
+coffee:
+  $('a#close_flash').click ->
+    $(this).parent().fadeTo 600, 0, ->
+      $(this).remove()

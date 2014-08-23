@@ -1,4 +1,5 @@
 class Api::V1::ScoreController < Api::V1::BaseController
+  respond_to :json
   before_action :check_secret, except: :get_score
   before_action :set_score
 
