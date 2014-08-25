@@ -75,4 +75,5 @@ $ ->
 	#window.base.Init()
 	if $.turbo.isReady == true
 		window.base.Init()
+		window.base.CloseFlash()
 		$(".timeago").timeago()

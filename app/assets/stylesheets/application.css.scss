@@ -19,10 +19,47 @@
 @import "colors";
 @import "mix-in";
 
+@font-face {
+  font-family: 'MyriadSetPro';
+  font-style: bold;
+  font-weight: 700;
+  src: assets-url('/fonts/MyriadSetPro-Semibold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'MyriadSetPro-Thin';
+  font-style: normal;
+  font-weight: 200;
+  src: assets-url('/fonts/MyriadSetPro-Thin.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'MyriadSetPro-Thin';
+  font-style: italic;
+  font-weight: 200;
+  src: assets-url('/fonts/MyriadSetPro-ThinItalic.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'MyriadSetPro-Ultralight';
+  font-style: normal;
+  font-weight: 100;
+  src: assets-url('/fonts/MyriadSetPro-Ultralight.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'MyriadSetPro-Ultralight';
+  font-style: italic;
+  font-weight: 100;
+  src: assets-url('/fonts/MyriadSetPro-UltralightItalic.ttf') format('ttf');
+}
+
 
 body {
 	margin: 0 !important;
-	background-color: $bg-gray;
+	background-color: rgb(235, 236, 237);
+	font-family: MyriadSetPro-Thin,arial,sans-serif !important;
+}
+
+h1, h2, h3, h4 {
+	font-family: MyriadSetPro-Ultralight,arial,sans-serif !important;
 }
 
 .container {
@@ -107,6 +144,7 @@ html {
 @import "show-page";
 @import "item";
 @import "flash";
+@import "timeline";
 
 .fileinput-button {
   position: relative;

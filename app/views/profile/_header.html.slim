@@ -22,10 +22,12 @@
             - if current_user
               - unless @user == current_user
                 - unless current_user.is_following @user
-                  = link_to follow_path(@user), :class => "ui button red tiny", remote: true
+                  - params = {"current_user" => current_user.id.to_s, "user" => @user.id.to_s, "timestamp" => Time.now.to_i.to_s}
+                  a.ui.button.red.tiny href="/profile/follow?current_user=#{current_user.id}&user=#{@user.id}&timestamp=#{Time.now.to_i}&token=#{init_token params}"
                     | 关注
                 - else
-                  a.ui.button.red.tiny
+                  - params = {"current_user" => current_user.id.to_s, "user" => @user.id.to_s, "timestamp" => Time.now.to_i.to_s}
+                  a.ui.button.red.tiny href="/profile/unfollow?current_user=#{current_user.id}&user=#{@user.id}&timestamp=#{Time.now.to_i}&token=#{init_token params}"
                     | 取消关注
     .profile-tab
       .ui.menu.inverted
