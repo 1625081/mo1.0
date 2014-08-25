@@ -3,11 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "colors";
 .top-bar {
+	box-shadow: 0 1px 5px #111 !important;
 	border-radius: 0 !important;
 	height: 50px !important;
 	background-color: $bg-black !important;
 	top: 0;
-	box-shadow: 0px 1.5px 5px #aaa;
 	border-bottom: 1px #111;
 	position: fixed;
 	width: 100%;

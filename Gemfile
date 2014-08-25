@@ -44,6 +44,7 @@ gem 'spring',        group: :development
 gem 'semantic-ui-sass'
 gem 'angularjs-rails'
 gem 'jquery-ui-rails'
+gem 'nprogress-rails'
 
 # User System
 gem 'devise'

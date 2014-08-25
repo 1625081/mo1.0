@@ -1,0 +1,130 @@
+.timeline {
+	padding-bottom: 25px;
+	margin: 0;
+	text-align: center;
+	.time_maker {
+		text-align: center;
+		padding: 20px 0 32px 0;
+		margin-right: auto;
+		margin-left: auto;
+		span {
+			background: #c7c7c7;
+			color: #fff;
+			font-weight: bold;
+			font-size: 14px;
+			width: 170px;
+			padding: 5px 0;
+			border-radius: 5px;
+			display: table-cell;
+			vertical-align: middle;
+			display: inline-block 9;
+		}
+	}
+	.feed-item {
+		display: block;
+		position: relative;
+		margin-bottom: 30px;
+		.time {
+			position: absolute;
+			top: 0;
+			color: #888;
+			margin-right: 100px;
+			position: absolute;
+		}
+		i.point {
+			position: absolute;
+			left: 200px;
+			width: 25px;
+			height: 14px;
+			background: asset-url('timeline-point.png') no-repeat;
+			top: 0px;
+			right: -5px;
+			text-indent: -9999em;
+			display: inline-block;
+		}
+		.content {
+			margin-left: auto;
+			margin-right: auto;
+			background-color: white;
+			display: inline-block;
+			//width: 550px;
+			width: 100%;
+			//max-width: 550px;
+			text-align: left;
+			.thumb {
+				//max-width: 550px;
+				img {
+					width: 100%;
+					vertical-align:middle
+				}
+			}
+			.info {
+				padding: 14px;
+				.title {
+					font-family: MyriadSetPro-Ultralight,arial,sans-serif !important;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					margin-top: 10px;
+					margin-bottom: 10px;
+					font-size: 14px !important;
+					font-weight: normal;
+				}
+				.sub-title {
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					font-size: 14px;
+					margin: 0;
+					word-wrap:break-word;
+					color: #888;
+				}
+			}
+			.author {
+				display: inline-block;
+				padding: 14px;
+				padding-top: 10px;
+				.avatar {
+					border-radius: 100px;
+					max-width: 26px;
+					max-height: 26px;
+					img {
+						width: 26px;
+						height: 26px;
+						border-radius: 13px;
+					}
+					margin-right: 7px;
+				}
+				.username {
+					font-family: MyriadSetPro-Ultralight,arial,sans-serif !important;
+					font-size: 14px;
+					color: #666;
+					position: relative;
+					top: -7px;
+				}
+			}
+			.actions {
+				display: inline-block;
+				font-size: 14px;
+				float: right;
+				padding: 14px;
+				padding-top: 5px;
+				font-family: MyriadSetPro-Ultralight,arial,sans-serif !important;
+				a {
+					margin-right: 10px;
+					position: relative;
+					top: 14px;
+				}
+				a:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+
+	}
+	.feed-item:hover {
+		i {
+		    background-position: 0 -14px
+		}
+	}
+}
