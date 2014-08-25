@@ -15,6 +15,8 @@
 #= require jquery.turbolinks
 # require jquery-ui
 #= require turbolinks
+#= require nprogress
+#= require nprogress-turbolinks
 #= require semantic-ui
 # require_tree .
 #= require timeago
@@ -36,6 +38,11 @@
 #= require_tree ./angular/services
 #= require_tree ./angular/controllers
 #
+
+NProgress.configure
+  showSpinner: true
+  ease: 'ease'
+  speed: 500
 
 window.App = angular.module('Mo', [
 	'ngCookies',

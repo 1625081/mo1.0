@@ -15,6 +15,11 @@
  *= require home
  * require jquery-ui
  */
+
+$nprogress-color: #CC181E;
+@import 'nprogress';
+@import 'nprogress-bootstrap';
+
 @import "semantic-ui";
 @import "colors";
 @import "mix-in";

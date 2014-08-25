@@ -1,28 +1,28 @@
 .container
-  section.timeline.three.column.ui.grid
+  .timeline.three.column.ui.grid
     .login_header
       .actions
       .notification
-    /article.time_maker
-      /span 现在
-    article.feed-item.column
-      article.content
-        .thumb
-          = image_tag 'demo/feed-thumb.jpg'
-        .info
-          h4.title 这是一个测试 This is a Test
-          .sub-title 这是一个测试页面
-        .author
-          a.avatar
-            = image_tag 'demo/avatar.jpg'
-          span.username 测试账户
-        .actions
-          a.like 
-            i.icon.thumbs.up.outline 
-            | 5
-          a.favor 
-            i.icon.heart.empty
-            | 3
-          a.comments 
-            i.icon.comment.outline
-            | 10
+    - 10.times
+      .column
+        article.feed-item
+          article.content
+            .thumb
+              = image_tag 'demo/feed-thumb.jpg'
+            .info
+              h4.title 这是一个测试 This is a Test
+              .sub-title 这是一个测试页面
+            .author
+              a.avatar
+                = image_tag 'demo/avatar.jpg'
+              span.username 测试账户
+            .actions
+              a.like 
+                i.icon.thumbs.up.outline 
+                | 5
+              a.favor 
+                i.icon.heart.empty
+                | 3
+              a.comments 
+                i.icon.comment.outline
+                | 10
