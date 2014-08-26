@@ -4,8 +4,9 @@ table
   thead
     tr
       th Title
+      th Content
       th User
-      th Text
+      th Cover
       th
       th
       th
@@ -14,10 +15,9 @@ table
     - @articles.each do |article|
       tr
         td = article.title
-        td = article.owner.nickname
-        
-        td = article.text.html_safe
-        
+        td = article.content
+        td = article.user
+        td = article.cover
         td = link_to 'Show', article
         td = link_to 'Edit', edit_article_path(article)
         td = link_to 'Destroy', article, data: {:confirm => 'Are you sure?'}, :method => :delete

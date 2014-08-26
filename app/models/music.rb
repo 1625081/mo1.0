@@ -1,15 +1,32 @@
 class Music < ActiveRecord::Base
   mount_uploader :file, MusicUploader
+  mount_uploader :cover, ThumbUploader
+  belongs_to :user
+  has_one :score
+  has_one :thumb
 
-  def to_jq_upload
-    {
-      "name" => read_attribute(:music),
-      "size" =>@music.file.size,
-      "url" =>@music.file.url,
-      "thumbnail_url" =>@music.file.thumb.url,
-      "delete_url" => music_path(:id => id),
-      "delete_type" => "DELETE" 
-    }
+  after_create do
+    self.score = Score.new liker: [], favor: [], viewer: 0, editor_rec: []
+    self.score.save
   end
 
+  def mo_item
+    {
+      :thumb => file,
+      :title => title,
+      :sub_title => des,
+      :author => {
+        :avatar => User.find(user_id).avatar,
+        :username => User.find(user_id).nickname
+      },
+      :score => {
+        :like => score.liker.size,
+        :favor => score.favor.size,
+        :rate => score.generate_score
+      },
+      :url => {
+        :show => "/musics/#{id}"
+      }
+    }
+  end
 end

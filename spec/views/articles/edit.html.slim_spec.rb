@@ -4,8 +4,9 @@ RSpec.describe "articles/edit", :type => :view do
   before(:each) do
     @article = assign(:article, Article.create!(
       :title => "MyString",
-      :user_id => 1,
-      :text => "MyString"
+      :content => "MyText",
+      :user => nil,
+      :cover => "MyString"
     ))
   end
 
@@ -16,9 +17,11 @@ RSpec.describe "articles/edit", :type => :view do
 
       assert_select "input#article_title[name=?]", "article[title]"
 
+      assert_select "textarea#article_content[name=?]", "article[content]"
+
       assert_select "input#article_user_id[name=?]", "article[user_id]"
 
-      assert_select "input#article_text[name=?]", "article[text]"
+      assert_select "input#article_cover[name=?]", "article[cover]"
     end
   end
 end

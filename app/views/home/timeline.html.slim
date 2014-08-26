@@ -3,26 +3,28 @@
     .login_header
       .actions
       .notification
-    - 10.times
+    - for item in @items
       .column
         article.feed-item
-          article.content
-            .thumb
-              = image_tag 'demo/feed-thumb.jpg'
+          article.content 
+            a.thumb href="#{item[:url][:show]}"
+              img src="#{item[:thumb]}" 
             .info
-              h4.title 这是一个测试 This is a Test
-              .sub-title 这是一个测试页面
+              h4.title 
+                a href="#{item[:url][:show]}"
+                  = item[:title]
+              .sub-title = item[:sub_title]
             .author
               a.avatar
-                = image_tag 'demo/avatar.jpg'
-              span.username 测试账户
+                = image_tag item[:author][:avatar]
+              span.username = item[:author][:username]
             .actions
               a.like 
                 i.icon.thumbs.up.outline 
-                | 5
+                = item[:score][:like]
               a.favor 
                 i.icon.heart.empty
-                | 3
+                = item[:score][:favor]
               a.comments 
                 i.icon.comment.outline
                 | 10

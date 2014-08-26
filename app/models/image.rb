@@ -15,7 +15,7 @@ class Image < ActiveRecord::Base
 
   def mo_item
     {
-      :thumb => file,
+      :thumb => file + '-s430',
       :title => title,
       :sub_title => description,
       :author => {
@@ -26,6 +26,17 @@ class Image < ActiveRecord::Base
         :like => score.liker.size,
         :favor => score.favor.size,
         :rate => score.generate_score
+      },
+      :url => {
+        :show => "/images/#{id}"
+      },
+      :created_at => {
+        :year => created_at.year,
+        :month => created_at.month,
+        :day => created_at.day,
+        :hour => created_at.hour,
+        :minute => created_at.min,
+        :raw => created_at
       }
     }
   end

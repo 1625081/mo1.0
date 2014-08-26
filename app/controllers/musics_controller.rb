@@ -10,11 +10,13 @@ class MusicsController < ApplicationController
   # GET /musics/1
   # GET /musics/1.json
   def show
+    @user = User.where("id = ?", @music.user_id.to_i).last
+    @music.score.viewer.increment unless @user == current_user
   end
 
   # GET /musics/new
   def new
-    @music = Music.new
+    @music = current_user.musics.new
   end
 
   # GET /musics/1/edit
@@ -24,12 +26,12 @@ class MusicsController < ApplicationController
   # POST /musics
   # POST /musics.json
   def create
-    @music = Music.new(music_params)
-
+    @music = current_user.musics.new(music_params)
+    
     if @music.save
       respond_to do |format|
         format.html {  
-          redirect_to @music
+          redirect_to @music, notice: '音频上传成功'
         }
         format.json {  
           render :json => @music           
@@ -68,10 +70,11 @@ class MusicsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_music
       @music = Music.find(params[:id])
+      @element = @music
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def music_params
-      params.require(:music).permit(:title, :user_id, :src, :file)
+      params.require(:music).permit(:title, :user_id, :des, :file, :cover)
     end
 end

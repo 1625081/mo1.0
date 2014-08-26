@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       get 'score/favor'
       get 'test/notice'
       get 'test/warning'
+      post 'upload/image'
     end
   end
 

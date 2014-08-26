@@ -4,11 +4,14 @@ p
   strong Title:
   = @article.title
 p
-  strong User:
-  = @article.owner.nickname
+  strong Content:
+  = @article.content
 p
-  strong Text:
-  = @article.text.html_safe
+  strong User:
+  = @article.user
+p
+  strong Cover:
+  = @article.cover
 
 = link_to 'Edit', edit_article_path(@article)
 '|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817125320) do
+ActiveRecord::Schema.define(version: 20140826100702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,31 @@ ActiveRecord::Schema.define(version: 20140817125320) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
+    t.text     "content"
     t.integer  "user_id"
-    t.string   "text"
+    t.string   "cover"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.string   "content"
+    t.boolean  "primery"
+    t.integer  "article_id"
+    t.integer  "image_id"
+    t.integer  "video_id"
+    t.integer  "music_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
+  add_index "comments", ["image_id"], name: "index_comments_on_image_id", using: :btree
+  add_index "comments", ["music_id"], name: "index_comments_on_music_id", using: :btree
+  add_index "comments", ["video_id"], name: "index_comments_on_video_id", using: :btree
+
 
   create_table "images", force: true do |t|
     t.string   "file"
@@ -44,6 +64,8 @@ ActiveRecord::Schema.define(version: 20140817125320) do
     t.string   "src"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "des"
+    t.string   "cover"
   end
 
   create_table "profiles", force: true do |t|
@@ -68,7 +90,22 @@ ActiveRecord::Schema.define(version: 20140817125320) do
     t.integer  "image_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "music_id"
+    t.integer  "article_id"
   end
+
+  add_index "scores", ["article_id"], name: "index_scores_on_article_id", using: :btree
+
+  create_table "thumbs", force: true do |t|
+    t.string   "file"
+    t.integer  "music_id"
+    t.integer  "video_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "thumbs", ["music_id"], name: "index_thumbs_on_music_id", using: :btree
+  add_index "thumbs", ["video_id"], name: "index_thumbs_on_video_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -101,6 +138,7 @@ ActiveRecord::Schema.define(version: 20140817125320) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cover"
   end
 
 end

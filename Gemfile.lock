@@ -341,7 +341,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   semantic-ui-sass
   sidekiq
-  simditor-rails (~> 1.0.1)
+  simditor-rails
   sinatra
   slim
   slim-rails

@@ -1,11 +1,13 @@
  <p> hshsajhkadhjkahkahfjahkfjaf</p>
 <p> hshsajhkadhjkahkahfjahkfjaf</p>
 
-<a target="_blank" href="http://www.youku.com/user_login">login to youku! </a>
-<p>___________</p>
-<a target="_blank" href="videos/new">new video</a>
-<p>___________</p>
-<%= link_to 'Videos', controller: 'videos' %>
+<button class="large ui button"  onclick="window.location.href='http://www.youku.com/user_login'">
+    login to youku!
+</button>
+<button class="large ui button"  onclick="window.location.href='videos/new'">
+    new video
+</button>
+    <%= link_to 'Videos', {controller: 'videos'},:class =>"ui black button" %>
 
 
 <link href="http://open.youku.com/assets/lib/bootstrap2.1.0/css/bootstrap.css" rel="stylesheet">

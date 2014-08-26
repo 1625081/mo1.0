@@ -3,6 +3,8 @@ class HomeController < ApplicationController
   end
 
   def timeline
+  	@items = []
+  	@items += Image.all.map{|i| i.mo_item}
   end
   
   def video

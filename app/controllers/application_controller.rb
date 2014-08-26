@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   #protect_from_forgery with: :null_session
-
+  before_action :check_drivers
   before_action :configure_permitted_parameters, if: :devise_controller?
   around_action :rescue_errors, only: :api_info
   helper_method :init_token
@@ -53,6 +53,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def check_drivers
+    request.variant = :tablet if request.user_agent =~ /iPad/
+    request.variant = :phone if request.user_agent =~ /iPhone/
+    request.variant = :phone if request.user_agent =~ /Android/
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation) }
