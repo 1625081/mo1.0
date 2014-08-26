@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140811142546) do
-=======
 ActiveRecord::Schema.define(version: 20140817125320) do
->>>>>>> 00f74d0f1050d8900b13d9de18decee6f29b6880
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140817125320) do
   create_table "musics", force: true do |t|
     t.string   "title"
     t.string   "file"
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "src"
     t.datetime "created_at"
     t.datetime "updated_at"
