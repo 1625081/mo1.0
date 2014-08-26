@@ -149,3 +149,38 @@ header#show_page {
 		}
 	}
 }
+
+body.musics.show {
+	#show_content {
+		padding-top: 0;
+		margin-top: -5px;
+		.player {
+			background-color: #222;
+			.container {
+				padding-top: 0;
+				padding-bottom: 0;
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+	.description {
+		img {
+			width: 100%;
+		}
+		.cover {
+			background: asset-url('cover_bg.png') 0 0 no-repeat;
+			padding: 13px 14px 34px 32px;
+			margin-top: 10px;
+			width: 185px;
+			height: 185px;
+			display: block;
+			img {
+				max-width: 185px;
+				max-height: 185px;
+				text-align: center;
+				vertical-align: middle;
+			}
+		}
+	}
+}

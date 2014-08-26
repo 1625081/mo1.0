@@ -39,6 +39,8 @@ gem 'semantic-ui-sass'
 gem 'angularjs-rails'
 gem 'jquery-ui-rails'
 gem 'nprogress-rails'
+gem 'simditor-rails'
+gem 'font-awesome-rails'
 
 # User System
 gem 'devise'

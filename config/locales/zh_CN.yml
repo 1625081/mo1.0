@@ -29,6 +29,10 @@ zh_CN:
   female: "女孩纸"
   unknown: "未明确"
 
+  upload:
+    file: "选择文件"
+    title: "点击此处修改标题"
+
   image:
     upload:
       title: "上传图片"
@@ -37,3 +41,8 @@ zh_CN:
       start: "开始上传"
       reset: "清空图片"
       input_title: "在此处键入标题"
+
+  audio:
+    upload:
+      title: "上传音频"
+      update: "上传"

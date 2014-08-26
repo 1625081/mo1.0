@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_one :profile
   has_many :images
+  has_many :musics
 
   include Redis::Objects
   counter :viewer

@@ -6,6 +6,30 @@
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
+  .ui.input {
+    width: 100%;
+    input {
+      border-width: 0px;
+      text-align: center;
+      border-radius: 0;
+    }
+    input:hover {
+      background-color: #eee;
+    }
+    input:focus {
+      border-bottom: 1px solid #798;
+    }
+    #music_file {
+      width: 20%;
+    }
+  }
+  .ui.divider {
+    margin-bottom: 2px;
+    margin-top: 0;
+  }
+  .des_field {
+    text-align: left;
+  }
 }
 
 #dropzone.fade {

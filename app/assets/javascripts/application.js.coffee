@@ -20,6 +20,7 @@
 #= require semantic-ui
 # require_tree .
 #= require timeago
+#= require simditor
 #= require angular
 #= require angular-animate
 #= require angular-resource
@@ -40,9 +41,9 @@
 #
 
 NProgress.configure
-  showSpinner: true
-  ease: 'ease'
-  speed: 500
+	showSpinner: true
+	ease: 'ease'
+	speed: 500
 
 window.App = angular.module('Mo', [
 	'ngCookies',
@@ -73,10 +74,30 @@ window.base =
 		$('#flash_container').append('<div class="flash-warning" id="flash_content"><span>' + content + '</span><a id="close_flash"><i class="close icon"></i></a></div>')
 			.children().first().fadeIn 3000, ->
 				window.base.CloseFlash()
+	Simditor : (place,can_upload = false) ->
+		editor = new Simditor
+			textarea: place
+			placeholder: ''
+			params: {}
+			upload: can_upload
+			tabIndent: true
+			toolbarFloat: true
+			upload:
+				url: '/api/v1/upload/image'
+				connectionCount: 1
+				leaveConfirm: '正在上传文件，如果离开上传会自动取消'
+			pasteImage: true
+			toolbar: ['bold', 'italic', 'underline', '|', 'ol', 'ul', 'blockquote', 'code', '|', 'link', 'image', '|', 'indent', 'outdent', '|', 'hr', 'table']
+	RemoveSmall : () ->
+		$('.hide-when-small').remove()
+	RemoveTiny : () ->
+		$('.hide-when-small').remove()
+		$('.hide-when-tiny').remove()
 	Init : () ->
 		$('.ui.dropdown').dropdown()
 		$('.ui.modal').modal()
 		$('.ui.checkbox').checkbox()
+
 
 $ ->
 	#window.base.Init()
@@ -84,3 +105,7 @@ $ ->
 		window.base.Init()
 		window.base.CloseFlash()
 		$(".timeago").timeago()
+		@width = $(window).width
+		switch
+			when @width <= 600 then window.base.RemoveTiny()
+			when 600 < @width < 1000 then window.base.RemoveSmall()

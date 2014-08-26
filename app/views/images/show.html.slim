@@ -1,48 +1,10 @@
-header#show_page ng-controller="ScoreController"
-  .angular-data data-score-id="#{@element.score.id}" data-secret="#{@secret}" data-login="#{(current_user)?(true):(false)}"
-  .container
-    .main-info
-      .avatar 
-        = image_tag @user.avatar
-      .text
-        .title 
-          h1 = @element.title
-        .author = @user.nickname
-    .score-control
-      #score
-        .score 
-          .rating
-            | {{score.score}}
-          .label 得分
-        .data
-          table
-            tbody
-              tr
-                td 浏览
-                td.viewers
-                  | {{score.viewers}}
-              tr.middle
-                td 喜欢
-                td.likes
-                  | {{score.likes}}
-              tr
-                td 收藏
-                td.favors
-                  | {{score.favor}}
-      - if current_user
-        #action_control.ui.buttons data-user-id="#{current_user.id}"
-          a.like.ui.icon.button.youtube ng-click="like()"
-            i.icon.thumbs.up
-          a.favor.ui.icon.button.teal ng-click="favor()"
-            i.icon.heart
-          .share.ui.icon.button.twitter
-            i.icon.share
+= render 'share/show_header'
 #show_content
   .element
     .container
       .left#go-left
       .right#go-right
-      img src="#{@image.file}?imageView/2/w/1140/q/100/format/JPG" class="full-img"
+      img src="#{@image.file}-xlarge" class="full-img"
   .detail
     .container
       .ui.grid
@@ -50,7 +12,6 @@ header#show_page ng-controller="ScoreController"
           .ui.horizontal.segment.description
             span.ui.label 描述
             p = @image.description
-            a.ui.blue.button href='/api/v1/test/notice?content=这是一个测试！' 测试
         .four.wide.column
           .detail-info
             .ui.label 详情

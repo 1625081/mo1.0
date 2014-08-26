@@ -1,18 +1,27 @@
-p#notice = notice
+= render 'share/show_header'
+#show_content
+  .player
+    .container
+      audio.mejs-player src="#{@music.file.url}" width="100%"
+  .detail
+    .container
+      .ui.grid
+        .four.wide.column
+          .ui.horizontal.segment.description
+            .cover
+              = image_tag @music.cover.url
+        .eight.wide.column
+          .ui.horizontal.segment.description
+            span.ui.label 描述
+            == @music.des
+        .four.wide.column
+          .detail-info
+            .ui.label 详情
+            div
+              dl.other
+                .meta-data
+                  dt 版权协议
+                  dd CC
 
-p
-  strong Title:
-  = @music.title
-p
-  strong File:
-  = @music.file  
-p
-  strong User:
-  = @music.user_id
-p
-  strong Src:
-  = @music.src
-
-= link_to 'Edit', edit_music_path(@music)
-'|
-= link_to 'Back', musics_path
+= stylesheet_link_tag "mediaelementplayer"
+= javascript_include_tag "mediaelementplayer"

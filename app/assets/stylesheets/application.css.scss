@@ -13,6 +13,8 @@
  * require_tree .
  *= require_self
  *= require home
+ *= require font-awesome
+ *= require simditor
  * require jquery-ui
  */
 
@@ -23,6 +25,10 @@ $nprogress-color: #CC181E;
 @import "semantic-ui";
 @import "colors";
 @import "mix-in";
+
+a {
+	text-decoration: none !important;
+}
 
 @font-face {
   font-family: 'MyriadSetPro';
@@ -94,44 +100,17 @@ h1, h2, h3, h4 {
 	.container {
 		width:720px
 	}
-	.just-mobile {
-		visibility: true;
-	}
-	.just-pad, .just-computer {
-		visibility: false;
-	}
-	.just-not-mobile {
-		visibility: false;
-	}
 }
 
 @media (min-width: 992px) {
 	.container {
 		width:940px
 	}
-	.just-pad {
-		visibility: true;
-	}
-	.just-mobile, .just-computer {
-		visibility: false;
-	}
-	.just-not-mobile {
-		visibility: true;
-	}
 }
 
 @media (min-width: 1200px) {
 	.container {
 		width:1140px
-	}
-	.just-computer {
-		visibility: true;
-	}
-	.just-pad, .just-mobile {
-		visibility: false;
-	}
-	.just-not-mobile {
-		visibility: true;
 	}
 }
 
@@ -140,6 +119,8 @@ h1, h2, h3, h4 {
 html {
 	overflow-y: auto;
 	overflow-x: hidden;
+  min-width: 800px;
+  width:expression(document.body.clientWidth < 800? "800px": "auto" ); 
 }
 .hidden {display: none !important;}
 
@@ -165,6 +146,10 @@ html {
   font-size: 200px;
   direction: ltr;
   cursor: pointer;
+}
+
+.simditor .simditor-wrapper.toolbar-floating .simditor-toolbar {
+  top: 50px !important;
 }
 
 /* Fixes for IE < 8 */

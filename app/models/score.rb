@@ -3,6 +3,7 @@ class Score < ActiveRecord::Base
   counter :viewer
 
   belongs_to :image
+  belongs_to :music
 
   def generate_score
     return liker.size + favor.size + viewer.value + 5 * editor_rec.size

@@ -1,19 +1,33 @@
 .container
-  = form_for @music, html: { :class => "ui form" } do |f|
-    .two.fields
-      .field.inline
-        label file
+  = form_for @music, html: { :class => "ui raised segment" } do |f|
+    .ui.ribbon.label.red = t 'audio.upload.title'
+    .ui.center.aligned.segment.upload-area
+      .ui.icon.header#empty-status
+        i.cloud.upload.icon
+        = t 'audio.upload.title'
+      br
+      .ui.input
+        = f.text_field :title, placeholder: "#{t 'upload.title'}"
+      br
+      .ui.divider
+      .ui.input
         = f.file_field :file
-    .three.fields
-      .field.inline
-        label title
-        = f.text_field :title
-      .field.inline
-        label owner
-        = f.text_field :user_id
-      .field.inline
-        label music_src
-        = f.text_field :src
-    .field
-    .field
-      = f.submit "更新信息", :class => "ui black button"
+      br
+      .des_field
+        =f.text_area :des
+        coffee:
+          window.base.Simditor $('textarea'), can_upload=true
+      hr
+      .ui.input.thumb
+        = f.file_field :cover
+        coffee:
+          $('.ui.input.thumb input')
+            .popup
+              position : 'top',
+              title    : '点击此处上传音频封面'
+
+
+          
+      .field
+      .field
+        = f.submit t('audio.upload.update'), :class => "ui black button"
