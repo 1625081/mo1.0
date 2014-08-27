@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :dmvideos
+
   resources :articles
 
   resources :images

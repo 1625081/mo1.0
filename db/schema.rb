@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826100702) do
+ActiveRecord::Schema.define(version: 20140827151205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 20140826100702) do
   add_index "comments", ["music_id"], name: "index_comments_on_music_id", using: :btree
   add_index "comments", ["video_id"], name: "index_comments_on_video_id", using: :btree
 
+  create_table "dmvideos", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "tudouid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "des"
+  end
 
   create_table "images", force: true do |t|
     t.string   "file"
@@ -92,6 +100,8 @@ ActiveRecord::Schema.define(version: 20140826100702) do
     t.datetime "updated_at"
     t.integer  "music_id"
     t.integer  "article_id"
+    t.integer  "video_id"
+    t.integer  "dmvideo_id"
   end
 
   add_index "scores", ["article_id"], name: "index_scores_on_article_id", using: :btree
@@ -134,11 +144,12 @@ ActiveRecord::Schema.define(version: 20140826100702) do
   create_table "videos", force: true do |t|
     t.string   "title"
     t.string   "owner"
-    t.integer  "youkuid"
+    t.string   "youkuid"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cover"
+    t.text     "des"
   end
 
 end

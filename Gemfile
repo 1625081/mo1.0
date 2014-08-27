@@ -20,9 +20,6 @@ gem 'libv8'
 
 gem 'youku'
 
-#simditor is a front-end article frame
-gem 'simditor-rails', '~> 1.0.1'
-gem 'font-awesome-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -45,7 +42,7 @@ gem 'semantic-ui-sass'
 gem 'angularjs-rails'
 gem 'jquery-ui-rails'
 gem 'nprogress-rails'
-gem 'simditor-rails'
+gem 'simditor-rails', '~> 1.0.1'
 gem 'font-awesome-rails'
 
 # User System

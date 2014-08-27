@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :articles
   has_many :musics
+  has_many :videos
+  has_many :dmvideos
 
   include Redis::Objects
   counter :viewer

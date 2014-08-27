@@ -1,9 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b69babc18d865a7932b544e4bc5343568bb39f2
   # GET /articles
   # GET /articles.json
   def index

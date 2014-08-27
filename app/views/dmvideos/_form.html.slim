@@ -1,0 +1,18 @@
+= form_for @dmvideo do |f|
+  - if @dmvideo.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@dmvideo.errors.count, "error")} prohibited this dmvideo from being saved:"
+      ul
+        - @dmvideo.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :tudouid
+    = f.text_field :tudouid
+  .actions = f.submit 'Save'

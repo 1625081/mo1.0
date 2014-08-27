@@ -1,6 +1,6 @@
-class Video < ActiveRecord::Base
-      mount_uploader :cover, ThumbUploader
-    has_one :score
+class Dmvideo < ActiveRecord::Base
+  mount_uploader :cover, ThumbUploader
+  has_one :score
   has_one :thumb
   belongs_to :user
   
@@ -24,8 +24,12 @@ class Video < ActiveRecord::Base
         :rate => score.generate_score
       },
       :url => {
-        :show => "/videos/#{id}"
+        :show => "/dmvideos/#{id}"
       }
     }
   end
+
+
+
+
 end

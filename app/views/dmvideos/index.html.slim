@@ -1,0 +1,25 @@
+h1 Listing dmvideos
+
+table
+  thead
+    tr
+      th Title
+      th User
+      th Tudouid
+      th
+      th
+      th
+
+  tbody
+    - @dmvideos.each do |dmvideo|
+      tr
+        td = dmvideo.title
+        td = dmvideo.user_id
+        td = dmvideo.tudouid
+        td = link_to 'Show', dmvideo
+        td = link_to 'Edit', edit_dmvideo_path(dmvideo)
+        td = link_to 'Destroy', dmvideo, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Dmvideo', new_dmvideo_path

@@ -28,6 +28,10 @@
                 = link_to new_video_path, class: "item"
                   i.video.icon
                   | 上传视频
+              - if can? :create, Dmvideo.new
+                = link_to new_dmvideo_path, class: "item"
+                  i.video.icon
+                  | 上传弹幕视频
               - if can? :create, Music.new
                 = link_to new_music_path, class: "item"
                   i.unmute.icon
