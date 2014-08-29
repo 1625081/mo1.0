@@ -40,6 +40,8 @@ Rails.application.routes.draw do
       get 'score' => 'score#get_score'
       get 'score/like'
       get 'score/favor'
+      get 'score/unlike'
+      get 'score/unfavors'
       get 'test/notice'
       get 'test/warning'
       post 'upload/image'

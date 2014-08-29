@@ -18,7 +18,7 @@ header#show_page ng-controller="ScoreController"
           table
             tbody
               tr
-                td 浏览
+                td 浏览{{has_like}}
                 td.viewers
                   | {{score.viewers}}
               tr.middle
@@ -30,10 +30,18 @@ header#show_page ng-controller="ScoreController"
                 td.favors
                   | {{score.favor}}
       - if current_user
-        #action_control.ui.buttons data-user-id="#{current_user.id}"
-          a.like.ui.icon.button.youtube ng-click="like()"
-            i.icon.thumbs.up
-          a.favor.ui.icon.button.teal ng-click="favor()"
-            i.icon.heart
+        #action_control.ui.buttons data-user-id="#{current_user.id}"  data-like="#{current_user.like? @element}" data-favor="#{current_user.favor? @element}"
+          - if current_user.like? @element
+            a.like.ui.icon.button.active.youtube#like ng-click="do_like()"
+              i.icon.thumbs.up
+          - else
+            a.like.ui.icon.button.youtube#like ng-click="do_like()"
+              i.icon.thumbs.up
+          - if current_user.favor? @element
+            a.favor.ui.icon.button.active.teal#favor ng-click="do_favor()"
+              i.icon.heart
+          - else
+            a.favor.ui.icon.button.teal#favor ng-click="do_favor()"
+              i.icon.heart
           .share.ui.icon.button.twitter
             i.icon.share

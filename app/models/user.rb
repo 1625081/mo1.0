@@ -60,6 +60,14 @@ class User < ActiveRecord::Base
     user.follower.include? self.id
   end
 
+  def like?(something)
+    something.score.liker.include? id
+  end
+
+  def favor?(something)
+    something.score.favor.include? id
+  end
+
   def login=(login)
     @login = login
   end
