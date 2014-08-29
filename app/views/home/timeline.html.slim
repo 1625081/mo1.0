@@ -7,11 +7,11 @@
       .column
         article.feed-item
           article.content 
-            a.thumb href="#{item[:url][:show]}"
+            a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
               img src="#{item[:thumb]}" 
             .info
               h4.title 
-                a href="#{item[:url][:show]}"
+                a href="#{item[:url][:show]}" data-no-turbolink='true'
                   = item[:title]
               .sub-title = item[:sub_title]
             .author

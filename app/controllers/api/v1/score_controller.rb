@@ -35,6 +35,28 @@ class Api::V1::ScoreController < Api::V1::BaseController
     end
   end
 
+  def unlike
+    @score.liker -= [user_params.to_i]
+    @score.liker.uniq!
+    @score.score = @score.generate_score
+    if @score.save
+      render json: {status: 200}
+    else
+      raise UnknowError
+    end
+  end
+
+  def unfavor
+    @score.favor -= [user_params.to_i]
+    @score.favor.uniq!
+    @score.score = @score.generate_score
+    if @score.save
+      render json: {status: 200}
+    else
+      raise UnknowError
+    end
+  end
+
   private
   def check_secret
     secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))

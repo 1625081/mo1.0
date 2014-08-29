@@ -17,7 +17,7 @@ class Image < ActiveRecord::Base
     {
       :thumb => file + '-s430',
       :title => title,
-      :sub_title => description,
+      :sub_title => description.gsub(/<\/?.*?>/,""),
       :author => {
         :avatar => User.find(user_id).avatar,
         :username => User.find(user_id).nickname
