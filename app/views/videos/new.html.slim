@@ -21,12 +21,9 @@
           window.base.Simditor $('textarea'), can_upload=true
       hr
       .ui.input.thumb
+        = "上传视频封面:"
         = f.file_field :cover
-        coffee:
-          $('.ui.input.thumb input')
-            .popup
-              position : 'top',
-              title    : '点击此处上传音频封面'
+ 
 
       
       .field

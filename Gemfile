@@ -63,6 +63,7 @@ gem 'carrierwave-qiniu'
 gem 'mini_magick'
 gem 'jquery-file-upload-railed'
 
+
 # 七牛云存储
 gem 'qiniu'
 
@@ -77,7 +78,6 @@ group :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rails_best_practices'
-  gem 'rspec-rails', '~> 3.0.0'
 end
 
 # Use unicorn as the app server

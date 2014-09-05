@@ -1,6 +1,6 @@
 class Video < ActiveRecord::Base
-      mount_uploader :cover, ThumbUploader
-    has_one :score
+  mount_uploader :cover, ThumbUploader
+  has_one :score
   has_one :thumb
   belongs_to :user
   

@@ -1,12 +1,34 @@
-.container
-  h3 = @video.title
-  p = @video.user_id
-  #youkuplayer style="width:480px;height:400px"
-  = link_to 'Back', videos_path
-  script type="text/javascript" src="http://player.youku.com/jsapi"
-  javascript:
-    player = new YKU.Player('youkuplayer',{
-      styleid: '0',
-      client_id: '24002f2d0b37924f',      
-      vid : "#{@video.youkuid}"    
-    });
+= render 'share/show_header'
+#show_content
+  .element
+    .container
+      #player
+        #youkuplayer style="width:100%;height:550px"
+        script type="text/javascript" src="http://player.youku.com/jsapi"
+        javascript:
+          player = new YKU.Player('youkuplayer',{
+            styleid: '0',
+            client_id: '24002f2d0b37924f',      
+            vid : "#{@video.youkuid}"    
+          });
+  .detail
+    .container
+      .ui.grid
+        .four.wide.column
+          .ui.horizontal.segment.description
+            .cover
+              = image_tag @video.cover.url
+        .eight.wide.column
+          .ui.horizontal.segment.description
+            span.ui.label 描述
+            == @video.des
+        .four.wide.column
+          .detail-info
+            .ui.label 详情
+            div
+              dl.other
+                .meta-data
+                  dt 版权协议
+                  dd CC
+
+      

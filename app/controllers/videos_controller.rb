@@ -68,6 +68,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:title,:youkuid,:des,:user_id)
+    params.require(:video).permit(:title,:youkuid,:des,:user_id,:cover)
   end
 end
