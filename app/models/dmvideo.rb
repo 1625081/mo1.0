@@ -11,9 +11,9 @@ class Dmvideo < ActiveRecord::Base
   
   def mo_item
     {
-      :thumb => file,
+      :thumb => cover.url,
       :title => title,
-      :sub_title => description,
+      :sub_title => des.gsub(/<\/?.*?>/,""),
       :author => {
         :avatar => User.find(user_id).avatar,
         :username => User.find(user_id).nickname

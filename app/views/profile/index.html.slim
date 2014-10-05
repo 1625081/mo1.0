@@ -2,12 +2,17 @@
 .container#profile_content
   .ui.four.items
     - for item in @items
-      .mo.item#squire
-        .actions
-        = link_to image_path(item), class: 'thumb', 'data-no-turbolink' => 'true'
-          img src="#{item.file}?imageView/1/w/300/h/300/q/100/format/JPG" 
-        .details
-          .inside
-            .title 
-              = link_to item.title, image_path(item), 'data-no-turbolink' => 'true'
-            .rating = item.score.score
+      - if "#{item[:author][:username]}" == @user.username
+        .mo.item#squire
+          .actions
+          a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
+            - if "#{item[:thumb]}".empty?
+              img src="noimg.jpeg" 
+            - else
+              img src="#{item[:thumb]}" 
+          .details
+            .inside
+              .title 
+                a href="#{item[:url][:show]}" data-no-turbolink='true'
+                    = item[:title]
+              .rating  = item[:score][:like]

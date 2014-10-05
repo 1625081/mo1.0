@@ -1,16 +1,29 @@
-p
-  strong Title:
-  = @dmvideo.title
-p
-  strong User:
-  = @dmvideo.user_id
-p
-  strong Tudouid:
-  = @dmvideo.tudouid
-
-iframe src="http://www.tudou.com/programs/view/html5embed.action?code=#{@dmvideo.tudouid}" width="100%" height="524px" frameborder="0" scrolling="no"
+= render 'share/show_header'
+#show_content
+  .element
+    .container
+      #player
+       iframe src="http://www.tudou.com/programs/view/html5embed.action?code=#{@dmvideo.tudouid}" width="100%" height="524px" frameborder="0" scrolling="no"
+  .detail
+    .container
+      .ui.grid
+        .four.wide.column
+          .ui.horizontal.segment.description
+            .cover
+              = image_tag @dmvideo.cover.url
+        .eight.wide.column
+          .ui.horizontal.segment.description
+            span.ui.label 描述
+            == @dmvideo.des
+        .four.wide.column
+          .detail-info
+            .ui.label 详情
+            div
+              dl.other
+                .meta-data
+                  dt 版权协议
+                  dd CC
 
 
 = link_to 'Edit', edit_dmvideo_path(@dmvideo)
-'|
-= link_to 'Back', dmvideos_path
+

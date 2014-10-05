@@ -1,30 +1,32 @@
 .container
-  = form_for @video, html: { :class => "ui raised segment" } do |f|
-    .ui.ribbon.label.red = "转载视频"
-    .ui.center.aligned.segment.upload-area
-      .ui.icon.header#empty-status
-        i.cloud.upload.icon
-        = "转载视频"
-      br
-      .ui.input
-        = f.text_field :title, placeholder: "标题"
-      br
-      .ui.divider
-      br
-      .ui.input
-        = f.text_field :youkuid ,placeholder: "优酷视频id"
-
-      br
-      .des_field
-        =f.text_area :des 
-        coffee:
-          window.base.Simditor $('textarea'), can_upload=true
-      hr
-      .ui.input.thumb
-        = "上传视频封面:"
-        = f.file_field :cover
- 
-
-      
-      .field
-        = f.submit :class => "ui black button"
+  - if current_user.power == "admin"|| current_user.power == "leader"||current_user.power == "editor" 
+    = form_for @video, html: { :class => "ui raised segment" } do |f|
+      .ui.ribbon.label.red = "转载视频"
+      .ui.center.aligned.segment.upload-area
+        .ui.icon.header#empty-status
+          i.cloud.upload.icon
+          = "转载视频"
+        br
+        .ui.input
+          = f.text_field :title, placeholder: "标题"
+        br
+        .ui.divider
+        br
+        .ui.input
+          = f.text_field :youkuid ,placeholder: "优酷视频id"
+        br
+         .ui.button [class="large ui button"  onclick="window.location.href='/youku/'"] UPLOAD! 
+        br 
+        .des_field
+          =f.text_area :des 
+          coffee:
+            window.base.Simditor $('textarea'), can_upload=true
+        hr
+        .ui.input.thumb
+          = "上传视频封面:"
+          = f.file_field :cover        
+        .field
+          = f.submit :class => "ui black button"
+  - else
+    = current_user.power
+    | ,you don't have the permission!

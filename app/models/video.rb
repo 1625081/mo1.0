@@ -11,9 +11,9 @@ class Video < ActiveRecord::Base
   
   def mo_item
     {
-      :thumb => file,
+      :thumb => cover.url,
       :title => title,
-      :sub_title => description,
+      :sub_title => "A mo site Video",
       :author => {
         :avatar => User.find(user_id).avatar,
         :username => User.find(user_id).nickname

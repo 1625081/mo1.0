@@ -1,5 +1,5 @@
 class DmvideosController < ApplicationController
-  before_action :set_dmvideo, only: [:show, :edit, :update, :destroy]
+  before_action :set_dmvideo, only: [:show, :destroy]
 
   # GET /dmvideos
   # GET /dmvideos.json
@@ -9,22 +9,7 @@ class DmvideosController < ApplicationController
 
   # GET /dmvideos/1
   # GET /dmvideos/1.json
-  def show
-  end
-
-  # GET /dmvideos/new
-  def new
-    @dmvideo = current_user.dmvideos.new
-  end
-
-  # GET /dmvideos/1/edit
-   def edit
-    @dmvideo = Dmvideo.find(params[:id])
-  end
-
-  # POST /dmvideos
-  # POST /dmvideos.json
-  def create
+   def create
     @dmvideo = current_user.dmvideos.new(dmvideo_params)
     
     if @dmvideo.save
@@ -40,6 +25,24 @@ class DmvideosController < ApplicationController
       render :json => [{:error => "custom_failure"}], :status => 304
     end
   end
+  
+  def show
+    @user = User.where("id = ?", @dmvideo.user_id.to_i).last
+    @dmvideo.score.viewer.increment unless @user == current_user
+  end
+
+  # GET /dmvideos/new
+  def new
+    @dmvideo = current_user.dmvideos.new
+  end
+
+  # GET /dmvideos/1/edit
+   def edit
+    @dmvideo = Dmvideo.find(params[:id])
+  end
+
+  # POST /dmvideos
+  # POST /dmvideos.json
 
   # PATCH/PUT /dmvideos/1
   # PATCH/PUT /dmvideos/1.json
@@ -74,6 +77,6 @@ class DmvideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dmvideo_params
-      params.require(:dmvideo).permit(:title, :user_id, :tudouid,:des)
+      params.require(:dmvideo).permit(:title, :user_id, :tudouid,:des,:cover)
     end
 end

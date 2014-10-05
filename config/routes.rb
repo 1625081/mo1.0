@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :dmvideos
-
   resources :articles
 
   resources :images
@@ -30,7 +29,7 @@ Rails.application.routes.draw do
   get 'timeline' => 'home#timeline'
 
   
-  get 'upload' => 'home#upload'
+  get 'upload' => 'videos#upload'
   get 'video' => 'home#video'
   get 'music' => 'musics#new'
 

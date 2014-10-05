@@ -4,8 +4,9 @@ class ProfileController < ApplicationController
   def index
     @user = current_user
     @items = []
-    @items += @user.images.all
-    @items.sort_by {|i| i.created_at}
+    @items += Image.all.map{|i| i.mo_item}
+    @items += Music.all.map{|i| i.mo_item}
+    @items += Video.all.map{|i| i.mo_item}
   end
 
   def verify_identity

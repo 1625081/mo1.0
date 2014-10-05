@@ -17,7 +17,10 @@
         .four.wide.column
           .ui.horizontal.segment.description
             .cover
-              = image_tag @video.cover.url
+               - if @video.cover.url != nil
+                 = image_tag @video.cover.url
+               - else
+                  = image_tag @user.avatar 
         .eight.wide.column
           .ui.horizontal.segment.description
             span.ui.label 描述

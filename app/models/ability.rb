@@ -4,15 +4,30 @@ class Ability
   def initialize(user)
     user ||= User.new
     can :read, :all
-    if user.is_verify? || user.admin? || user.editor? || user.leader?
-      can :create, :image
-      can :create, :music
-      can :create, :video
-    end
+  #  if user.is_verify? || user.admin? || user.power=="editor" || user.power=="leader"
+   #   can :create, :image
+   #   can :create, :music
+   #   can :create, :video
+   #   can :create, :dmvideo
+   # else
+   #   user.username = user.power
+   # end
 
     if user.admin?
       can :manage, :all
     end
+    if user.leader?
+      can :create, :image
+      can :create, :music
+      can :create, :video
+      can :create, :article
+    end
+    if user.editor?
+      can :create, :image
+      can :create, :music
+      can :create, :video
+    end 
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

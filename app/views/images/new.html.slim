@@ -1,86 +1,90 @@
 .container 
-  form.ui.raised.segment#fileupload accept-charset="UTF-8" method="post" action="http://upload.qiniu.com/" multipart="multipart"
-    input type="hidden" name="token" value="#{@upload_token}"
-    input type="hidden" name="key" value="#{@key}"
-    .ui.ribbon.label.red 上传照片
-    .ui.center.aligned.segment.upload-area.fileupload-buttonbar#dropzone
-      .ui.icon.header#empty-status
-        i.cloud.upload.icon
-        = t 'image.upload.title'
-        .sub.header = t 'image.upload.sub-title'
-      br#empty-status
-      span.ui.blue.button.tiny.fileinput-button.fileinput-button#fileinput-button
-        i.add.icon
-        = t 'image.upload.add-image'
-        input accept="image/jpg, image/jpeg" data-sequential-uploads="true" id="photo-image" multiple="multiple" name="file" type="file"
-      .fileupload-loading
-    .ui.center.aligned.segment.upload-area
-      .ui.three.items#files_container data-toggle="modal-gallery" data-target="#modal-gallery"
-    /button.ui.green.button type="submit"
-      /= t 'image.upload.start'
-    /button.ui.button type="reset"
-      /= t 'image.upload.reset'
+    - if current_user.power == "admin"|| current_user.power == "leader"||current_user.power == "editor"  
+      form.ui.raised.segment#fileupload accept-charset="UTF-8" method="post" action="http://upload.qiniu.com/" multipart="multipart"
+        input type="hidden" name="token" value="#{@upload_token}"
+        input type="hidden" name="key" value="#{@key}"
+        .ui.ribbon.label.red 上传照片
+        .ui.center.aligned.segment.upload-area.fileupload-buttonbar#dropzone
+          .ui.icon.header#empty-status
+            i.cloud.upload.icon
+            = t 'image.upload.title'
+            .sub.header = t 'image.upload.sub-title'
+          br#empty-status
+          span.ui.blue.button.tiny.fileinput-button.fileinput-button#fileinput-button
+            i.add.icon
+            = t 'image.upload.add-image'
+            input accept="image/jpg, image/jpeg" data-sequential-uploads="true" id="photo-image" multiple="multiple" name="file" type="file"
+          .fileupload-loading
+        .ui.center.aligned.segment.upload-area
+          .ui.three.items#files_container data-toggle="modal-gallery" data-target="#modal-gallery"
+        /button.ui.green.button type="submit"
+          /= t 'image.upload.start'
+        /button.ui.button type="reset"
+          /= t 'image.upload.reset'
 
-= render 'images/list_uploading_image'
-= render 'images/list_download_image'
+        = render 'images/list_uploading_image'
+        = render 'images/list_download_image'
 
-javascript:
-  var fileUploadErrors = {
-    maxFileSize: 'File is too big',
-    minFileSize: 'File is too small',
-    acceptFileTypes: 'Filetype not allowed',
-    maxNumberOfFiles: 'Max number of files exceeded',
-    uploadedBytes: 'Uploaded bytes exceed file size',
-    emptyResult: 'Empty file upload result'
-  };
+        javascript:
+          var fileUploadErrors = {
+            maxFileSize: 'File is too big',
+            minFileSize: 'File is too small',
+            acceptFileTypes: 'Filetype not allowed',
+            maxNumberOfFiles: 'Max number of files exceeded',
+            uploadedBytes: 'Uploaded bytes exceed file size',
+            emptyResult: 'Empty file upload result'
+          };
 
-  $(function () {
-        $('#fileupload').fileupload({
-            limitMultiFileUploadSize: 21000000,
-            filesContainer: $('#files_container'),
-            autoUpload: true,
-            dataType: 'json',
-            dropZone: $('#dropzone'),
-            sequentialUploads: true,
+          $(function () {
+                $('#fileupload').fileupload({
+                    limitMultiFileUploadSize: 21000000,
+                    filesContainer: $('#files_container'),
+                    autoUpload: true,
+                    dataType: 'json',
+                    dropZone: $('#dropzone'),
+                    sequentialUploads: true,
 
-        });
-    });
+                });
+            });
 
-  $(document).bind('dragover', function (e) {
-    var dropZone = $('#dropzone'),
-        timeout = window.dropZoneTimeout;
-    if (!timeout) {
-        dropZone.addClass('in');
-    } else {
-        clearTimeout(timeout);
-    }
-    var found = false,
-        node = e.target;
-    do {
-        if (node === dropZone[0]) {
-            found = true;
-            break;
-        }
-        node = node.parentNode;
-    } while (node != null);
-    if (found) {
-        dropZone.hide();
-    } else {
-        dropZone.show();
-    }
-    window.dropZoneTimeout = setTimeout(function () {
-        window.dropZoneTimeout = null;
-        dropZone.show();
-    }, 100);
-  });
+          $(document).bind('dragover', function (e) {
+            var dropZone = $('#dropzone'),
+                timeout = window.dropZoneTimeout;
+            if (!timeout) {
+                dropZone.addClass('in');
+            } else {
+                clearTimeout(timeout);
+            }
+            var found = false,
+                node = e.target;
+            do {
+                if (node === dropZone[0]) {
+                    found = true;
+                    break;
+                }
+                node = node.parentNode;
+            } while (node != null);
+            if (found) {
+                dropZone.hide();
+            } else {
+                dropZone.show();
+            }
+            window.dropZoneTimeout = setTimeout(function () {
+                window.dropZoneTimeout = null;
+                dropZone.show();
+            }, 100);
+          });
 
-  $('#fileupload').bind('fileuploadsubmit', function (e, data) {
-    var inputs = data.context.find(':input');
-    if (inputs.filter(function () {
-            return !this.value && $(this).prop('required');
-        }).first().focus().length) {
-        data.context.find('button').prop('disabled', false);
-        return false;
-    }
-    data.formData = inputs.serializeArray();
-  });
+          $('#fileupload').bind('fileuploadsubmit', function (e, data) {
+            var inputs = data.context.find(':input');
+            if (inputs.filter(function () {
+                    return !this.value && $(this).prop('required');
+                }).first().focus().length) {
+                data.context.find('button').prop('disabled', false);
+                return false;
+            }
+            data.formData = inputs.serializeArray();
+          });
+    - else
+     = current_user.power
+     | ,you don't have the permission!

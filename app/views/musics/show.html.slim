@@ -9,7 +9,12 @@
         .four.wide.column
           .ui.horizontal.segment.description
             .cover
-              = image_tag @music.cover.url
+              - if @music.cover.url != nil 
+                - @music.cover.url2 = @music.cover.url
+                = image_tag @music.cover.url2
+              - else 
+                - @music.cover.url2 = User.find(@music.user_id).avatar
+                = image_tag @music.cover.url2 
         .eight.wide.column
           .ui.horizontal.segment.description
             span.ui.label 描述

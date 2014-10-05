@@ -13,6 +13,8 @@ class Music < ActiveRecord::Base
   def mo_item
     {
       :thumb => cover.url,
+      :thumb2 => "noimg.jpeg",
+      :thumbnil => "",
       :title => title,
       :sub_title => des.gsub(/<\/?.*?>/,""),
       :author => {
