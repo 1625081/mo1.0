@@ -29,7 +29,8 @@ class Image < ActiveRecord::Base
         :rate => score.generate_score
       },
       :url => {
-        :show => "/images/#{id}"
+        :show => "/images/#{id}",
+        :owner => "/profile/#{user_id}",
       },
       :created_at => {
         :year => created_at.year,

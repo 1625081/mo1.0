@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'profile/:id' => "profile#show", as: :show_profile
   get 'profile/:id/detail' => "profile#detail", as: :profile_detail
   get 'profile/:id/all' => "profile#all",as: :profile_all
+ 
 
   get 'edit' => "profile#edit"
   post 'edit' => "profile#edit"

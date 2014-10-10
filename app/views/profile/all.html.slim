@@ -7,7 +7,7 @@
           .actions
           a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
             - if "#{item[:thumb]}".empty?
-              img src="noimg.jpeg" 
+              img src="#{item[:thumb2]}" 
             - else
               img src="#{item[:thumb]}" 
           .details

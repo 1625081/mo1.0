@@ -12,6 +12,7 @@ class Video < ActiveRecord::Base
   def mo_item
     {
       :thumb => cover.url,
+      :thumb2 => "/noimg.jpeg",
       :title => title,
       :sub_title => des,
       :author => {
@@ -25,7 +26,8 @@ class Video < ActiveRecord::Base
         :rate => score.generate_score
       },
       :url => {
-        :show => "/videos/#{id}"
+        :show => "/videos/#{id}",
+        :owner => "/profile/#{user_id}",
       }
     }
   end

@@ -20,7 +20,9 @@
             .author
               a.avatar
                 = image_tag item[:author][:avatar]
-              span.username = item[:author][:username]
+              span.username 
+                a href="#{item[:url][:owner]}" data-no-turbolink='true'
+                  = item[:author][:username]
             .actions
               a.like 
                 i.icon.thumbs.up.outline 

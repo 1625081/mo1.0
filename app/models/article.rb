@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
 
 	 def mo_item
     {
-      :thumb => "articleimg.jpg",
+      :thumb => "/articleimg.jpg",
       :thumbnil => "",
       :title => title,
       :sub_title => "",
@@ -22,7 +22,8 @@ class Article < ActiveRecord::Base
         :rate => ""
       },
       :url => {
-        :show => "/articles/#{id}"
+        :show => "/articles/#{id}",
+        :owner => "/profile/#{user_id}",
       }
     }
   end

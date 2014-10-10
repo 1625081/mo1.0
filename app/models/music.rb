@@ -14,7 +14,7 @@ class Music < ActiveRecord::Base
   def mo_item
     {
       :thumb => cover.url,
-      :thumb2 => "noimg.jpeg",
+      :thumb2 => "/noimg.jpeg",
       :thumbnil => "",
       :title => title,
       :sub_title => des,
@@ -29,7 +29,8 @@ class Music < ActiveRecord::Base
         :rate => score.generate_score
       },
       :url => {
-        :show => "/musics/#{id}"
+        :show => "/musics/#{id}",
+        :owner => "/profile/#{user_id}",
       }
     }
   end
