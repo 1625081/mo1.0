@@ -1,0 +1,29 @@
+h1 &nbsp;
+- if current_user.power == "admin"
+  h1 Listing videos
+
+  table
+    thead
+      tr
+        th Title
+        th User
+        th youkuid
+        th
+        th
+        th
+
+    tbody
+      - @videos.each do |video|
+        tr
+          td = video.title
+          td = video.user_id
+          td = video.youkuid
+          td = link_to 'Show', video
+          td = link_to 'Edit', edit_video_path(video)
+          td = link_to 'Destroy', video, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+    br
+    = link_to 'New Video', new_video_path
+- else
+    h1 403 Forbidden
+    h4 来自站长的403 FORBIDDEN

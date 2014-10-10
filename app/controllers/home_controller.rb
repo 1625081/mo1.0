@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     @items += Image.all.map{|i| i.mo_item}
     @items += Music.all.map{|i| i.mo_item}
     @items += Video.all.map{|i| i.mo_item}
+    @items += Article.all.map{|i| i.mo_item}
   end
   
   def video

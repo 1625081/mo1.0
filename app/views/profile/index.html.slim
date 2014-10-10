@@ -2,7 +2,7 @@
 .container#profile_content
   .ui.four.items
     - for item in @items
-      - if "#{item[:author][:username]}" == @user.username
+      - if "#{item[:author][:user_id]}" == "#{@user.id}"
         .mo.item#squire
           .actions
           a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'

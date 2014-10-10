@@ -1,27 +1,31 @@
-h1 Listing articles
+- if current_user.power == "admin"  
+  h1 Listing articles
 
-table
-  thead
-    tr
-      th Title
-      th Content
-      th User
-      th Cover
-      th
-      th
-      th
-
-  tbody
-    - @articles.each do |article|
+  table
+    thead
       tr
-        td = article.title
-        td = article.content
-        td = article.user
-        td = article.cover
-        td = link_to 'Show', article
-        td = link_to 'Edit', edit_article_path(article)
-        td = link_to 'Destroy', article, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Title
+        th Content
+        th User
+        th Cover
+        th
+        th
+        th
 
-br
+    tbody
+      - @articles.each do |article|
+        tr
+          td = article.title
+          td = article.content
+          td = article.user
+          td = article.cover
+          td = link_to 'Show', article
+          td = link_to 'Edit', edit_article_path(article)
+          td = link_to 'Destroy', article, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-= link_to 'New Article', new_article_path
+  br
+
+  = link_to 'New Article', new_article_path
+- else
+  h1 403 forbidden 
+  h1 403 forbidden by “摸Mo”

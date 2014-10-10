@@ -1,26 +1,30 @@
-h1 Listing musics
+h1 &nbsp;
+- if current_user.power == "admin"
+  h1 Listing musics
 
-table
-  thead
-    tr
-      th Title
-      th User
-      th Src
-      th
-      th
-      th
-
-  tbody
-    - @musics.each do |music|
+  table
+    thead
       tr
-        td = music.title
-        td = music.user_id
-        td = music.file
-        td = music.src
-        td = link_to 'Show', music
-        td = link_to 'Edit', edit_music_path(music)
-        td = link_to 'Destroy', music, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Title
+        th User
+        th Src
+        th
+        th
+        th
 
-br
+    tbody
+      - @musics.each do |music|
+        tr
+          td = music.title
+          td = music.user_id
+          td = music.file
+          td = music.src
+          td = link_to 'Show', music
+          td = link_to 'Edit', edit_music_path(music)
+          td = link_to 'Destroy', music, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-= link_to 'New Music', new_music_path
+    br
+    = link_to 'New Music', new_music_path
+- else
+  h1 403 Forbidden
+  h4 来自站长的403 FORBIDDEN

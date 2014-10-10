@@ -16,7 +16,7 @@
               h4.title 
                 a href="#{item[:url][:show]}" data-no-turbolink='true'
                   = item[:title]
-              .sub-title = item[:sub_title]
+              .sub-title == item[:sub_title]
             .author
               a.avatar
                 = image_tag item[:author][:avatar]

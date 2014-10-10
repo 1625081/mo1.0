@@ -21,12 +21,17 @@ class Ability
       can :create, :music
       can :create, :video
       can :create, :article
+      can :create, :comment
     end
     if user.editor?
       can :create, :image
       can :create, :music
       can :create, :video
+      can :create, :comment
     end 
+    if user.is_verify?
+      can :create, :comment
+    end
 
     # The first argument to `can` is the action you are giving the user
     # permission to do.

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :images
   
-  resources :musics
+  resources :musics do
+    resources :comments
+  end
   resources :videos
   get 'youku' => 'videos#upload', as: :upload_to_youku
 
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   get 'profile/unfollow'
   get 'profile/:id' => "profile#show", as: :show_profile
   get 'profile/:id/detail' => "profile#detail", as: :profile_detail
+  get 'profile/:id/all' => "profile#all",as: :profile_all
 
   get 'edit' => "profile#edit"
   post 'edit' => "profile#edit"
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
   patch 'profile' => "profile#update"
   put 'profile' => "profile#update"
   get 'verify' => "profile#verify_identity", as: :verify_identity
-
+  get 'all_user' => "profile#all_user"
 
   root 'home#index'
   get 'timeline' => 'home#timeline'

@@ -4,6 +4,7 @@ class Music < ActiveRecord::Base
   belongs_to :user
   has_one :score
   has_one :thumb
+  has_many :comments, dependent: :destroy
 
   after_create do
     self.score = Score.new liker: [], favor: [], viewer: 0, editor_rec: []
@@ -16,10 +17,11 @@ class Music < ActiveRecord::Base
       :thumb2 => "noimg.jpeg",
       :thumbnil => "",
       :title => title,
-      :sub_title => des.gsub(/<\/?.*?>/,""),
+      :sub_title => des,
       :author => {
         :avatar => User.find(user_id).avatar,
-        :username => User.find(user_id).nickname
+        :username => User.find(user_id).nickname,
+        :user_id => User.find(user_id).id
       },
       :score => {
         :like => score.liker.size,

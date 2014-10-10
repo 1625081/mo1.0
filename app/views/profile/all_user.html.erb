@@ -1,0 +1,18 @@
+  <h1>&nbsp;</h1>
+  <h2>Listing Users</h2>
+   
+  <table>
+    <tr>
+      <th>userid</th>
+      <th>username</th>
+      <th>user-power</th>
+    </tr>
+   
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.power %></td>
+      </tr>
+    <% end %>
+  </table>

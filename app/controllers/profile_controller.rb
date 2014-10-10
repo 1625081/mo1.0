@@ -7,8 +7,12 @@ class ProfileController < ApplicationController
     @items += Image.all.map{|i| i.mo_item}
     @items += Music.all.map{|i| i.mo_item}
     @items += Video.all.map{|i| i.mo_item}
+    @items += Article.all.map{|i| i.mo_item}
   end
 
+  def all_user
+    @users = User.all
+  end
   def verify_identity
     @user = User.where('id = ?', require_to_verify).last
     if @user
@@ -40,6 +44,20 @@ class ProfileController < ApplicationController
   def detail
     @user = User.find(params[:id])
     @profile = @user.profile
+    @items = []
+    @items += Image.all.map{|i| i.mo_item}
+    @items += Music.all.map{|i| i.mo_item}
+    @items += Video.all.map{|i| i.mo_item}
+    @items += Article.all.map{|i| i.mo_item}
+  end
+  
+  def all
+    @user = User.find(params[:id])
+    @items = []
+    @items += Image.all.map{|i| i.mo_item}
+    @items += Music.all.map{|i| i.mo_item}
+    @items += Video.all.map{|i| i.mo_item}
+    @items += Article.all.map{|i| i.mo_item}
   end
 
   def follow

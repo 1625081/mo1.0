@@ -20,7 +20,8 @@ class Image < ActiveRecord::Base
       :sub_title => description.gsub(/<\/?.*?>/,""),
       :author => {
         :avatar => User.find(user_id).avatar,
-        :username => User.find(user_id).nickname
+        :username => User.find(user_id).nickname,
+        :user_id => User.find(user_id).id
       },
       :score => {
         :like => score.liker.size,
