@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
-	belongs_to :user
+  belongs_to :user
+
 
 	def owner
 		User.where(id: user_id).last
@@ -8,6 +9,7 @@ class Article < ActiveRecord::Base
 	 def mo_item
     {
       :thumb => "/articleimg.jpg",
+      :updated_at => updated_at,
       :thumbnil => "",
       :title => title,
       :sub_title => "",
@@ -21,6 +23,7 @@ class Article < ActiveRecord::Base
         :favor => "",
         :rate => ""
       },
+       :class => "Article",
       :url => {
         :show => "/articles/#{id}",
         :owner => "/profile/#{user_id}",
@@ -28,3 +31,4 @@ class Article < ActiveRecord::Base
     }
   end
 end
+

@@ -3,10 +3,12 @@
     .login_header
       .actions
       .notification
-    - for item in @items
+    - @current_items = @items.sort{|e,f| e[:updated_at] <=> f[:updated_at]}.reverse
+    - for item in @current_items
       .column
         article.feed-item
           article.content 
+            .ui.ribbon.label.red = item[:class]
             a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
                 - if "#{item[:thumb]}" == "#{item[:thumbnil]}"
                   img src="noimg.jpeg"
@@ -18,7 +20,8 @@
                   = item[:title]
               .sub-title == item[:sub_title]
             .author
-              a.avatar
+              a.avatar href="#{item[:url][:owner]}" data-no-turbolink='true'
+                //a href="#{item[:url][:owner]}" data-no-turbolink='true'
                 = image_tag item[:author][:avatar]
               span.username 
                 a href="#{item[:url][:owner]}" data-no-turbolink='true'

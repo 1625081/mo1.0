@@ -15,6 +15,7 @@ class Image < ActiveRecord::Base
 
   def mo_item
     {
+      :updated_at => updated_at,
       :thumb => file + '-s430',
       :title => title,
       :sub_title => description.gsub(/<\/?.*?>/,""),
@@ -23,6 +24,7 @@ class Image < ActiveRecord::Base
         :username => User.find(user_id).nickname,
         :user_id => User.find(user_id).id
       },
+      :class => "Image",
       :score => {
         :like => score.liker.size,
         :favor => score.favor.size,

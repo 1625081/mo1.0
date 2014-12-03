@@ -2,7 +2,7 @@ source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.4' 
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -62,6 +62,10 @@ gem 'carrierwave'
 gem 'carrierwave-qiniu'
 gem 'mini_magick'
 gem 'jquery-file-upload-railed'
+
+#搜索系统
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
 
 # 七牛云存储

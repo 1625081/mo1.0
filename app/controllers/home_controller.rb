@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    
   end
 
   def timeline
@@ -12,4 +13,5 @@ class HomeController < ApplicationController
   
   def video
   end
+
 end

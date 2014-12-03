@@ -46,7 +46,7 @@
             = link_to edit_user_registration_path, :class => "item"
               i.user.icon
               | 账户设置
-            = link_to edit_path, :class => "item"
+            = link_to edit_profile_path(current_user.id), :class => "item"
               i.user.icon
               | 用户信息设置
         = link_to destroy_user_session_path, class: "item", :method => :delete

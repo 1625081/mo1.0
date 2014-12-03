@@ -24,6 +24,9 @@
 		display: block;
 		position: relative;
 		margin-bottom: 30px;
+		.ui.ribbon.label.red{
+			margin-left:20px;
+		}
 		.time {
 			position: absolute;
 			top: 0;
@@ -59,32 +62,38 @@
 				}
 			}
 			.info {
-				padding: 14px;
+				padding-top: 14px;
+				padding-left:14px;
+				padding-right:14px;
+				padding-bottom:0px;
 				.title {
 					font-family: MyriadSetPro-Ultralight,arial,sans-serif !important;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
 					margin-top: 10px;
-					margin-bottom: 10px;
+					margin-bottom: -10px;
 					font-size: 14px !important;
 					font-weight: normal;
 					a {color: #333;}
+					a:hover {color: #FFFF00}
 				}
 				.sub-title {
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
 					font-size: 14px;
-					margin: 0;
 					word-wrap:break-word;
 					color: #888;
+					p{
+						width: 328px;
+						margin-bottom: -1px;
+					}
 				}
 			}
 			.author {
 				display: inline-block;
 				padding: 14px;
-				padding-top: 10px;
 				.avatar {
 					border-radius: 100px;
 					max-width: 26px;

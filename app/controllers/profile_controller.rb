@@ -1,6 +1,7 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit, :update]
   before_action CASClient::Frameworks::Rails::Filter, only: :verify_identity
+  
   def index
     @user = current_user
     @items = []
@@ -8,11 +9,17 @@ class ProfileController < ApplicationController
     @items += Music.all.map{|i| i.mo_item}
     @items += Video.all.map{|i| i.mo_item}
     @items += Article.all.map{|i| i.mo_item}
+    
+  end
+  
+  def list
+    @articles = Article.search('1234567').records
   end
 
   def all_user
     @users = User.all
   end
+
   def verify_identity
     @user = User.where('id = ?', require_to_verify).last
     if @user
@@ -32,13 +39,19 @@ class ProfileController < ApplicationController
   end
 
   def edit
-    @user = current_user
-  	@profile = current_user.profile
+    @user = User.find(params[:id])
+  	@profile = @user.profile
+  end
+
+  def edit2
+    @user = User.find(params[:id])
+    @profile = @user.profile
   end
 
   def show
   	@user = User.find(params[:id])
     @user.viewer.increment unless @user == current_user
+    $fuser =  User.find(params[:id])
   end
 
   def detail
@@ -94,10 +107,17 @@ class ProfileController < ApplicationController
   # PATCH/PUT /profiles
   # PATCH/PUT /profiles.json
   def update
-    @profile = current_user.profile
+    if $fuser != nil
+      @profile = $fuser.profile
+    else
+      @profile = current_user.profile
+    end
     respond_to do |format|
-      if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: '资料更新成功！' }
+      if @profile.update(profile_params)&&$fuser != nil
+        format.html { redirect_to show_profile_path($fuser.id), notice: '资料更新成功！' }
+        format.json { head :no_content }
+      elsif $fuser == nil
+        format.html { redirect_to show_profile_path(current_user.id), notice: '资料更新成功！' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit', warning: '资料更新时发生错误，请重试！' }

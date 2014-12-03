@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
     admin: 3
   }
 
+
   after_create do
     self.follower = []
     self.following = []
@@ -30,6 +31,32 @@ class User < ActiveRecord::Base
     self.save
   end
 
+ def all_items
+    #@musics = Music.where(:user_id => id)
+    @items = []
+    @items += Music.where(:user_id => id)
+    @items += Video.where(:user_id => id)
+    @items += Article.where(:user_id => id)
+    return @items.sort{|a,b|
+      a.mo_item[:updated_at] <=> b.mo_item[:updated_at] 
+    }
+
+ end
+ 
+ def latest
+    @latest = all_items.first
+    return @latest
+ end
+
+ def forbidden?
+  @musics2 = Music.where(:user_id => id).reverse
+  if @musics2.reverse.last.created_at - Time.now < 30.minute
+    return 1
+  else
+    return 0 
+  end
+ end
+  
   def follow(user)
     self.following += [user.id]
     self.following.uniq!

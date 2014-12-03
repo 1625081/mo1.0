@@ -16,18 +16,24 @@ Rails.application.routes.draw do
   get 'profile' => "profile#index"
   get 'profile/follow'
   get 'profile/unfollow'
+  get 'search' => "home#search",as: :search_items
   get 'profile/:id' => "profile#show", as: :show_profile
   get 'profile/:id/detail' => "profile#detail", as: :profile_detail
+  get 'profile/:id/edit' => "profile#edit", as: :edit_profile
+  post 'profile/:id/edit' => "profile#edit"
+  patch 'profile/:id/edit' => "profile#edit"
   get 'profile/:id/all' => "profile#all",as: :profile_all
  
 
-  get 'edit' => "profile#edit"
-  post 'edit' => "profile#edit"
-  patch 'edit' => 'profile#edit'
+  #get 'edit' => "profile#edit"
+  #post 'edit' => "profile#edit"
+  #patch 'edit' => "profile#edit"
+
   patch 'profile' => "profile#update"
   put 'profile' => "profile#update"
   get 'verify' => "profile#verify_identity", as: :verify_identity
   get 'all_user' => "profile#all_user"
+  get 'list' => "profile#list"
 
   root 'home#index'
   get 'timeline' => 'home#timeline'

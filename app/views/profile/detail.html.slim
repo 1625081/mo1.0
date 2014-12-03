@@ -1,44 +1,41 @@
 = render 'profile/header'
 .container#profile_detail.profile_container
   table.ui.tale.segment#profile_detail_t
-  	thead#profile_detail_uc
-  	  tr
-  	    th 用户名
-  	    th.v = @user.username
-  	  tr
-  	    th 用户ID
-  	    th.v = @user.id
-  	  tr
-  	    th 用户身份
-  	    th.v = t @user.power
-  	  tr
-  	    th 电子邮箱
-  	    th.v = @user.email
-  	tbody#profile_detail_c
-  	  tr
-  	    th 昵称
-  	    th.v = @user.nickname
-  	  tr
-  	    th 性别
-  	    th.v = t @user.profile.sex
-  	  tr
-  	    th 生日
-  	    th.v = @user.profile.birthday.to_s
-  	  tr
-  	    th 描述
-        - if @user.profile.description == ""
-          th.v#profile_detail_form_empty = "本人懒懒的，啥都没写。"
-
-        - else
-  	      th.v = @user.profile.description
-    tfoot
       tr
-        th#profile_detail_changing_button colspan="3"
-          - if @user == current_user
-            = link_to edit_path, :class => "profile_detail_overbutton_a"
-              .ui.black.labeled.icon.button#edit_profile
-                i.user.icon
-                | 更新
+        th 用户名
+        td = @user.username
+      tr.alt
+        th 用户ID
+        td = @user.id
+      tr
+        th 用户身份
+        td = t @user.power
+      tr.alt
+        th 电子邮箱
+        td = @user.email
+      tr
+        th 昵称
+        td = @user.nickname
+      tr.alt
+        th 性别
+        td = t @user.profile.sex
+      tr
+        th 生日
+        td = @user.profile.birthday.to_s
+      - if @user.profile.description == ""
+        tr.alt
+          th 描述  
+          td#profile_detail_form_empty = "本人懒懒的，啥都没写。"
+      - else
+    	   tr.alt 
+           th 描述
+           td = @user.profile.description
+- if current_user
+  - if @user == current_user || current_user.power == "admin"
+    = link_to edit_profile_path(@user.id), :class => "profile_detail_overbutton_a"
+      .ui.black.labeled.icon.button#edit_profile
+        i.user.icon
+        | 更新
 
 
 

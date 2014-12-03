@@ -13,6 +13,7 @@ class Video < ActiveRecord::Base
     {
       :thumb => cover.url,
       :thumb2 => "/noimg.jpeg",
+       :updated_at => updated_at,
       :title => title,
       :sub_title => des,
       :author => {
@@ -25,6 +26,7 @@ class Video < ActiveRecord::Base
         :favor => score.favor.size,
         :rate => score.generate_score
       },
+      :class => "Video",
       :url => {
         :show => "/videos/#{id}",
         :owner => "/profile/#{user_id}",

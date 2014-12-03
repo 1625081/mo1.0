@@ -5,13 +5,22 @@
         .avatar
           = image_tag @user.avatar
         .main-info
-          h1.title
-            = @user.nickname
-            |    
-            - if @user.is_verify?
-              i.icon.basic.id.small.red data-content="该用户已通过身份认证."
-              javascript:
-                $('i.id.icon').popup();
+          - if @user.power == "admin"
+            h1.yellow
+              = @user.nickname
+              |    
+              - if @user.is_verify?
+                i.icon.basic.id.small.red data-content="该用户已通过身份认证."
+                javascript:
+                  $('i.id.icon').popup();
+          - else
+            h1.title
+              = @user.nickname
+              |    
+              - if @user.is_verify?
+                i.icon.basic.id.small.red data-content="该用户已通过身份认证."
+                javascript:
+                  $('i.id.icon').popup();
           p.sub-info
             | #{@user.viewer.value} 人浏览 -  
             - if @user.follower

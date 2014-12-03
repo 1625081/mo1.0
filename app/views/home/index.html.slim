@@ -1,5 +1,12 @@
-.container		
-		img src="bg.jpg" height="100%" width="89%" style="z-index:-3;position:absolute;background-position:center"
-		img src="logo.png" style="width: 150;margin-left:40%;margin-top:200px"/
+- if current_user == nil
+	.intro_wrap
+		img.bgimg src="/bg.jpg" height="160%" width="100%" 
+		img src="/logo.png" style="width: 150;margin-left:40%;margin-top:200px"
 		h2 style="text-align:center;color:#FFFFFF" 冥思与探索 快乐与青春
-
+- else
+	.intro_wrap
+		img.bgimg src="/bg.jpg" height="100%" width="100%"
+		= link_to timeline_path,:class => "item #{'active' if action_name == 'timeline' && controller_name == 'home'}"
+			.ui.black.labeled.icon.button#homebt
+				i.user.icon
+				| update
