@@ -5,6 +5,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.text :description
       t.date :birthday
       t.string :sex
+      
       t.references :user, index: true
 
       t.timestamps

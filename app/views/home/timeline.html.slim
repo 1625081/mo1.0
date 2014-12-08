@@ -1,38 +1,64 @@
-.container
-  .timeline.three.column.ui.grid
-    .login_header
-      .actions
-      .notification
-    - @current_items = @items.sort{|e,f| e[:updated_at] <=> f[:updated_at]}.reverse
-    - for item in @current_items
-      .column
-        article.feed-item
-          article.content 
-            .ui.ribbon.label.red = item[:class]
-            a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
-                - if "#{item[:thumb]}" == "#{item[:thumbnil]}"
-                  img src="noimg.jpeg"
-                - else
-                  img src="#{item[:thumb]}"
-            .info
-              h4.title 
-                a href="#{item[:url][:show]}" data-no-turbolink='true'
-                  = item[:title]
-              .sub-title == item[:sub_title]
-            .author
-              a.avatar href="#{item[:url][:owner]}" data-no-turbolink='true'
-                //a href="#{item[:url][:owner]}" data-no-turbolink='true'
-                = image_tag item[:author][:avatar]
-              span.username 
-                a href="#{item[:url][:owner]}" data-no-turbolink='true'
-                  = item[:author][:username]
-            .actions
-              a.like 
-                i.icon.thumbs.up.outline 
-                = item[:score][:like]
-              a.favor 
-                i.icon.heart.empty
-                = item[:score][:favor]
-              a.comments 
-                i.icon.comment.outline
-                | 10
+
+.timeline
+  .login_header
+    .actions
+    .notification
+  - @current_items = @items.sort{|e,f| e[:updated_at] <=> f[:updated_at]}.reverse
+  - for item in @current_items
+    .feed-item
+      article.content   
+          .ui.ribbon.label.red = item.mo_item[:class]
+          a.thumb href="#{item.mo_item[:url][:show]}" data-no-turbolink='true'
+              - if "#{item.mo_item[:thumb]}" == "#{item.mo_item[:thumbnil]}"
+                img src="noimg.jpeg"
+              - else
+                img src="#{item.mo_item[:thumb]}"
+          .info
+            h4.title 
+              a href="#{item.mo_item[:url][:show]}" data-no-turbolink='true'
+                = item.mo_item[:title]
+            .sub-title == item.mo_item[:sub_title]
+          .author
+            a.avatar href="#{item.mo_item[:url][:owner]}" data-no-turbolink='true'
+              //a href="#{item[:url][:owner]}" data-no-turbolink='true'
+              = image_tag item.mo_item[:author][:avatar]
+            span.username 
+              a href="#{item.mo_item[:url][:owner]}" data-no-turbolink='true'
+                = item.mo_item[:author][:username]
+          .actions
+            a.like 
+              i.icon.thumbs.up.outline 
+              = item.mo_item[:score][:like]
+            a.favor 
+              i.icon.heart.empty
+              = item.mo_item[:score][:favor]
+            a.comments 
+              i.icon.comment.outline
+              | 10
+  script type="text/javascript"
+  javascript:
+    var margin = 10;
+    var li=$("article");
+    var li_W = li[0].offsetWidth+margin;
+    function liuxiaofan(){
+      var h=[];
+      var n = document.documentElement.offsetWidth/li_W|0;
+        for(var i = 0;i < li.length;i++) {
+              li_H = li[i].offsetHeight;
+            if(i < n) {
+                  h[i]=li_H;
+                  li.eq(i).css("top",0);
+                  li.eq(i).css("left",i * li_W);
+                }
+            else{
+                  min_H =Math.min.apply(null,h) ;
+                  minKey = getarraykey(h, min_H);
+                  h[minKey] += li_H+margin ;
+                  li.eq(i).css("top",min_H+margin);
+                  li.eq(i).css("left",minKey * li_W); 
+               }
+            }
+        }
+    function getarraykey(s, v) {for(k in s) {if(s[k] == v) {return k;}}}
+    window.onload = function() {liuxiaofan();};
+    window.onresize = function() {liuxiaofan();}; 

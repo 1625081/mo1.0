@@ -1,8 +1,21 @@
-h1 Editing article
-
-== render 'form'
-
-= link_to 'Show', @article
-'|
-= link_to 'Back', articles_path
-
+.container
+  - if current_user.id == @article.user_id || current_user.power == "admin"
+    = form_for @article, html: { :class => "ui raised segment" } do |f|
+	    .ui.ribbon.label.red = "更新文章"
+	    .ui.center.aligned.segment.upload-area
+	      .ui.icon.header#empty-status
+	        i.font.icon
+	        = "更新文章"
+	      br
+	      .field
+	      	= f.label :title
+	        = f.text_field :title
+	      br
+	      .des_field
+	        =f.text_area :des
+	        coffee:
+	          window.base.Simditor $('textarea'), can_upload=true
+	      hr
+	      .ui.input.thumb
+	      .field
+	        = f.submit '确认更新', :class => "ui black button"

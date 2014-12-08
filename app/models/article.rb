@@ -6,7 +6,13 @@ class Article < ActiveRecord::Base
 		User.where(id: user_id).last
 	end
 
-	 def mo_item
+
+  def search(keyword)
+    msplit = self.title.split("#{keyword}",2) 
+    return msplit[0] != self.title    
+  end
+	
+   def mo_item
     {
       :thumb => "/articleimg.jpg",
       :updated_at => updated_at,

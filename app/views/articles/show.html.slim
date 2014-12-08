@@ -8,3 +8,6 @@
       .des_field
          == @article.des
       br
+      - if current_user == User.where("id = ?",@article.user_id)
+      	= link_to '更新' , edit_article_path(@article.id), :class =>"ui black button"
+      end 

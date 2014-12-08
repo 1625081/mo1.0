@@ -1,29 +1,33 @@
 .container
    - if current_user.power == "admin"|| current_user.power == "leader"||current_user.power == "editor"
-      = form_for @music, html: { :class => "ui raised segment" } do |f|
-         .ui.ribbon.label.red = t 'audio.upload.title'
-         .ui.center.aligned.segment.upload-area
-           .ui.icon.header#empty-status
-             i.cloud.upload.icon
-             = t 'audio.upload.title'
-           br
-           .ui.input
-             = f.text_field :title, placeholder: "#{t 'upload.title'}"
-           br
-           .ui.divider
-           .ui.input
-             = f.file_field :file
-           br
-           .des_field
-             =f.text_area :des
-             coffee:
-               window.base.Simditor $('textarea'), can_upload=true
-           hr
-           .ui.input.thumb
-             = "上传音乐封面:"
-             = f.file_field :cover
-           .field
-              = f.submit t('audio.upload.update'), :class => "ui black button"
+    - if current_user.forbidden? == false
+        = form_for @music, html: { :class => "ui raised segment" } do |f|
+           .ui.ribbon.label.red = t 'audio.upload.title'
+           .ui.center.aligned.segment.upload-area
+             .ui.icon.header#empty-status
+               i.cloud.upload.icon
+               = t 'audio.upload.title'
+             br
+             .ui.input
+               = f.text_field :title, placeholder: "#{t 'upload.title'}"
+             br
+             .ui.divider
+             .ui.input
+               = f.file_field :file
+             br
+             .des_field
+               =f.text_area :des
+               coffee:
+                 window.base.Simditor $('textarea'), can_upload=true
+             hr
+             .ui.input.thumb
+               = "上传音乐封面:"
+               = f.file_field :cover
+             .field
+                = f.submit t('audio.upload.update'), :class => "ui black button"
+    - else
+      | 尊敬的摸Mo用户，为了方便摸平台的管理，我们不允许30分钟内资源多次上传，谢谢配合！
+      |  by 站长--三金
    - else
     = current_user.power
     |  ,you don't have the permission!

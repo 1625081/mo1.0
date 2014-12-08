@@ -24,5 +24,9 @@
     .field
       label 个人描述
       = f.text_area :description
+    - if current_user.power == "admin"
+      .field
+        label 权限
+        = f.text_field :power
     .field#profile_edit_infields_intext_button
       = f.submit "更新信息",:class => "ui black button"

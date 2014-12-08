@@ -49,11 +49,12 @@ class User < ActiveRecord::Base
  end
 
  def forbidden?
-  @musics2 = Music.where(:user_id => id).reverse
-  if @musics2.reverse.last.created_at - Time.now < 30.minute
-    return 1
+  if self.latest.created_at - Time.now < 30.minute #&& self.power != "admin"
+    return true
+  elsif self.power == "admin"
+    return false
   else
-    return 0 
+    return false
   end
  end
   
@@ -109,6 +110,10 @@ class User < ActiveRecord::Base
 
   def avatar
     self.profile.avatar.url || "demo/avatar.jpg"
+  end
+
+  def mypower
+    self.profile.power
   end
 
   def self.find_for_database_authentication(warden_conditions)

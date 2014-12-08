@@ -11,10 +11,6 @@ class ProfileController < ApplicationController
     @items += Article.all.map{|i| i.mo_item}
     
   end
-  
-  def list
-    @articles = Article.search('1234567').records
-  end
 
   def all_user
     @users = User.all
@@ -52,6 +48,12 @@ class ProfileController < ApplicationController
   	@user = User.find(params[:id])
     @user.viewer.increment unless @user == current_user
     $fuser =  User.find(params[:id])
+    if params[:changepower]
+      if current_user.power == "admin"
+        @user.power = params[:changepower]
+        @user.save
+      end
+    end
   end
 
   def detail
@@ -129,7 +131,7 @@ class ProfileController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:avatar, :nickname, :description, :birthday, :sex)
+      params.require(:profile).permit(:avatar, :nickname, :description, :birthday, :sex,:power)
     end
 
     def require_to_verify
