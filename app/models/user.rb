@@ -49,10 +49,10 @@ class User < ActiveRecord::Base
  end
 
  def forbidden?
-  if self.latest.created_at - Time.now < 30.minute #&& self.power != "admin"
-    return true
-  elsif self.power == "admin"
+  if self.power == "admin"||self.latest==nil
     return false
+  elsif self.latest.created_at - Time.now < 30.minute
+    return true
   else
     return false
   end

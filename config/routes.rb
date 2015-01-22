@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :articles
 
   resources :images
-  
+
   resources :musics do
     resources :comments
   end

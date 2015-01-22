@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20141206144303) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar"
+    t.string   "mypower"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -112,10 +113,12 @@ ActiveRecord::Schema.define(version: 20141206144303) do
     t.string   "file"
     t.integer  "music_id"
     t.integer  "video_id"
+    t.integer  "dmvideo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "thumbs", ["dmvideo_id"], name: "index_thumbs_on_dmvideo_id", using: :btree
   add_index "thumbs", ["music_id"], name: "index_thumbs_on_music_id", using: :btree
   add_index "thumbs", ["video_id"], name: "index_thumbs_on_video_id", using: :btree
 

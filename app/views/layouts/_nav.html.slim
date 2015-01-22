@@ -9,8 +9,8 @@
       | 时间轴
     .item.hide-when-small
       .ui.icon.input
-        input type="text" placeholder="搜索……"
-        i.search.link.icon
+        form action="/timeline" role="search"
+          input type="text" name="search" placeholder="搜索……" value = params[:search]
     .right.menu
       - if current_user
         = link_to profile_path, :class => "item user-info"

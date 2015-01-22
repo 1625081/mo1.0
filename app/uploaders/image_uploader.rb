@@ -1,4 +1,5 @@
 require 'carrierwave/processing/mini_magick'
+require 'qiniu'
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -9,8 +10,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
     storage :qiniu
     # storage :fog
-    self.qiniu_bucket = "cmw-mo"
-    self.qiniu_bucket_domain = "cmw-mo.qiniudn.com"
+    self.qiniu_bucket = "mosite"
+    self.qiniu_bucket_domain = "mosite.qiniudn.com"
     self.qiniu_protocal = 'http'
     self.qiniu_can_overwrite = true
   else
