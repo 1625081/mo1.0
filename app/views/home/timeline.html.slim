@@ -6,7 +6,7 @@
   - @current_items = @items.sort{|e,f| e[:updated_at] <=> f[:updated_at]}.reverse
   - for item in @current_items
     .feed-item
-      article.content   
+      article.timecontent   
           .ui.ribbon.label.red = item.mo_item[:class]
           a.thumb href="#{item.mo_item[:url][:show]}" data-no-turbolink='true'
               - if "#{item.mo_item[:thumb]}" == "#{item.mo_item[:thumbnil]}"

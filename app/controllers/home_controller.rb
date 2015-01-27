@@ -2,7 +2,10 @@ class HomeController < ApplicationController
   def index
     
   end
-
+  
+  def test
+  end
+  
   def timeline
     if params[:search]
       @sitems = []

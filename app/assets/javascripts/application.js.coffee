@@ -17,12 +17,11 @@
 #= require turbolinks
 #= require nprogress
 #= require nprogress-turbolinks
-#= require semantic-ui
 # require_tree .
 #= require timeago
 #= require simditor
+#= require semantic-ui
 #= require angular
-#= require simditor
 #= require angular-animate
 #= require angular-resource
 #= require angular-touch
@@ -110,3 +109,4 @@ $ ->
 		switch
 			when @width <= 600 then window.base.RemoveTiny()
 			when 600 < @width < 1000 then window.base.RemoveSmall()
+

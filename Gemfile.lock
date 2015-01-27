@@ -6,16 +6,6 @@ GIT
       omniauth-oauth2 (~> 1.1)
 
 GIT
-  remote: git://github.com/elasticsearch/elasticsearch-rails.git
-  revision: d6e534c7b3ae4dbd35de73a494ec0243bde21bea
-  specs:
-    elasticsearch-model (0.1.6)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.6)
-
-GIT
   remote: git://github.com/rubycas/rubycas-client.git
   revision: b6692b942f69f8c088ef4fdbc14a8e9310e5271d
   branch: master
@@ -85,6 +75,7 @@ GEM
       execjs
     coffee-script-source (1.7.1)
     colored (1.2)
+    commonjs (0.2.7)
     connection_pool (2.0.0)
     debug_inspector (0.0.2)
     devise (3.2.4)
@@ -93,14 +84,6 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    elasticsearch (1.0.5)
-      elasticsearch-api (= 1.0.5)
-      elasticsearch-transport (= 1.0.5)
-    elasticsearch-api (1.0.5)
-      multi_json
-    elasticsearch-transport (1.0.5)
-      faraday
-      multi_json
     erubis (2.7.0)
     execjs (2.2.1)
     exifr (1.1.3)
@@ -127,6 +110,8 @@ GEM
       railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -140,6 +125,8 @@ GEM
     mini_magick (3.8.0)
       subexec (~> 0.2.1)
     minitest (5.4.0)
+    more (0.1.1)
+      less
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -241,7 +228,7 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
-    semantic-ui-sass (0.16.1.0)
+    semantic-ui-sass (1.7.3.0)
       sass (~> 3.2)
     sexp_processor (4.4.3)
     sidekiq (3.2.1)
@@ -308,8 +295,6 @@ DEPENDENCIES
   carrierwave-qiniu
   coffee-rails (~> 4.0.0)
   devise
-  elasticsearch-model!
-  elasticsearch-rails!
   exifr
   font-awesome-rails
   jbuilder (~> 2.0)
@@ -320,6 +305,7 @@ DEPENDENCIES
   libv8
   meta_request
   mini_magick
+  more (~> 0.1.1)
   newrelic_rpm
   nprogress-rails
   omniauth
@@ -328,7 +314,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma
-  qiniu
+  qiniu (~> 6.2.1)
   quiet_assets
   rack-mini-profiler
   rails (= 4.1.4)
@@ -341,7 +327,7 @@ DEPENDENCIES
   rubyntlm (~> 0.4.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  semantic-ui-sass
+  semantic-ui-sass (~> 1.7.3.0)
   sidekiq
   simditor-rails (~> 1.0.1)
   sinatra

@@ -1,12 +1,19 @@
+script type="text/javascript" src="/semantic.js"
 - if current_user == nil
-	.intro_wrap
-		img.bgimg src="/bg.jpg" height="160%" width="100%" 
-		img src="/logo.png" style="width: 150;margin-left:40%;margin-top:200px"
-		h2 style="text-align:center;color:#FFFFFF" 冥思与探索 快乐与青春
+	.container
+		.ui.circular.rotate.reveal.image 
+			img.visible.content src="/logo.png"
+			img.hidden.content src="/logo.png"
 - else
 	.intro_wrap
-		img.bgimg src="/bg.jpg" height="100%" width="100%"
+		img src="/bg.jpg" height="100%" width="100%" style="z-index:-1000"
 		= link_to timeline_path,:class => "item #{'active' if action_name == 'timeline' && controller_name == 'home'}"
 			.ui.black.labeled.icon.button#homebt
 				i.user.icon
 				| update
+		.ui.circular.rotate.reveal.image
+			img.visible.content src="/logo.png"
+			img.hidden.content src="/logo.png"
+		.ui.circular.rotate.reveal.image
+			img.visible.content src="/logo.png"
+			img.hidden.content src="/logo.png"

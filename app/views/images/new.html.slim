@@ -1,7 +1,7 @@
 .container 
     - if current_user.power == "admin"|| current_user.power == "leader"||current_user.power == "editor"  
       form.ui.raised.segment#fileupload accept-charset="UTF-8" method="post" action="http://upload.qiniu.com/" multipart="multipart"
-        input type="hidden" name="token" value="#{@upload_token}"
+        input type="hidden" name="token" value="#{@uptoken}"
         input type="hidden" name="key" value="#{@key}"
         .ui.ribbon.label.red 上传照片
         .ui.center.aligned.segment.upload-area.fileupload-buttonbar#dropzone

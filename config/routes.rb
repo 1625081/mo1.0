@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   post 'profile/:id/edit' => "profile#edit"
   patch 'profile/:id/edit' => "profile#edit"
   get 'profile/:id/all' => "profile#all",as: :profile_all
- 
 
   #get 'edit' => "profile#edit"
   #post 'edit' => "profile#edit"
@@ -35,7 +34,7 @@ Rails.application.routes.draw do
   get 'all_user' => "profile#all_user"
   get 'list' => "profile#list"
 
-  root 'home#index'
+  root 'home#test'
   get 'timeline' => 'home#timeline'
 
   

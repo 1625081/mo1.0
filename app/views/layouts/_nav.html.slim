@@ -1,6 +1,7 @@
 .ui.black.inverted.menu.top-bar style="text-align:left;"
   .container
     a.logo.item href='/'
+      img src="/logo.png"
     a class="item #{'active' if action_name == 'index' && controller_name == 'home'}" href='/'
       i.home.icon
       | 首页
@@ -65,12 +66,6 @@
     .ui.basic.modal.transition.scrolling#confirm-sign-up
       .header
         | 你确定要注册？
-      .content
-        .left
-          i.home.icon
-        .right
-          p
-            | 摸Mo 可以直接使用 北附人BDFZer 账号登录，如果你已经拥有北附人账号，则无需单独注册。
       .actions
         .two.fluid.ui.buttons
           .ui.negative.labeled.icon.button

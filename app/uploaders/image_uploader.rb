@@ -15,7 +15,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     self.qiniu_protocal = 'http'
     self.qiniu_can_overwrite = true
   else
-    storage :file
+    storage :qiniu
+    # storage :fog
+    self.qiniu_bucket = "mosite"
+    self.qiniu_bucket_domain = "mosite.qiniudn.com"
+    self.qiniu_protocal = 'http'
+    self.qiniu_can_overwrite = true
   end
 
   # Override the directory where uploaded files will be stored.

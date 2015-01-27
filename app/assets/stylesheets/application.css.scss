@@ -18,18 +18,16 @@
  * require jquery-ui
  *= require simditor
  *= require font-awesome
+ *= require semantic-new
  */
 
-$nprogress-color: #CC181E;
-@import 'nprogress';
-@import 'nprogress-bootstrap';
 
-@import "semantic-ui";
+$nprogress-color: #CC181E;
 @import "colors";
 @import "mix-in";
 
 a {
-	text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 @font-face {
@@ -66,65 +64,64 @@ a {
 
 
 body {
-	margin: 0 !important;
-	background-color: rgb(235, 236, 237);
-	font-family: MyriadSetPro-Thin,arial,sans-serif !important;
+  margin: 0 !important;
+  background-color: rgb(235, 236, 237);
+  font-family: MyriadSetPro-Thin,arial,sans-serif !important;
 }
 
 h1, h2, h3, h4 {
-	font-family: MyriadSetPro-Ultralight,arial,sans-serif !important;
+  font-family: MyriadSetPro-Ultralight,arial,sans-serif !important;
 }
 
 .container {
-	margin-right: auto;
-	margin-left: auto;
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-top: 60px;
-	margin-bottom: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 60px;
+  margin-bottom: 60px;
 }
 
 .page-container {
-	margin-top: 50px;
-	margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 .container:before,.container:after {
-	content: " ";
-	display: table
+  content: " ";
+  display: table
 }
 
 .container:after {
-	clear: both
+  clear: both
 }
 
 @media (min-width: 768px) {
-	.container {
-		width:720px
-	}
+  .container {
+    width:720px
+  }
 }
 
 @media (min-width: 992px) {
-	.container {
-		width:940px
-	}
+  .container {
+    width:940px
+  }
 }
 
 @media (min-width: 1200px) {
-	.container {
-		width:1140px
-	}
+  .container {
+    width:1140px
+  }
 }
 
 
 
 html {
-	overflow-y: auto;
-	overflow-x: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   min-width: 800px;
   width:expression(document.body.clientWidth < 800? "800px": "auto" ); 
 }
-.hidden {display: none !important;}
 
 @import "sign-form";
 @import "profile";

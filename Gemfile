@@ -38,12 +38,13 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 # FrontEnd
-gem 'semantic-ui-sass'
+gem 'semantic-ui-sass', '~> 1.7.3.0'
 gem 'angularjs-rails'
 gem 'jquery-ui-rails'
 gem 'nprogress-rails'
 gem 'simditor-rails', '~> 1.0.1'
 gem 'font-awesome-rails'
+gem 'more', '~> 0.1.1'
 
 # User System
 gem 'devise'
@@ -64,12 +65,11 @@ gem 'mini_magick'
 gem 'jquery-file-upload-railed'
 
 #搜索系统
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+
 
 
 # 七牛云存储
-gem 'qiniu'
+gem 'qiniu' ,'~>6.2.1'
 
 # Image meta info
 gem 'exifr' #https://github.com/remvee/exifr/

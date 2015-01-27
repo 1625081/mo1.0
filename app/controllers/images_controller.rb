@@ -23,7 +23,6 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    Qiniu.establish_connection!
     @key = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Time.now.to_s + rand.to_s)))
     put_policy = Qiniu::Auth::PutPolicy.new(
       :scope         => "mosite",
@@ -33,11 +32,7 @@ class ImagesController < ApplicationController
       :fsize_limit   => 20971520.to_s,
       :deadline      => 1451491200
       )
-    uptoken = Qiniu::Auth.generate_uptoken(put_policy)
-    code, result, response_headers = Qiniu::Storage.upload_with_put_policy(
-        :put_policy => put_policy,
-        :loacl_file => "1.jpg"
-      )
+    @uptoken = Qiniu::Auth.generate_uptoken(put_policy)
   end
 
   # GET /images/1/edit
