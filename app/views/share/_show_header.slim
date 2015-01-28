@@ -8,15 +8,15 @@ header#show_page ng-controller="ScoreController"
         .title 
           h1 = @element.title
         .author = @user.nickname
-    .score-control
-      #score
-        .score 
-          .rating
-            | {{score.score}}
-          .label 得分
-        .data
-          table
-            tbody
+    /!.score-control
+        /!#score
+          /!.score 
+            /!.rating
+          /!| {{score.score}}
+            /!.label 得分
+            /!.data
+            /!table
+          /!tbody
               tr
                 td 浏览{{has_like}}
                 td.viewers

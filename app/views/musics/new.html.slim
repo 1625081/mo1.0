@@ -2,7 +2,7 @@
    - if current_user.power == "admin"|| current_user.power == "leader"||current_user.power == "editor"
     - if current_user.forbidden? == false
         = form_for @music, html: { :class => "ui raised segment" } do |f|
-           .ui.ribbon.label.red = t 'audio.upload.title'
+           .ui.ribbon.label.red.uppot = t 'audio.upload.title'
            .ui.center.aligned.segment.upload-area
              .ui.icon.header#empty-status
                i.cloud.upload.icon

@@ -87,6 +87,9 @@ h1, h2, h3, h4 {
   margin-bottom: 30px;
 }
 
+.uppot{
+  z-index: 1000;
+}
 .container:before,.container:after {
   content: " ";
   display: table
