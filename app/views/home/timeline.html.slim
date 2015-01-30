@@ -1,4 +1,3 @@
-
 .timeline
   .login_header
     .actions
@@ -10,7 +9,7 @@
           .ui.ribbon.label.red = item.mo_item[:class]
           a.thumb href="#{item.mo_item[:url][:show]}" data-no-turbolink='true'
               - if "#{item.mo_item[:thumb]}" == "#{item.mo_item[:thumbnil]}"
-                img src="noimg.jpeg"
+                img src="/noimg.jpeg"
               - else
                 img src="#{item.mo_item[:thumb]}"
           .info
@@ -25,40 +24,26 @@
             span.username 
               a href="#{item.mo_item[:url][:owner]}" data-no-turbolink='true'
                 = item.mo_item[:author][:username]
-          .actions
-            a.like 
-              i.icon.thumbs.up.outline 
-              = item.mo_item[:score][:like]
-            a.favor 
-              i.icon.heart.empty
-              = item.mo_item[:score][:favor]
-            a.comments 
-              i.icon.comment.outline
-              | 10
-  script type="text/javascript"
-  javascript:
-    var margin = 10;
-    var li=$("article");
-    var li_W = li[0].offsetWidth+margin;
-    function liuxiaofan(){
-      var h=[];
-      var n = document.documentElement.offsetWidth/li_W|0;
-        for(var i = 0;i < li.length;i++) {
-              li_H = li[i].offsetHeight;
-            if(i < n) {
-                  h[i]=li_H;
-                  li.eq(i).css("top",0);
-                  li.eq(i).css("left",i * li_W);
-                }
-            else{
-                  min_H =Math.min.apply(null,h) ;
-                  minKey = getarraykey(h, min_H);
-                  h[minKey] += li_H+margin ;
-                  li.eq(i).css("top",min_H+margin);
-                  li.eq(i).css("left",minKey * li_W); 
-               }
-            }
-        }
-    function getarraykey(s, v) {for(k in s) {if(s[k] == v) {return k;}}}
-    window.onload = function() {liuxiaofan();};
-    window.onresize = function() {liuxiaofan();}; 
+          //.actions
+           // a.like 
+            //  i.icon.thumbs.up.outline 
+           //   = item.mo_item[:score][:like]
+          //  a.favor 
+           //   i.icon.heart.empty
+           //   = item.mo_item[:score][:favor]
+          //  a.comments 
+          //    i.icon.comment.outline
+           //   | 10
+script src="/waterfall.js"
+javascript:
+  var li=$("article");
+  function getTop(e){ 
+  var offset=e.offsetTop; 
+  if(e.offsetParent!=null){ 
+    offset+=getTop(e.offsetParent); 
+    return offset; 
+  }
+  } 
+  if(getTop(li[0])==getTop(li[1])){
+    location.replace(location.href);
+  }

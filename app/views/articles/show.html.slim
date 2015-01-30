@@ -1,13 +1,28 @@
 .container
     .ui.ribbon.label.red.uppot = "摸-文章"
-    .ui.center.aligned.segment.upload-area
+    .ui.segment.upload-area
       .ui.icon.header#empty-status
         i.font.icon
         = "摸-文章"
+      .bicgrond
+        .fesboc
+          - if User.where("id = ?",@article.user_id).last.power == "admin"
+            img src="#{@article.mo_item[:author][:avatar]}" style="width:64px;height:64px;"
+          - else
+            img src="#{@article.mo_item[:author][:avatar]}" style="width:64px;height:64px;"
+        .neim
+          a href="#{@article.mo_item[:url][:owner]}"
+            - if User.where("id = ?",@article.user_id).last.power == "admin"
+              = @article.mo_item[:author][:username]
+              i.rocket.icon 
+        button.boutoum
+          = "关注+"
+        .informeishon
+          = User.where("id = ?",@article.user_id).last.profile.description
       hr
       .des_field
          == @article.des
       br
-      - if current_user == User.where("id = ?",@article.user_id)
-      	= link_to '更新' , edit_article_path(@article.id), :class =>"ui black button"
+      - if current_user == User.where("id = ?",@article.user_id).last
+      	= link_to '更新' , edit_article_path(@article.id), :class =>"ui black button button-center"
       end 

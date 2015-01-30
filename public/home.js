@@ -54,5 +54,8 @@ $(document)
 
     setInterval(changeSides, 3000);
 
-  })
+    $('.catchme').click(function(){
+      $(this).hide();});
+    }
+  )
 ;
