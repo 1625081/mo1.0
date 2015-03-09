@@ -4,6 +4,7 @@ class Api::V1::ScoreController < Api::V1::BaseController
   before_action :set_score
 
   def get_score
+    @score.score = @score.generate_score
     json = {
       likes: @score.liker.size,
       favor: @score.favor.size,
@@ -15,6 +16,7 @@ class Api::V1::ScoreController < Api::V1::BaseController
 
   def like
     @score.liker += [user_params.to_i]
+    @owner = User.where('id=?', [user_params.to_i] ).last
     @score.liker.uniq!
     @score.score = @score.generate_score
     if @score.save
@@ -59,8 +61,8 @@ class Api::V1::ScoreController < Api::V1::BaseController
 
   private
   def check_secret
-    secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
-    unless params[:secret] == secret
+    @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
+    unless params[:secret] == @secret
       raise NoPolicyError
     end
   end

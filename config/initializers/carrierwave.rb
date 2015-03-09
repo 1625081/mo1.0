@@ -2,6 +2,6 @@
 
 ::CarrierWave.configure do |config|
   config.storage             = :qiniu
-  config.qiniu_access_key    = "0wwk2Y9BinEVFHHBOQyccexZ5umM2mwm-6l_qckS"
-  config.qiniu_secret_key    = 'EZQDVb_ECR0RfprQekr65pSYYuKajxUvWrUMFvrb'
+  config.qiniu_access_key    = "fI_SlRH65ysNGJ1tj4NT4BL0yvMqmmQuNfzjYu-N"
+  config.qiniu_secret_key    = 'qKjuEaDZtvN0x734nr0pEcpkmQ42nT0iL0P_-qvE'
 end

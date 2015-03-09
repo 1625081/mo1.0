@@ -24,15 +24,11 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @key = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Time.now.to_s + rand.to_s)))
-    put_policy = Qiniu::Auth::PutPolicy.new(
-      :scope         => "mosite",
-      :callback_url  => "http://mo.thecmw.cn/images/qiniu_callback",
-      :callback_body => "user=#{current_user.id}&url=$(key)&size=$(fsize)&exif=$(exif)&width=$(imageInfo.width)&height=$(imageInfo.height)&type=$(suffix)&color_space=$(imageAve)",
-      :customer      => current_user.id.to_s,
-      :fsize_limit   => 20971520.to_s,
-      :deadline      => 1451491200
+    bucket = "mosite"
+    @put_policy = Qiniu::Auth::PutPolicy.new(
+      bucket
       )
-    @uptoken = Qiniu::Auth.generate_uptoken(put_policy)
+    @uptoken = Qiniu::Auth.generate_uptoken(@put_policy)
   end
 
   # GET /images/1/edit
@@ -100,7 +96,7 @@ class ImagesController < ApplicationController
         raise Exception
       end
     rescue Exception => e
-      render :json => {:success => false, :message => "上传失败!"}
+      render :json => {:success => false, :message => "上传失败!?"}
     end
   end
 
@@ -119,6 +115,9 @@ class ImagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_image
       @image = Image.find(params[:id])
+      @element = @image
+      $element = @music #隐患，用户不能同时对两个东西做评论，那样全局变量会错乱
+      @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

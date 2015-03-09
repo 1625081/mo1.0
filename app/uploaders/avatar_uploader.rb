@@ -9,12 +9,17 @@ class AvatarUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
     storage :qiniu
     # storage :fog
-    self.qiniu_bucket = "cmw-mo"
-    self.qiniu_bucket_domain = "cmw-mo.qiniudn.com"
+    self.qiniu_bucket = "mosite"
+    self.qiniu_bucket_domain = "mosite.qiniudn.com"
     self.qiniu_protocal = 'http'
     self.qiniu_can_overwrite = true
   else
-    storage :file
+    storage :qiniu
+    # storage :fog
+    self.qiniu_bucket = "mosite"
+    self.qiniu_bucket_domain = "mosite.qiniudn.com"
+    self.qiniu_protocal = 'http'
+    self.qiniu_can_overwrite = true
   end
 
   # Override the directory where uploaded files will be stored.

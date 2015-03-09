@@ -97,6 +97,9 @@ window.base =
 		$('.ui.dropdown').dropdown()
 		$('.ui.modal').modal()
 		$('.ui.checkbox').checkbox()
+	
+
+
 
 
 $ ->
@@ -104,7 +107,6 @@ $ ->
 	if $.turbo.isReady == true
 		window.base.Init()
 		window.base.CloseFlash()
-		$(".timeago").timeago()
 		@width = $(window).width
 		switch
 			when @width <= 600 then window.base.RemoveTiny()

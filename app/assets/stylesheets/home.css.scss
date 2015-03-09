@@ -86,12 +86,11 @@
   height:255px;
 }
 .bottomimg{position: relative;margin-left: -200px;background-color: black;overflow:hidden;height:280px;}
-.word{position:absolute;top:2200px;left: 1000px;color: #FFFFFF;}
-.rotate-img{
-  width:100px;
-  height:100px;
-  margin-left: -11px;
-  margin-top:-21px; 
+.word{z-index:1000;color: #FFFFFF;display:inline;margin-left:50%;margin-top:-20%;}
+.mo-copyright{margin-left:70%;margin-top:-22.8%;color:white}
+.gaibabala{
+  width: 8em !important;
+  height: 8em !important;
 }
 .rotate-seiue{
   width:90px;

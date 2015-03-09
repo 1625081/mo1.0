@@ -63,6 +63,11 @@ $(document)
       })
     ;
 
+    $('.ui.form')
+      .form(validationRules, {
+        on: 'blur'
+      })
+    ;
 
     $('.masthead .information')
       .transition('scale in')

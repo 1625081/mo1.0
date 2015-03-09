@@ -2,17 +2,18 @@
 .container#profile_content
   .ui.four.items
     - for item in @items
-      - if "#{item[:author][:user_id]}" == "#{@user.id}"
-        .mo.item#squire
-          .actions
-          a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
-            - if "#{item[:thumb]}".empty?
-              img src="noimg.jpeg" 
-            - else
-              img src="#{item[:thumb]}" 
-          .details
-            .inside
-              .title 
-                a href="#{item[:url][:show]}" data-no-turbolink='true'
-                    = item[:title]
-              .rating  = item[:score][:like]
+      - if item[:score][:favors]
+        - if item[:score][:favors].include? @user.id
+          .mo.item#squire
+            .actions
+            a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
+              - if "#{item[:thumb]}".empty?
+                img src="/noimg.jpeg" 
+              - else
+                img src="#{item[:thumb]}" 
+            .details
+              .inside
+                .title 
+                  a href="#{item[:url][:show]}" data-no-turbolink='true'
+                      = item[:title]
+                .rating  = item[:score][:like]

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :musics do
     resources :comments
   end
-  resources :videos
+  resources :videos do
+    resources :comments
+  end
   get 'youku' => 'videos#upload', as: :upload_to_youku
 
 

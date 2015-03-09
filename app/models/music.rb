@@ -33,6 +33,7 @@ class Music < ActiveRecord::Base
       :score => {
         :like => score.liker.size,
         :favor => score.favor.size,
+        :favors => score.favor,
         :rate => score.generate_score
       },
       :url => {

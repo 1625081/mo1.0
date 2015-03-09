@@ -2,6 +2,7 @@ require 'qiniu'
 class Image < ActiveRecord::Base
   belongs_to :user
   has_one :score
+  has_many :comments, dependent: :destroy
   include Rails.application.routes.url_helpers
   #mount_uploader :file, ImageUploader
 
@@ -34,6 +35,7 @@ class Image < ActiveRecord::Base
       :score => {
         :like => score.liker.size,
         :favor => score.favor.size,
+        :favors => score.favor,
         :rate => score.generate_score
       },
       :url => {

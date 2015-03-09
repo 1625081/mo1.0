@@ -39,23 +39,7 @@ $(document)
             .shape('flip back')
             .end()
         ;
-      },
-      validationRules = {
-        firstName: {
-          identifier  : 'email',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter an e-mail'
-            },
-            {
-              type   : 'email',
-              prompt : 'Please enter a valid e-mail'
-            }
-          ]
-        }
-      }
-    ;
+      };
 
     $('.ui.dropdown')
       .dropdown({
@@ -63,6 +47,11 @@ $(document)
       })
     ;
 
+    $('.ui.form')
+      .form(validationRules, {
+        on: 'blur'
+      })
+    ;
 
     $('.masthead .information')
       .transition('scale in')

@@ -73,6 +73,7 @@ class DmvideosController < ApplicationController
   def set_dmvideo
     @dmvideo = Dmvideo.find(params[:id])
     @element = @dmvideo
+    @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.

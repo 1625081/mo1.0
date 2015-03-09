@@ -1,10 +1,10 @@
 .container
   = form_for @dmvideo, html: { :class => "ui raised segment" } do |f|
-    .ui.ribbon.label.red = "转载弹幕视频"
+    .ui.ribbon.label.red = "转载B站视频"
     .ui.center.aligned.segment.upload-area
       .ui.icon.header#empty-status
         i.cloud.upload.icon
-        = "转载弹幕视频"
+        = "转载B站视频"
       br
       .ui.input
         = f.text_field :title, placeholder: "标题"
@@ -12,7 +12,7 @@
       .ui.divider
       br
       .ui.input
-        = f.text_field :tudouid ,placeholder: "tudou视频id"
+        = f.text_field :tudouid ,placeholder: "视频av号"
 
       br
       .des_field

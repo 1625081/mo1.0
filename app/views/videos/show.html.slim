@@ -33,5 +33,26 @@
                 .meta-data
                   dt 版权协议
                   dd CC
+  - if current_user != nil 
+    - if can? :create, :comment
+      h2 发表匿名评论
+      = form_for ([@video, @video.comments.build]) do |f| 
+       .field
+         = f.label "说点什么吧~~" 
+         br
+         = f.text_field :content
+       .actions = f.submit '发表'  
+  
+  h2 评论区
+  - @video.comments.each do |comment| 
+    p
+      strong 评论:
+      = comment.content 
+    - if current_user == nil
+      | 
+    - else
+      - if current_user.power == "admin"
+         p
+         = link_to 'Destroy Comment', [comment.video, comment], method: :delete, data: { confirm: 'Are you sure?' } 
 
       

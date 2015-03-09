@@ -14,7 +14,7 @@ window.App.controller 'ScoreController', [
 			$http
 					method: 'GET'
 					url: '/api/v1/score'
-					params:
+					params:  
 						id: $scope.id
 					isArray: false
 				.success (data) ->
@@ -34,8 +34,8 @@ window.App.controller 'ScoreController', [
 					isArray: false
 				.success () ->
 					$scope.get_score()
-					$('a.like#like').toggleClass "active"
-					$scope.has_like = "true"
+					$('#like').toggleClass "active"
+					$scope.has_like = true
 					
 
 		$scope.favor = () ->
@@ -49,8 +49,8 @@ window.App.controller 'ScoreController', [
 					isArray: false
 				.success () ->
 					$scope.get_score()
-					$('a.favor#favor').toggleClass "active"
-					$scope.has_favor = "true"
+					$('#favor').toggleClass "active"
+					$scope.has_favor = true
 					
 
 		$scope.unlike = () ->
@@ -64,8 +64,8 @@ window.App.controller 'ScoreController', [
 					isArray: false
 				.success () ->
 					$scope.get_score()
-					$('a.like#like').toggleClass "active"
-					$scope.has_like = "false"
+					$('#like').toggleClass "active"
+					$scope.has_like = false
 					
 
 		$scope.unfavor = () ->
@@ -79,18 +79,21 @@ window.App.controller 'ScoreController', [
 					isArray: false
 				.success () ->
 					$scope.get_score()
-					$('a.favor#favor').toggleClass "active"
-					$scope.has_favor = "false"
+					$('#favor').toggleClass "active"
+					$scope.has_favor = false
 
 		$scope.do_like = () ->
 			switch $scope.has_like
-				when 'true' or true then $scope.like()
-				when 'false' or false then $scope.unlike()
-				else window.base.Warning '未知错误，请刷新重试'
+				when true then $scope.unlike()
+				when false then $scope.like()
+				else window.base.Warning '未知错误，点赞失败，请刷新重试'
 
 		$scope.do_favor = () ->
 			switch $scope.has_favor
-				when 'true' or true then $scope.favor()
-				when 'false' or false then $scope.unfavor()
-				else window.base.Warning '未知错误，请刷新重试'
+				when true then $scope.unfavor()
+				when false then $scope.favor()
+				else window.base.Warning '未知错误，收藏失败，请刷新重试'
+
+		$scope.do_share = () ->
+			window.base.Notice '分享功能尚未开放，敬请期待！'
 ]

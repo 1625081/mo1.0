@@ -43,8 +43,8 @@
         .container
           - if @user == current_user
             = link_to profile_path, :class => "item #{'active' if action_name == 'index'}"
-              | 全部
+              |  我的收藏
           = link_to profile_detail_path(@user.id), :class => "item #{'active' if action_name == 'detail' || action_name == 'edit'}"
-            | 资料
+            | 个人资料
           = link_to profile_all_path(@user.id),:class => "item #{'active' if action_name == 'all'}"
-            | 作品
+            | 个人作品

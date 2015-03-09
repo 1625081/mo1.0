@@ -65,6 +65,8 @@ class VideosController < ApplicationController
   def set_video
     @video = Video.find(params[:id])
     @element = @video
+    $element = @video #隐患，用户不能同时对两个东西做评论，那样全局变量会错乱
+    @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
   end
 
   def video_params

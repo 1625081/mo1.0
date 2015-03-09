@@ -3,6 +3,7 @@ class Video < ActiveRecord::Base
   has_one :score
   has_one :thumb
   belongs_to :user
+  has_many :comments, dependent: :destroy
   
   after_create do
     self.score = Score.new liker: [], favor: [], viewer: 0, editor_rec: []
@@ -28,8 +29,10 @@ class Video < ActiveRecord::Base
       },
       :score => {
         :like => score.liker.size,
+        :favors => score.favor,
         :favor => score.favor.size,
         :rate => score.generate_score
+        
       },
       :class => "Video",
       :url => {

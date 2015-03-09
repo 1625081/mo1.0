@@ -1,4 +1,4 @@
-`(function($) {
+'(function($) {
   $.timeago = function(timestamp) {
     if (timestamp instanceof Date) {
       return inWords(timestamp);
@@ -126,4 +126,4 @@
     return (new Date().getTime() - date.getTime());
   }
 
-}(jQuery));`
+}(jQuery));'

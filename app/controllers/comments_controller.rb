@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
   def create
-    @music = Music.find(params[:music_id])
-    @comment = @music.comments.create(comment_params)
-    redirect_to music_path(@music)
+    @class = "#{$element.class}".downcase
+    @comment = $element.comments.create(comment_params)
+    redirect_to "/#{@class}" + 's' + "/#{$element.id}"
   end
   def destroy
-    @music = Music.find(params[:music_id])
-    @comment = @music.comments.find(params[:id])
+    @class = "#{$element.class}".downcase
+    @comment = $element.comments.find(params[:id])
     @comment.destroy
-    redirect_to music_path(@music)
+    redirect_to "/#{@class}" + 's' + "/#{$element.id}"
   end
   private
     def comment_params
