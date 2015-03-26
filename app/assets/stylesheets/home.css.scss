@@ -63,7 +63,7 @@
 
 .hatpot{
   margin-left:36px; 
-  margin-top:40px;
+  margin-top:7px;
 }
 .hatpot2{
   margin-left:72px; 
@@ -175,7 +175,7 @@ p a {
 }
 
 .masthead.segment {
-  background-image: url(/bg.jpg);
+  background-image: url(/bgsuo.jpg);
   -webkit-background-size: cover;
   background-size: cover;
   margin: 0em;
@@ -183,6 +183,11 @@ p a {
   overflow: hidden;
   -webkit-box-shadow: 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
   box-shadow: 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
+}
+.overview.segment {
+  background-image:url(/flower.jpg);
+  height:450px;
+
 }
 .masthead.segment .column {
   position: relative;

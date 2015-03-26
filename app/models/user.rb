@@ -58,6 +58,14 @@ class User < ActiveRecord::Base
   end
  end
   
+  def token
+    put_policy = Qiniu::Auth::PutPolicy.new(
+      'mosite'
+      )
+    uptoken = Qiniu::Auth.generate_uptoken(put_policy)
+    render json: {uptoken: uptoken }
+  end
+  
   def follow(user)
     self.following += [user.id]
     self.following.uniq!

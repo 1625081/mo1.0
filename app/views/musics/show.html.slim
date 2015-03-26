@@ -30,7 +30,7 @@
   - if current_user != nil 
     - if can? :create, :comment
       h2 发表匿名评论
-      = form_for ([@music, @music.comments.build]) do |f| 
+      = form_for ([@element, @element.comments.build]) do |f| 
        .field
          = f.label "说点什么吧~~" 
          br
@@ -38,7 +38,7 @@
        .actions = f.submit '发表'  
   
   h2 评论区
-  - @music.comments.each do |comment| 
+  - @element.comments.each do |comment| 
     p
       strong 评论:
       = comment.content 

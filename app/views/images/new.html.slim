@@ -1,6 +1,6 @@
 .container 
   form.ui.raised.segment#fileupload accept-charset="UTF-8" method="post" action="http://upload.qiniu.com/" multipart="multipart" enctype="multipart/form-data"
-    input type="hidden" name="token" value="#{@uptoken}"
+    input type="hidden" name="token" value="#{uptoken}"
     input type="hidden" name="key" value="#{@key}"
     .ui.ribbon.label.red 上传照片
     .ui.center.aligned.segment.upload-area.fileupload-buttonbar#dropzone
@@ -17,8 +17,7 @@
     .ui.center.aligned.segment.upload-area
       .ui.three.items#files_container data-toggle="modal-gallery" data-target="#modal-gallery"
 
-  p = "#{@uptoken}"
-  p = "#{@put_policy}"
+
     /button.ui.green.button type="submit"
       /= t 'image.upload.start'
     /button.ui.button type="reset"

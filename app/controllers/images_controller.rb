@@ -25,10 +25,11 @@ class ImagesController < ApplicationController
   def new
     @key = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Time.now.to_s + rand.to_s)))
     bucket = "mosite"
-    @put_policy = Qiniu::Auth::PutPolicy.new(
-      bucket
+    put_policy = Qiniu::Auth::PutPolicy.new(
+      'mosite'
       )
-    @uptoken = Qiniu::Auth.generate_uptoken(@put_policy)
+    uptoken = Qiniu::Auth.generate_uptoken(put_policy)
+    render json: {uptoken: uptoken }
   end
 
   # GET /images/1/edit

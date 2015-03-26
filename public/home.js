@@ -1,30 +1,14 @@
 console.log('abc')
-$(document)
-  .ready(function() {
+$(document).ready(function() {
     console.log('xx')
+    var already = 0;
     $('.bo2').hide();
     $('.bo3').hide();
     $('.bo4').hide();
     $('.bo5').hide();
     $('.bo6').hide();
     $('.bo7').hide();
-    $('.bo1').mouseover(function(){
-      $('.bo2').fadeIn(3000,function(){
-        $('.bo3').fadeIn(3000,function(){
-          $('.bo4').fadeIn(3000,function(){
-            $('.bo5').fadeIn(3000);
-            $('.bo6').fadeIn(3000,function(){
-              $('.bo7').fadeIn(3000);
-            });
-          });
-        });
-      });
-    });
-    function fadebo2(){
-      $('.bo3').fadeIn();
-    }
-    var
-      changeSides = function() {
+    var changeSides = function() {
         $('.ui.shape')
           .eq(0)
             .shape('flip over')
@@ -39,23 +23,7 @@ $(document)
             .shape('flip back')
             .end()
         ;
-      },
-      validationRules = {
-        firstName: {
-          identifier  : 'email',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter an e-mail'
-            },
-            {
-              type   : 'email',
-              prompt : 'Please enter a valid e-mail'
-            }
-          ]
-        }
       }
-    ;
 
     $('.ui.dropdown')
       .dropdown({
@@ -73,5 +41,24 @@ $(document)
     $('.catchme').click(function(){
       $(this).hide();});
     }
-  )
-;
+  );
+  $(window).scroll(function(){
+    var documentTop = $(document).scrollTop();
+    var windowHeight = $(window).height();
+    var documentHeight = $(document).height();
+    //var txt = "windowHeight:"+windowHeight + " |*$*| documentTop:"+documentTop + " |*$*| documentHeight:"+documentHeight;
+    //当 documentTop >= (documentHeight-windowHeight) 说明滚动条已经滚动到底部了
+    if(documentTop >= (documentHeight-windowHeight)){
+        $('.bo2').fadeIn(3000,function(){
+        $('.bo3').fadeIn(3000,function(){
+          $('.bo4').fadeIn(3000,function(){
+            $('.bo5').fadeIn(3000);
+            $('.bo6').fadeIn(3000,function(){
+              $('.bo7').fadeIn(3000);
+              });
+            });
+          });
+        });
+      }
+    
+    })

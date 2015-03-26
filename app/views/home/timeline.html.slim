@@ -24,26 +24,14 @@
             span.username 
               a href="#{item.mo_item[:url][:owner]}" data-no-turbolink='true'
                 = item.mo_item[:author][:username]
-          //.actions
-           // a.like 
-            //  i.icon.thumbs.up.outline 
-           //   = item.mo_item[:score][:like]
-          //  a.favor 
-           //   i.icon.heart.empty
-           //   = item.mo_item[:score][:favor]
+          .actions
+            a.like 
+              i.icon.thumbs.up.outline 
+              = item.mo_item[:score][:like]
+            a.favor 
+              i.icon.heart.empty
+              = item.mo_item[:score][:favor]
           //  a.comments 
           //    i.icon.comment.outline
            //   | 10
 script src="/waterfall.js"
-javascript:
-  var li=$("article");
-  function getTop(e){ 
-  var offset=e.offsetTop; 
-  if(e.offsetParent!=null){ 
-    offset+=getTop(e.offsetParent); 
-    return offset; 
-  }
-  } 
-  if(getTop(li[0])==getTop(li[1])){
-    location.replace(location.href);
-  }
