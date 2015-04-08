@@ -16,7 +16,16 @@ class MusicsController < ApplicationController
 
   # GET /musics/new
   def new
-    @music = current_user.musics.new
+    if current_user
+      if current_user.power != "user"
+        @music = current_user.musics.new
+      else
+        redirect_to home_path
+      end 
+    else
+      redirect_to home_path
+    end
+  
   end
 
   # GET /musics/1/edit
