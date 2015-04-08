@@ -13,9 +13,31 @@ class ProfileController < ApplicationController
   end
 
   def all_user
-    @users = User.all
+    if current_user.power == "admin"
+      @users = User.all
+    else
+      redirect_to home_path
+    end
   end
-
+ 
+  def rescue_errors
+    begin
+      yield
+    rescue 
+      case Exception
+      when NoPoliceError
+        flash[:warning] = '你没有权利完成该请求！'
+        logger.error '========ERROR: Wrong Token!========'
+      when TimeOutError
+        flash[:warning] = '请求超时，请重试！'
+        logger.error '========ERROR: Time Out!========'
+      when UnknowError
+        flash[:warning] = '未知错误，请重试！'
+        logger.error '========ERROR: Wrong Params!========'
+      end
+    end
+  end
+ 
   def verify_identity
     @user = User.where('id = ?', require_to_verify).last
     if @user

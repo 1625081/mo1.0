@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get 'all_user' => "profile#all_user"
   get 'list' => "profile#list"
 
-  root 'home#test'
+  root 'home#test',as: :home
   get 'timeline' => 'home#timeline'
 
   

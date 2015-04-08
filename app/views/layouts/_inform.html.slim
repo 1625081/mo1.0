@@ -3,7 +3,7 @@
     #flash_content class="flash-#{k}"
       span == v
       a#close_flash
-        i.close.iconf
+        i.close.icon
     coffee:
       $('a#close_flash').click ->
         $(this).parent().fadeTo 600, 0, ->

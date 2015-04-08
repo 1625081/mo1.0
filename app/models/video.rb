@@ -14,7 +14,7 @@ class Video < ActiveRecord::Base
     msplit = self.title.split("#{keyword}",2) 
     return msplit[0] != self.title    
   end
-
+  
   def mo_item
     {
       :thumb => cover.url,
