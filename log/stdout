@@ -1,4 +1,4 @@
-=== puma startup: 2015-04-02 19:13:20 +0800 ===
-[2481] - Worker 0 (pid: 2484) booted, phase: 0
-[2481] - Worker 1 (pid: 2489) booted, phase: 0
-[2481] - Worker 2 (pid: 2496) booted, phase: 0
+=== puma startup: 2015-05-01 18:19:23 +0800 ===
+[4525] - Worker 0 (pid: 4528) booted, phase: 0
+[4525] - Worker 1 (pid: 4533) booted, phase: 0
+[4525] - Worker 2 (pid: 4542) booted, phase: 0
