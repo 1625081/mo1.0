@@ -69,7 +69,7 @@ class ProfileController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @user.viewer.increment unless @user == current_user
-    $fuser =  User.find(params[:id])
+    #$fuser =  User.find(params[:id])
     if params[:changepower]
       if current_user.power == "admin"
         @user.power = params[:changepower]

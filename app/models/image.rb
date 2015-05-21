@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
   belongs_to :user
   has_one :score
   has_many :comments, dependent: :destroy
+  has_many :subimages, dependent: :destroy
   include Rails.application.routes.url_helpers
   #mount_uploader :file, ImageUploader
 

@@ -23,24 +23,19 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    @key = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Time.now.to_s + rand.to_s)))
-    bucket = "mosite"
-    put_policy = Qiniu::Auth::PutPolicy.new(
-      'mosite'
-      )
-    uptoken = Qiniu::Auth.generate_uptoken(put_policy)
-    render json: {uptoken: uptoken }
+    @image = current_user.images.new
   end
 
   # GET /images/1/edit
   def edit
+    
   end
 
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new
-    @image.file = params["image"]["file"].first
+    @image = current_user.images.new(image_params)
+    @image.file = @image.subimages[0]
     if @image.save
       respond_to do |format|
         format.html {  
@@ -117,13 +112,12 @@ class ImagesController < ApplicationController
     def set_image
       @image = Image.find(params[:id])
       @element = @image
-      $element = @music #隐患，用户不能同时对两个东西做评论，那样全局变量会错乱
       @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:file, :public, :title, :description, :exif)
+      params.require(:image).permit(:public, :title, :description, :exif,:subimages[0])
     end
 
     def upload_image_params
