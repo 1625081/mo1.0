@@ -6,10 +6,10 @@ on_worker_boot do
     ActiveRecord::Base.establish_connection
   end
 end
-bind 'unix:///home/zhengjinyang/mo1.0/tmp/puma.sock'
-stdout_redirect '/home/zhengjinyang/mo1.0/log/stdout', '/home/zhengjinyang/mo1.0/log/stderr'
+bind 'unix:///home/mo1.0/tmp/puma.sock'
+stdout_redirect '/home/mo1.0/log/stdout', '/home/mo1.0/log/stderr'
 environment 'production'
 daemonize
-pidfile '/home/zhengjinyang/mo1.0/tmp/pids/puma.pid'
-state_path '/home/zhengjinyang/mo1.0/tmp/pids/puma.state'
+pidfile '/home/mo1.0/tmp/puma.pid'
+state_path '/home/mo1.0/tmp/puma.state'
 

@@ -83,4 +83,4 @@ production:
   <<: *default
   database: mo_production
   username: postgres
-  password: <%= ENV['MO_DATABASE_PASSWORD'] %>
+ 
