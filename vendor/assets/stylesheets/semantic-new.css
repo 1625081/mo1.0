@@ -7437,11 +7437,6 @@ i.icon.backward:before {
 i.icon.ban.circle:before {
   content: "\f05e";
 }
-
-i.icon.bar.chart:before {
-  content: "\f080";
-}
-
 i.icon.barcode:before {
   content: "\f02a";
 }
@@ -10621,11 +10616,6 @@ a.ui.teal.label:hover:before {
  * http://opensource.org/licenses/MIT
  *
  */
-
-/*******************************
-         Progress Bar
-*******************************/
-
 .ui.progress {
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -10867,16 +10857,33 @@ a.ui.teal.label:hover:before {
 .ui.small.progress .bar {
   height: 14px;
 }
-/*
- * # Semantic - Reveal
- * http://github.com/jlukic/semantic-ui/
- *
- *
- * Copyright 2013 Contributors
- * Released under the MIT license
- * http://opensource.org/licenses/MIT
- *
- */
+
+
+/*******************************
+         Progress Bar
+*******************************/
+
+
+/*******************************
+            States
+*******************************/
+
+/*--------------
+  Successful
+---------------*/
+
+
+
+/*******************************
+           Variations
+*******************************/
+
+/*--------------
+    Attached
+---------------*/
+
+/* bottom attached */
+
 
 /*******************************
             Reveal

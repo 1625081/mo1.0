@@ -13,13 +13,13 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.turbolinks
-# require jquery-ui
 #= require turbolinks
 #= require nprogress
 #= require nprogress-turbolinks
-# require_tree .
+#= require_tree .
 #= require timeago
 #= require simditor
+#= require timeline
 #= require semantic-ui
 #= require angular
 #= require angular-animate
@@ -28,16 +28,7 @@
 #= require angular-sanitize
 #= require angular-cookies
 #= require angular-route
-#= require js-template
-#= require js-load_image
-#= require jquery-file-upload/basic
-#= require jquery-file-upload/jquery.fileupload-process
-# require jquery-file-upload/jquery.fileupload-image
-#= require jquery-file-upload/jquery.fileupload-ui
 #= require_self
-#= require_tree ./angular
-#= require_tree ./angular/services
-#= require_tree ./angular/controllers
 #
 
 NProgress.configure

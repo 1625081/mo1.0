@@ -16,7 +16,6 @@
             h4.title 
               a href="#{item.mo_item[:url][:show]}" data-no-turbolink='true'
                 = item.mo_item[:title]
-            .sub-title == item.mo_item[:sub_title]
           .author
             a.avatar href="#{item.mo_item[:url][:owner]}" data-no-turbolink='true'
               //a href="#{item[:url][:owner]}" data-no-turbolink='true'
@@ -24,14 +23,6 @@
             span.username 
               a href="#{item.mo_item[:url][:owner]}" data-no-turbolink='true'
                 = item.mo_item[:author][:username]
-          .actions
-            a.like 
-              i.icon.thumbs.up.outline 
-              = item.mo_item[:score][:like]
-            a.favor 
-              i.icon.heart.empty
-              = item.mo_item[:score][:favor]
           //  a.comments 
           //    i.icon.comment.outline
            //   | 10
-script src="/waterfall.js"

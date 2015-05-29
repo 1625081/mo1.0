@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -62,8 +62,7 @@ gem 'sidekiq'
 gem 'carrierwave'
 gem 'carrierwave-qiniu'
 gem 'mini_magick'
-gem 'jquery-file-upload-railed'
-gem 'qiniu_direct_uploader'
+gem "qiniu_direct_uploader", "0.0.4"
 
 #搜索系统
 

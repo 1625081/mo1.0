@@ -14,6 +14,10 @@
         coffee:
           window.base.Simditor $('textarea'), can_upload=true
       hr
+        .ui.input.thumb
+        = "上传文章封面:"
+        = f.file_field :cover
+      hr
       .ui.input.thumb
       .field
         = f.submit t('audio.upload.update'), :class => "ui black button"

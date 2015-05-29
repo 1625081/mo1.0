@@ -24,7 +24,7 @@ class Image < ActiveRecord::Base
   def mo_item
     {
       :updated_at => updated_at,
-      :thumb => file + '-s430',
+      :thumb => "http://mosite.qiniudn.com/" + keys[0] ,
       :title => title,
       :sub_title => description.gsub(/<\/?.*?>/,""),
       :author => {
@@ -38,7 +38,7 @@ class Image < ActiveRecord::Base
         :favor => score.favor.size,
         :favors => score.favor,
         :rate => score.generate_score
-      },
+       },
       :url => {
         :show => "/images/#{id}",
         :owner => "/profile/#{user_id}",
@@ -54,38 +54,10 @@ class Image < ActiveRecord::Base
     }
   end
 
-  def to_jq_upload
-    {
-      "size" => file.size,
-      "url" => file.url,
-      "thumb_url" => file.thumb.url,
-      "delete_url" => image_path(:id => id),
-      "delete_type" => "DELETE" 
-    }
-  end
-
-  def self.exif_include(*attrs)
-    attrs.each do |attr|
-      self.class_eval %Q{
-        def #{attr}
-          exif[:#{attr}]
-        end
-
-        def #{attr}=(something)
-          exif[:#{attr}] = something
-        end
-      }
-    end
-  end
-
   def like (user)
     score.liker += [user.id]
     score.save
   end
-
-  exif_include :camera, :aperture, :iso, :focal_length,
-               :width, :height, :token_at, :exposure_time,
-               :size, :color_space
 
   ##### WARNING !!!!! THIS IS A MONKEY PATH WORKING WITH UNKNOW ERORS !!!! #######
   #def method_missing(m,*a)  

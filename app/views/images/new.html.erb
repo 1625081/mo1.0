@@ -1,0 +1,38 @@
+<div class="container">
+<div class="ui ribbon label red">上传图片流</div>
+  <div class="ui center aligned segmant">
+    <div class="ui icon header"> 
+      <i class="cloud upload icon"></i>
+      <div class="sub header">上传照片流</div>
+    </div>
+      <div class="dropzone" id="dropzone">
+      <%= qiniu_uploader_form callback_url: qiniu_callback_path,
+        bucket:        'mosite',
+        id:            "photograph-uploader",
+        key:            "items/#{Date.today.strftime('%Y/%m')}/{timestamp}-{unique-id}-#{SecureRandom.hex}-{filename}",
+        custom_fields: {iid:"#{@image.id}",bbb:2},
+        progress_bar_id: 'progress-bar',
+        callbackBody: "name=$(fname)&key=$(key)&iid=$(iid)\
+                      &bbb=$(bbb)&iwd=12345",
+        drop_paste_zone_id: 'dropzone' do %>
+        <div class="bars" id="progress-bar">
+         <%= file_field_tag :file, multiple: true, accept: "image/gif, image/jpeg, image/png" %> 你可以拖拽文件以上传 
+        </div>
+        <% end %>  
+      </div>
+  </div>
+  <br/>
+  <%= form_for @image, html: { :class => "ui form" } do |f|%>
+    <%= f.text_field :title , placeholder:"照片流名称" %>
+    <br/>
+    <%= f.text_area :description, placeholder:"QAQ对于照片留的描述" %>
+    <br/>
+    <%= f.submit '完成上传' ,:class => "ui blue button"%>
+  <% end %>
+</div>
+  <script id="template-upload" type="text/x-tmpl">
+    <div class="upload">
+    {%=o.name%}
+    <div class="ui green progress"><div class="bar" style="width: 0%"></div></div>
+    </div>
+  </script>

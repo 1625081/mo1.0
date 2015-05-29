@@ -4,10 +4,7 @@ class HomeController < ApplicationController
   end
   
   def test
-    respond_to do |format|
-      format.js
-      format.html
-    end
+
   end
   
   def timeline
@@ -36,6 +33,12 @@ class HomeController < ApplicationController
         end
       end 
     else
+      Image.all.each do |f|# 删除恶意资源
+        unless f.keys[0]
+          f.delete
+          f.save
+        end
+      end
       @items = []
       @items += Image.all
       @items += Music.all

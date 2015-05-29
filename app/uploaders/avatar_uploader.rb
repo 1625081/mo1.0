@@ -7,12 +7,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
-    storage :qiniu
-    # storage :fog
-    self.qiniu_bucket = "mosite"
-    self.qiniu_bucket_domain = "mosite.qiniudn.com"
-    self.qiniu_protocal = 'http'
-    self.qiniu_can_overwrite = true
+    storage :file
   else
     storage :file
     # storage :fog

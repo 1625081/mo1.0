@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'youku' => 'videos#upload', as: :upload_to_youku
 
 
-  post 'images/qiniu_callback' => 'images#qiniu_callback'
+  post 'images/qiniu_callback' => 'images#qiniu_callback',as: :qiniu_callback
 
   get 'profile' => "profile#index"
   get 'profile/follow'

@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
+  mount_uploader :cover, ThumbUploader 
   belongs_to :user
+  has_one :thumb
   has_many :comments, dependent: :destroy
 
 
@@ -15,7 +17,7 @@ class Article < ActiveRecord::Base
 	
    def mo_item
     {
-      :thumb => "/articleimg.jpg",
+      :thumb => cover.url,
       :updated_at => updated_at,
       :thumbnil => "",
       :title => title,

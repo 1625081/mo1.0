@@ -3,4 +3,5 @@ class Thumb < ActiveRecord::Base
   belongs_to :music
   belongs_to :video
   belongs_to :dmvideo
+  belongs_to :article
 end

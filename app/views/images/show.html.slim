@@ -4,7 +4,8 @@
     .container
       .left#go-left
       .right#go-right
-      img src="#{@image.file}-xlarge" class="full-img"
+      - @image.keys.each do |key|
+        img src="http://mosite.qiniudn.com/#{key}" class="full-img"
   .detail
     .container
       .ui.grid

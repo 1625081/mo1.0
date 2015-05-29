@@ -24,6 +24,7 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = current_user.images.new
+    @image.save
   end
 
   # GET /images/1/edit
@@ -34,64 +35,53 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = current_user.images.new(image_params)
-    @image.file = @image.subimages[0]
-    if @image.save
-      respond_to do |format|
-        format.html {  
-          render :json => [@image.to_jq_upload].to_json, 
-          :content_type => 'text/html',
-          :layout => false
-        }
-        format.json {  
-          render :json => [@image.to_jq_upload].to_json           
-        }
+    Image.all.each do |image|
+      if image.keys == []
+        image.delete
+        image.save
       end
-    else 
-      render :json => [{:error => "custom_failure"}], :status => 304
     end
+   respond_to do |format|
+     if @image
+      @image.save
+      format.html { redirect_to @image, notice: '照片流成功上传到七牛云相册！'}
+     else
+      format.html { redirect_to new_image_path, notice: '照片流上传失败，请重试！'}
+     end
+   end
   end
 
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
-    respond_to do |format|
-      if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
-        format.json { render :show, status: :ok, location: @image }
-      else
-        format.html { render :edit }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+    Image.all.each do |image|
+      if image.keys == []
+        image.delete
+        image.save
       end
     end
+   respond_to do |format|
+     if @image
+      @image.update(image_params)#这里必须给出“image_params”
+      format.html { redirect_to @image, notice: '照片流成功上传到七牛云相册！'}
+     else
+      format.html { redirect_to new_image_path, notice: '照片流上传失败，请重试！'}
+     end
+   end
   end
 
   # POST /images/qiniu/callback
   def qiniu_callback
     begin
-      @user = User.where(:id => params[:user]).first
-
-      @image = @user.images.new(
-                                    :file         =>  params[:url],
-                                    :exif           =>  {},
-                                  )
-      @image.camera = params[:exif].model if params[:exif].model
-      @image.aperture = params[:exif].f_number if params[:exif].f_number
-      @image.iso = params[:exif].iso if params[:exif].iso
-      @image.focal_length = params[:exif].focal_length if params[:exif].focal_length
-      @image.width = params[:width] if params[:width]
-      @image.height = params[:height] if params[:height]
-      @image.token_at = params[:exif].taken_at if params[:exif].taken_at
-      @image.exposure_time = params[:exif].exposure_time if params[:exif].exposure_time
-      @image.size = params[:size] if params[:size]
-      @image.color_space = params[:color_space] if params[:color_space]  
-
+      @image = Image.where("id = ?",params[:custom_fields][:iid].to_i).last#利用之前的item id
+      @fixed_key = params[:key]
+      @image.keys += [@fixed_key] #Ruby语法！数组只能与数组相加！
       if @image.save
-        render :json => {:success => true, :files => [{:image => @image.file, :name => @image.title, :url => image_url(@image)}]}
+        render :json => {:success => true}#在浏览器console里可以看见结果
       else
         raise Exception
       end
-    rescue Exception => e
+    rescue  Exception => e #意外处理
       render :json => {:success => false, :message => "上传失败!?"}
     end
   end
@@ -116,8 +106,8 @@ class ImagesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def image_params
-      params.require(:image).permit(:public, :title, :description, :exif,:subimages[0])
+    def image_params #实现图片交互信息的重要方法，其中每一个参数都是神奇的
+      params.require(:image).permit(:public, :title, :description, :exif)
     end
 
     def upload_image_params
