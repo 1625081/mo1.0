@@ -102,4 +102,3 @@ $ ->
 		switch
 			when @width <= 600 then window.base.RemoveTiny()
 			when 600 < @width < 1000 then window.base.RemoveSmall()
-

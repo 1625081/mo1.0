@@ -2,20 +2,26 @@ class CommentsController < ApplicationController
   
   def create
     # @class = "#{$element.class}".downcase
-    if params[:music_id]
-      @element = Music.find(params[:music_id])
-      @comment = @element.comments.create(comment_params)
-      redirect_to music_path(@element)
-    end
     if params[:video_id]
       @element = Video.find(params[:video_id])
       @comment = @element.comments.create(comment_params)
-      redirect_to video_path(@element)
+      respond_to do |f|
+        f.js
+      end
+    end
+    if params[:music_id]
+      @element = Music.find(params[:music_id])
+      @comment = @element.comments.create(comment_params)
+      respond_to do |f|
+        f.js
+      end
     end
     if params[:article_id]
       @element = Article.find(params[:article_id])
       @comment = @element.comments.create(comment_params)
-      redirect_to article_path(@element)
+      respond_to do |f|
+        f.js
+      end
     end
   end
   

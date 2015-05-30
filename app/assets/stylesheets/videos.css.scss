@@ -1,3 +1,103 @@
 // Place all the styles related to the Videos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@media screen and (min-width:480px){
+	.replies{
+		position: relative;
+	  	overflow: hidden;
+	  	margin-bottom: 30px;
+	  	width: 100%;
+	  	background-color:#F0F0F0;
+		.avatar {
+	      float: left;
+	      margin-right: 29px;
+	      position: relative;
+	      overflow: visible;
+	      text-align: center;
+	      .image-circle {
+	         width: 75px;
+	         border-radius: 50%;
+	      }
+	  }
+	   .body {
+	    padding: 15px 40px 10px 6px;
+	    textarea {
+	      border: none;
+	      height: 230px;
+	      margin-top: -20px;
+	    }
+	    border-radius: 5px;
+	    position: relative;
+	    overflow: visible;
+	    float: left;
+	    width: 87%;
+	    border: 1px solid #ddd;
+	    line-height: 26px;
+	    &::before {
+	      content: "";
+	      display: block;
+	      position: absolute;
+	      top: 21px;
+	      left: -6px;
+	      width: 10px;
+	      height: 10px;
+	      background: #fff;
+	      border-left: 1px solid #cad5e0;
+	      border-top: 1px solid #cad5e0;
+	      -moz-transform: rotate(-45deg);
+	      -webkit-transform: rotate(-45deg);
+	    }
+	  }
+	}
+}
+
+@media screen and (max-width:480px){
+	.replies{
+		position: relative;
+	  	overflow: hidden;
+	  	margin-bottom: 30px;
+	  	width: 100%;
+	  	background-color:#F0F0F0;
+		.avatar {
+	      float: left;
+	      margin-right: 10px;
+	      margin-top: 20px;
+	      position: relative;
+	      overflow: visible;
+	      text-align: center;
+	      .image-circle {
+	         width: 39px;
+	         border-radius: 50%;
+	      }
+	  }
+	   .body {
+	    padding: 15px 40px 10px 6px;
+	    textarea {
+	      border: none;
+	      height: 230px;
+	      margin-top: -20px;
+	    }
+	    border-radius: 5px;
+	    position: relative;
+	    overflow: visible;
+	    float: left;
+	    width: 87%;
+	    border: 1px solid #ddd;
+	    line-height: 26px;
+	    &::before {
+	      content: "";
+	      display: block;
+	      position: absolute;
+	      top: 21px;
+	      left: -6px;
+	      width: 10px;
+	      height: 10px;
+	      background: #fff;
+	      border-left: 1px solid #cad5e0;
+	      border-top: 1px solid #cad5e0;
+	      -moz-transform: rotate(-45deg);
+	      -webkit-transform: rotate(-45deg);
+	    }
+	  }
+	}
+}
