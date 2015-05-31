@@ -17,6 +17,7 @@
 #= require nprogress
 #= require nprogress-turbolinks
 #= require_tree .
+#= require home
 #= require timeago
 #= require simditor
 #= require timeline
