@@ -15,7 +15,6 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   
   def show
-    @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
     @user = User.where("id = ?", @image.user_id.to_i).last
     @element = @image
     @image.score.viewer.increment unless @user == current_user
@@ -102,7 +101,6 @@ class ImagesController < ApplicationController
     def set_image
       @image = Image.find(params[:id])
       @element = @image
-      @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

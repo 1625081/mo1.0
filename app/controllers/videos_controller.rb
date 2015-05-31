@@ -65,7 +65,6 @@ class VideosController < ApplicationController
   def set_video
     @video = Video.find(params[:id])
     @element = @video
-    @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
   end
 
   def video_params

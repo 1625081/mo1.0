@@ -81,7 +81,6 @@ class MusicsController < ApplicationController
       @music = Music.find(params[:id])
       $element = @music #隐患，用户不能同时对两个东西做评论，那样全局变量会错乱
       @element = @music 
-      @secret = Digest::MD5.hexdigest(Digest::SHA1.hexdigest(Base64::encode64(Rails.application.secrets.angular_secret)))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
