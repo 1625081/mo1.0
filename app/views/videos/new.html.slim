@@ -3,7 +3,7 @@
     - if current_user.forbidden? == false  
       = form_for @video, html: { :class => "ui raised segment" } do |f|
         .ui.ribbon.label.red.uppot = "转载视频"
-        .ui.center.aligned.segment.upload-area
+        .ui.segment.upload-area
           .ui.icon.header#empty-status
             i.cloud.upload.icon
             = "转载视频"
@@ -21,7 +21,15 @@
           .des_field
             =f.text_area :des 
             coffee:
-              window.base.Simditor $('textarea'), can_upload=true
+              editor = new Simditor(
+                textarea: $('textarea')
+                tabIndent: true
+                params: {}
+                toolbarFloat: true
+                upload: false
+                pasteImage: true
+                toolbar: ['bold', 'italic', 'underline', '|', 'ol', 'ul', 'blockquote', 'code', '|', 'link',  '|', 'indent', 'outdent', '|', 'hr', 'table']
+              )
           hr
           .ui.input.thumb
             = "上传视频封面:"

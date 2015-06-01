@@ -20,7 +20,6 @@ gem 'libv8'
 
 gem 'youku'
 
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
@@ -42,7 +41,7 @@ gem 'semantic-ui-sass', '~> 1.7.3.0'
 gem 'angularjs-rails'
 gem 'jquery-ui-rails'
 gem 'nprogress-rails'
-gem 'simditor-rails', '~> 1.0.1'
+gem 'simditor-rails', '~> 1.0.4'
 gem 'font-awesome-rails'
 gem 'more', '~> 0.1.1'
 

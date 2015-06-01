@@ -77,10 +77,10 @@
             h[minKey] += li_H+margin
             li.eq(i).css("top", min_H + margin)
             li.eq(i).css("left", minKey * li_W)
-            if i>(already-1)*10&&i<already*10&&already!=1
-              li.eq(i).show()
-            if already==1&&i>already*10
-              li.eq(i).hide()                
+            #if i>(already-1)*10&&i<already*10&&already!=1
+            #  li.eq(i).show()
+            #if already==1&&i>already*10
+            #  li.eq(i).hide()                
     getarraykey = (s, v) -> 
       for k , len in s 
         if k == v
@@ -99,8 +99,8 @@
       #var txt = "windowHeight:"+windowHeight + " |*$*| documentTop:"+documentTop + " |*$*| documentHeight:"+documentHeight;
       #当 documentTop >= (documentHeight-windowHeight) 说明滚动条已经滚动到底部了
       if documentTop >= (documentHeight-windowHeight)
-        already++
-        liuxiaofan()
+        #already++
+        #liuxiaofan()
         $('.bo2').fadeIn(1000,() ->
          $('.bo3').fadeIn(1000,() ->
           $('.bo4').fadeIn(1000,() ->
