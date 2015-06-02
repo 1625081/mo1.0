@@ -31,4 +31,17 @@
                 .meta-data
                   dt 版权协议
                   dd CC
+    - if current_user
+      - if can? :create, :comment
+        .replyme.ui.form.segment
+          h2 发表匿名评论
+          = form_for [@element, @element.comments.build],remote: true do |f|
+           .field
+             = f.label "说点什么吧~~" 
+             br
+             .area = f.text_area :content
+           .actions = submit_tag '发表' ,:class => 'ui blue button'  
 
+    .replies
+      - @element.comments.each do |c| 
+        = render partial: 'share/comment', locals: {c: c}   

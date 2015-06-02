@@ -23,6 +23,13 @@ class CommentsController < ApplicationController
         f.js
       end
     end
+    if params[:image_id]
+      @element = Image.find(params[:image_id])
+      @comment = @element.comments.create(comment_params)
+      respond_to do |f|
+        f.js
+      end
+    end
   end
   
   def destroy
@@ -43,6 +50,12 @@ class CommentsController < ApplicationController
       @comment = @element.comments.find(params[:id])
       @comment.destroy
       redirect_to article_path(@element)
+    end
+    if params[:image_id]
+      @element = Image.find(params[:image_id])
+      @comment = @element.comments.find(params[:id])
+      @comment.destroy
+      redirect_to image_path(@element)
     end
   end
   private

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :dmvideos
   resources :articles
 
-  resources :images
+  resources :images do
+    resources :comments
+  end
 
   resources :musics do
     resources :comments

@@ -8,4 +8,7 @@
 		  	strong 评论: 
 		  	= c.content 
 			- if current_user && current_user.power == "admin"
-			  = link_to 'Destroy Comment', [c.video,c], method: :delete, data: { confirm: 'Are you sure?' } 
+			  - if @video
+			  	= link_to 'Destroy Comment', [c.video,c], method: :delete, data: { confirm: 'Are you sure?' }
+			  - if @image
+			  	= link_to 'Destroy Comment', [c.image,c], method: :delete, data: { confirm: 'Are you sure?' }
