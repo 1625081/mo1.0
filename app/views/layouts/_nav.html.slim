@@ -5,7 +5,7 @@
     a class="item #{'active' if action_name == 'index' && controller_name == 'home'}" href='/'
       i.home.icon
       | 首页
-    = link_to timeline_path,:target => "_blank", :class => "item #{'active' if action_name == 'timeline' && controller_name == 'home'}"
+    = link_to timeline_path ,"data-no-turbolink" => true,:class => "item #{'active' if action_name == 'timeline' && controller_name == 'home'}"
       i.globe.basic.icon
       | 时间轴
     .item.hide-when-small
@@ -54,7 +54,7 @@
           i.sign.out.icon
       - else
         .item
-          a.ui.green.button#confirm-sign-up-button 注册
+          a.ui.green.button href="/users/sign_up" 注册
         .ui.dropdown.item
           | 登录
           i.icon.dropdown
