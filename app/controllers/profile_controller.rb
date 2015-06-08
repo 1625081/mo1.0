@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit, :update]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action CASClient::Frameworks::Rails::Filter, only: :verify_identity
   
   def index
@@ -69,6 +70,7 @@ class ProfileController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @user.viewer.increment unless @user == current_user
+    @profile = @user.profile
     #$fuser =  User.find(params[:id])
     if params[:changepower]
       if current_user.power == "admin"
@@ -131,17 +133,10 @@ class ProfileController < ApplicationController
   # PATCH/PUT /profiles
   # PATCH/PUT /profiles.json
   def update
-    if $fuser != nil
-      @profile = $fuser.profile
-    else
-      @profile = current_user.profile
-    end
+    @user = User.find(@profile.user.id)
     respond_to do |format|
-      if @profile.update(profile_params)&&$fuser != nil
-        format.html { redirect_to show_profile_path($fuser.id), notice: '资料更新成功！' }
-        format.json { head :no_content }
-      elsif $fuser == nil
-        format.html { redirect_to show_profile_path(current_user.id), notice: '资料更新成功！' }
+      if @profile.update(profile_params)
+        format.html { redirect_to show_profile_path(@user.id), notice: '资料更新成功！' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit', warning: '资料更新时发生错误，请重试！' }
@@ -153,9 +148,11 @@ class ProfileController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:avatar, :nickname, :description, :birthday, :sex,:power)
+      params.require(:profile).permit(:user_id,:avatar, :nickname, :description, :birthday, :sex,:power)
     end
-
+    def set_profile
+      @profile = Profile.find(params[:id])
+    end
     def require_to_verify
       Base64::decode64 params[:user_id]
     end

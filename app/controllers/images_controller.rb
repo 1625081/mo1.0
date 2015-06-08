@@ -22,8 +22,13 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    @image = current_user.images.new
-    @image.save
+    unless can? :create, :image
+      redirect_to home_path ,notice: "您无权限进行此操作！"
+    end
+    if current_user
+      @image = current_user.images.new
+      @image.save
+    end
   end
 
   # GET /images/1/edit
