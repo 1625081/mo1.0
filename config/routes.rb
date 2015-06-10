@@ -17,9 +17,9 @@ Rails.application.routes.draw do
 
   post 'images/qiniu_callback' => 'images#qiniu_callback',as: :qiniu_callback
 
-  get 'profile/:id' => "profile#index",as: :profile 
   get 'profile/follow'
   get 'profile/unfollow'
+  get 'profile' => "profile#index",as: :profile
   get 'search' => "home#search",as: :search_items
   get 'profile/:id' => "profile#show", as: :show_profile
   get 'profile/:id/detail' => "profile#detail", as: :profile_detail

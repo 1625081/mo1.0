@@ -10,7 +10,6 @@ class ProfileController < ApplicationController
     @items += Music.all.map{|i| i.mo_item}
     @items += Video.all.map{|i| i.mo_item}
     @items += Article.all.map{|i| i.mo_item}
-    
   end
 
   def all_user

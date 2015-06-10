@@ -14,7 +14,7 @@
           input type="text" name="search" placeholder="搜索……" value = params[:search]
     .right.menu
       - if current_user
-        = link_to profile_path(current_user.id), :class => "item user-info"
+        = link_to show_profile_path(current_user.id), :class => "item user-info"
           span.avatar
             = image_tag current_user.avatar
         - if can? :create, :image
