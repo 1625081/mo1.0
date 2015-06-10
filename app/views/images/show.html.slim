@@ -13,6 +13,8 @@
           .ui.horizontal.segment.description
             span.ui.label 描述
             p = @image.description
+            - if current_user.id = @image.user_id || current_user.power == "admin"
+              = link_to "删除", @image , :class => "ui red button", method: :delete, data: { confirm: 'Are you sure?' }
         .four.wide.column
           .detail-info
             .ui.label 详情

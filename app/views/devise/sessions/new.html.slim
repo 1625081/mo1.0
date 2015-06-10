@@ -3,13 +3,7 @@
     .body
       h2
         | 登录
-      .ui.two.column.middle.aligned.relaxed.grid
-        .column
-          .center.aligned.column
-            = link_to omniauth_authorize_path(:user, :bdfzer), :class => "huge green ui labeled icon button"
-              i.signup.icon
-              | 北附人账号登录
-        .ui.vertical.divider Or
+      .ui.one.column.middle.aligned.relaxed.grid
         .column
           = form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => "ui form"}) do |f|
             .field
@@ -36,9 +30,11 @@
             = f.submit "登录", class: "ui blue submit button"
           .ui.horizontal.icon.divider
             i.circular.heart.icon
-          = link_to new_registration_path(:user), :class => "ui black button"
-            | 注册
-          a.ui.purple.button#modal-forget data-modal-name="forget-password" 忘记密码？
+          .ui.four.column.grid
+            .column
+              = link_to "注册",new_registration_path(:user), :class => "ui black button"
+            .column
+              a.ui.purple.button#modal-forget data-modal-name="forget-password" 忘记密码？
 = render 'devise/passwords/new_modal'
 
 javascript:
