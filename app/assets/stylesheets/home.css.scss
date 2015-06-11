@@ -306,6 +306,10 @@ p a {
       width: 100%;
       background-color:#F0F0F0;
     .avatar {
+        img {
+          width:100px;
+          height: 80px;
+        }
         float: left;
         margin-right: 29px;
         position: relative;

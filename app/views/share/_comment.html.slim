@@ -1,11 +1,11 @@
 - if c.content
 	.avatar
-	  img src="/avatar.jpg" class="image-circle"
+	  img src="#{c.user.avatar}" class="image-circle"
 
 	.body
 		p
 		  - if c.content
-		  	strong 评论: 
+		  	strong #{c.user.nickname} : 
 		  	= c.content 
 			- if current_user && current_user.power == "admin"
 			  - if @video

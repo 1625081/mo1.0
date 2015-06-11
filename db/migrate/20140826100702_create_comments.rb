@@ -7,6 +7,7 @@ class CreateComments < ActiveRecord::Migration
       t.belongs_to :image, index: true
       t.belongs_to :video, index: true
       t.belongs_to :music, index: true
+      t.belongs_to :user, index: true
       
       t.timestamps
     end

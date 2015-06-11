@@ -13,7 +13,8 @@
           .ui.horizontal.segment.description
             span.ui.label 描述
             p = @image.description
-            - if current_user.id = @image.user_id || current_user.power == "admin"
+            - if current_user
+             - if current_user.id = @image.user_id || current_user.power == "admin"
               = link_to "删除", @image , :class => "ui red button", method: :delete, data: { confirm: 'Are you sure?' }
         .four.wide.column
           .detail-info
@@ -37,13 +38,16 @@
       - if can? :create, :comment
         .replyme.ui.form.segment
           h2 发表匿名评论
-          = form_for [@element, @element.comments.build],remote: true do |f|
+          = form_for [@element, @element.comments.build(:user_id => "#{current_user.id}")],remote: true do |f|
            .field
              = f.label "说点什么吧~~" 
+             = f.hidden_field :user_id
              br
              .area = f.text_area :content
            .actions = submit_tag '发表' ,:class => 'ui blue button'  
-
+    - else
+      .ui.center.aligned.segment
+        = link_to "登陆后才能发表评论","/users/sign_in",class: "ui black button"
     .replies
       - @element.comments.each do |c| 
         = render partial: 'share/comment', locals: {c: c}   

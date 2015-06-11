@@ -7,7 +7,7 @@ html
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = javascript_include_tag "semantic", "data-turbolinks-track" => true
-    = javascript_include_tag "home"
+    = yield :home
     = csrf_meta_tags
   body class=("#{controller_name} #{action_name}") data-controller-name="#{controller_name}" ng-app="Mo"
     = render 'layouts/nav'

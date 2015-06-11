@@ -16,19 +16,13 @@
 #= require turbolinks
 #= require nprogress
 #= require nprogress-turbolinks
-#= require_tree .
-#= require home
-#= require timeago
+# require_tree .
+#= require images
+# require home
+# require timeago
 #= require simditor
-#= require timeline
+# require timeline
 #= require semantic-ui
-#= require angular
-#= require angular-animate
-#= require angular-resource
-#= require angular-touch
-#= require angular-sanitize
-#= require angular-cookies
-#= require angular-route
 #= require_self
 #
 
@@ -37,12 +31,6 @@ NProgress.configure
 	ease: 'ease'
 	speed: 500
 
-window.App = angular.module('Mo', [
-	'ngCookies',
-	'ngRoute', 
-	'ngSanitize', 
-	'ngResource'
-])
 window.App.config(["$httpProvider", (provider) ->
 	provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 	provider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
@@ -99,6 +87,7 @@ $ ->
 	if $.turbo.isReady == true
 		window.base.Init()
 		window.base.CloseFlash()
+
 		@width = $(window).width
 		switch
 			when @width <= 600 then window.base.RemoveTiny()

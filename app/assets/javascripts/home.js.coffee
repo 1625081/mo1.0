@@ -46,6 +46,7 @@
         .eq(3)
           .shape('flip back')
           .end()
+          
     $('.ui.dropdown').dropdown on: 'hover'
 
     $('.masthead .information').transition('scale in')

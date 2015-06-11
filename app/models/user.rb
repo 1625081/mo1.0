@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :musics
   has_many :videos
   has_many :dmvideos
+  has_many :comments
 
   include Redis::Objects
   counter :viewer

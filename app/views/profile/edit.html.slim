@@ -1,6 +1,6 @@
 = render 'profile/header'
 .container#profile_edit.profile_container
-  = form_for @profile, html: { :class => "ui form" } do |f|
+  = form_for @profile, url: show_profile_path(@profile),method: :patch,html: { :class => "ui form" } do |f|
     .two.fields
       .field.inline#profile_edit_infields_inline
         label 头像
@@ -9,6 +9,8 @@
       .field.inline
         label 昵称
         = f.text_field :nickname
+        - if @profile.errors[:nickname].any?
+          | 用户名不能为空或已重复！
         = f.hidden_field :user_id
       .field.inline
         label 性别
