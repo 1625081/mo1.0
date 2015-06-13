@@ -47,10 +47,10 @@ class ProfileController < ApplicationController
         if @user.save
           redirect_to edit_user_registration_path, info: '用户认证成功！'
         else
-          raise UnknownError
+          redirect_to edit_user_registration_path, info: '用户认证信息保存失败！'
         end
       else
-        raise UnableToVerify
+        redirect_to edit_user_registration_path, info: '用户认证失败！' 
       end
     else
       raise WrongParamError
@@ -151,7 +151,8 @@ class ProfileController < ApplicationController
       params.require(:profile).permit(:user_id,:avatar, :nickname, :description, :birthday, :sex,:power)
     end
     def set_profile
-      @profile = Profile.find(params[:id])
+      @setuser = User.find(params[:id])
+      @profile = @setuser.profile
     end
     def require_to_verify
       Base64::decode64 params[:user_id]

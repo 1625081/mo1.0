@@ -26,10 +26,10 @@ class User < ActiveRecord::Base
   after_create do
     self.follower = []
     self.following = []
-    self.profile = Profile.new
+    self.save
+    self.profile = Profile.new(:nickname => "#{self.username}")
     self.profile.sex = "unknow"
     self.profile.save
-    self.save
   end
 
  def all_items

@@ -3,7 +3,8 @@
     .ui.segment.upload-area
       .ui.icon.header#empty-status
         i.font.icon
-        = "摸-文章"
+        .content
+          = "摸--文章"
       .bicgrond
         .fesboc
           - if User.where("id = ?",@article.user_id).last.power == "admin"

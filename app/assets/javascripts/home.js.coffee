@@ -51,6 +51,7 @@
 
     $('.masthead .information').transition('scale in')
 
+    $('#Mgirl').popup on: 'hover'
 
     setInterval(changeSides, 3000)
 
