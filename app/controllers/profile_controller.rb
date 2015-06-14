@@ -2,6 +2,8 @@ class ProfileController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit, :update]
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action CASClient::Frameworks::Rails::Filter, only: :verify_identity
+  before_action CASClient::Frameworks::Rails::Filter, only: :verify_identity
+
 
   
   def index
