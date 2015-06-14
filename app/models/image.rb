@@ -21,10 +21,18 @@ class Image < ActiveRecord::Base
     "photo_#{id}"
   end
 
+  def fixkey
+    if keys[0]
+      return keys[0]
+    else
+      return "/noimg.jpeg"
+    end
+  end
+  
   def mo_item
     {
       :updated_at => updated_at,
-      :thumb => "http://mosite.qiniudn.com/" + keys[0] ,
+      :thumb => "http://mosite.qiniudn.com/" + fixkey,
       :title => title,
       :sub_title => description.gsub(/<\/?.*?>/,""),
       :author => {

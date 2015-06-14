@@ -4,7 +4,7 @@
       .ui.icon.header#empty-status
         i.font.icon
         .content
-          = "摸--文章"
+          = "#{@article.title}"
       .bicgrond
         .fesboc
           - if User.where("id = ?",@article.user_id).last.power == "admin"
@@ -27,3 +27,21 @@
       - if current_user == User.where("id = ?",@article.user_id).last
       	= link_to '更新' , edit_article_path(@article.id), :class =>"ui black button button-center"
       end 
+- if current_user
+  - if can? :create, :comment
+    .replyme.ui.form.segment
+      h2 发表匿名评论
+      = form_for [@element, @element.comments.build(:user_id => "#{current_user.id}")],remote: true do |f|
+       .field
+         = f.label "说点什么吧~~" 
+         = f.hidden_field :user_id
+         br
+         .area = f.text_area :content
+       .actions = submit_tag '发表' ,:class => 'ui blue button'  
+  - else 
+    .ui.center.aligned.segment
+      h2 快来完成认证吧，之后才能评论哟～～
+      = link_to "认证身份", "/verify?user_id=#{Base64::encode64(current_user.id.to_s)}", class: "ui blue button"
+.replies
+  - @element.comments.each do |c| 
+    = render partial: 'share/comment', locals: {c: c} 

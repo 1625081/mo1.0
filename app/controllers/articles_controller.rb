@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    
   end
 
   # GET /articles/new
@@ -64,7 +65,7 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
-      $element = @music #隐患，用户不能同时对两个东西做评论，那样全局变量会错乱
+      @element = @article
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

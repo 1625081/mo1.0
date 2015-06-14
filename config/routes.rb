@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :dmvideos
-  resources :articles
-
+  resources :articles do
+    resources :comments
+  end
   resources :images do
     resources :comments
   end

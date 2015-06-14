@@ -14,7 +14,19 @@
 	      .des_field
 	        =f.text_area :des
 	        coffee:
-	          window.base.Simditor $('textarea'), can_upload=true
+	          editor = new Simditor(
+	            textarea: $('textarea')
+	            tabIndent: true
+	            params: {}
+	            toolbarFloat: true
+	            upload:
+	              url: '/api/v1/upload/image'
+	              connectionCount: 1
+	              leaveConfirm: '正在上传文件，如果离开上传会自动取消'
+	            pasteImage: true
+	            toolbar: ['bold', 'italic', 'underline', '|', 'ol', 'ul', 'blockquote', 'code', '|', 'link',  '|','image', 'indent', 'outdent', '|', 'hr', 'table']
+	          )
+	          
 	      hr
 	      .ui.input.thumb
 	      .field

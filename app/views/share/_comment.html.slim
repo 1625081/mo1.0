@@ -1,14 +1,16 @@
 - if c.content
-	.avatar
-	  img src="#{c.user.avatar}" class="image-circle"
-
-	.body
-		p
-		  - if c.content
-		  	strong #{c.user.nickname} : 
-		  	= c.content 
-			- if current_user && current_user.power == "admin"
-			  - if @video
-			  	= link_to 'Destroy Comment', [c.video,c], method: :delete, data: { confirm: 'Are you sure?' }
-			  - if @image
-			  	= link_to 'Destroy Comment', [c.image,c], method: :delete, data: { confirm: 'Are you sure?' }
+	.ui.grid
+		.one.wide.column.avatar
+		  img src="#{c.user.avatar}" class="image-circle"
+		.fourteen.wide.column.body
+			p
+			  - if c.content
+			  	strong #{c.user.nickname} : 
+			  	= c.content 
+				- if current_user && current_user.power == "admin"
+				  - if @video
+				  	= link_to 'Destroy Comment', [c.video,c], method: :delete, data: { confirm: 'Are you sure?' }
+				  - if @image
+				  	= link_to 'Destroy Comment', [c.image,c], method: :delete, data: { confirm: 'Are you sure?' }
+				  - if @article
+				  	= link_to 'Destroy Comment', [c.article,c], method: :delete, data: { confirm: 'Are you sure?' }
