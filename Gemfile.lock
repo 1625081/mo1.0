@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/cassiuschen/omniauth-bdfzer.git
-  revision: bf3ed77a2bf719776bbd95fcd4cc61a758249640
-  specs:
-    omniauth-bdfzer (0.2.1)
-      omniauth-oauth2 (~> 1.1)
-
-GIT
   remote: git://github.com/rubycas/rubycas-client.git
   revision: b6692b942f69f8c088ef4fdbc14a8e9310e5271d
   branch: master
@@ -317,7 +310,6 @@ DEPENDENCIES
   newrelic_rpm
   nprogress-rails
   omniauth
-  omniauth-bdfzer!
   omniauth-oauth2
   pg
   pry-rails

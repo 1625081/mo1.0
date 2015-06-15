@@ -45,6 +45,10 @@
              br
              .area = f.text_area :content
            .actions = submit_tag '发表' ,:class => 'ui blue button'  
+      - else 
+        .ui.center.aligned.segment
+          h2 快来完成认证吧，之后才能评论哟～～
+          = link_to "认证身份", "/verify?user_id=#{Base64::encode64(current_user.id.to_s)}", class: "ui blue button"
     - else
       .ui.center.aligned.segment
         = link_to "登陆后才能发表评论","/users/sign_in",class: "ui black button"

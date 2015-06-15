@@ -2,8 +2,6 @@ class ProfileController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit, :update]
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action CASClient::Frameworks::Rails::Filter, only: :verify_identity
-  before_action CASClient::Frameworks::Rails::Filter, only: :verify_identity
-
 
   
   def index
@@ -138,7 +136,7 @@ class ProfileController < ApplicationController
     @user = User.find(@profile.user.id)
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to show_profile_path(@user.id), notice: '资料更新成功！' }
+        format.html { redirect_to show_profile_path(@profile.user.id), notice: '资料更新成功！' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit', warning: '资料更新时发生错误，请重试！' }

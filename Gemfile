@@ -51,7 +51,6 @@ gem 'rubycas-client', github: 'rubycas/rubycas-client', branch: 'master'
 gem 'cancancan'
 gem 'omniauth'
 gem 'omniauth-oauth2'
-gem 'omniauth-bdfzer', github: 'cassiuschen/omniauth-bdfzer'
 
 # Middleware & Delayed jobs
 gem 'sinatra'
