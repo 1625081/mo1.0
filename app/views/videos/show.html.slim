@@ -26,7 +26,7 @@
             span.ui.label 描述
             == @video.des
             - if current_user
-             - if current_user.id = @video.user_id || current_user.power == "admin"
+             - if current_user.id == @video.user_id || current_user.power == "admin"
               = link_to "删除", @video , :class => "ui red button", method: :delete, data: { confirm: 'Are you sure?' }
         .four.wide.column
           .detail-info
@@ -39,7 +39,7 @@
   - if current_user
     - if can? :create, :comment
       .replyme.ui.form.segment
-        h2 发表匿名评论
+        h2 发表评论
         = form_for [@element, @element.comments.build(:user_id => "#{current_user.id}")],remote: true do |f|
          .field
            = f.label "说点什么吧~~" 

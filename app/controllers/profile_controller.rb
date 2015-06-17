@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit, :update]
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :destroy]
   before_action CASClient::Frameworks::Rails::Filter, only: :verify_identity
 
   
@@ -133,6 +133,7 @@ class ProfileController < ApplicationController
   # PATCH/PUT /profiles
   # PATCH/PUT /profiles.json
   def update
+    @profile = Profile.find(params[:id])
     @user = User.find(@profile.user.id)
     respond_to do |format|
       if @profile.update(profile_params)

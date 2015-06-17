@@ -25,12 +25,12 @@
          == @article.des
       br
       - if current_user == User.where("id = ?",@article.user_id).last
-      	= link_to '更新' , edit_article_path(@article.id), :class =>"ui black button button-center"
-      end 
+        = link_to '更新' , edit_article_path(@article.id), :class =>"ui black button button-center"
+        = link_to '删除' , @article , :class => "ui red button", method: :delete, data: { confirm: '删除是不可逆操作！你确定么?' } 
 - if current_user
   - if can? :create, :comment
     .replyme.ui.form.segment
-      h2 发表匿名评论
+      h2 发表评论
       = form_for [@element, @element.comments.build(:user_id => "#{current_user.id}")],remote: true do |f|
        .field
          = f.label "说点什么吧~~" 

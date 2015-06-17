@@ -2,12 +2,12 @@
   - if current_user.id == @article.user_id || current_user.power == "admin"
     = form_for @article, html: { :class => "ui raised segment" } do |f|
 	    .ui.ribbon.label.red = "更新文章"
-	    .ui.center.aligned.segment.upload-area
+	    .ui.segment.upload-area
 	      .ui.icon.header#empty-status
 	        i.font.icon
 	        = "更新文章"
 	      br
-	      .field
+	      .ui.fluid.input
 	      	= f.label :title
 	        = f.text_field :title
 	      br

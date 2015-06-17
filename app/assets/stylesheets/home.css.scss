@@ -85,9 +85,9 @@
 .fixplease{
   height:255px;
 }
-.bottomimg{position: relative;margin-left: -200px;background-color: black;overflow:hidden;height:280px;}
+.bottomimg{background-color: black;overflow:hidden;}
 .word{z-index:1000;color: #FFFFFF;display:inline;margin-left:50%;margin-top:-20%;}
-.mo-copyright{margin-left:70%;margin-top:-22.8%;color:white}
+.mo-copyright{color:white}
 .gaibabala{
   width: 8em !important;
   height: 8em !important;
@@ -367,8 +367,9 @@ p a {
         overflow: visible;
         text-align: center;
         .image-circle {
-           width: 39px;
+           width: 43px;
            border-radius: 50%;
+           padding-top:50%;
         }
     }
      .body {
