@@ -45,10 +45,10 @@
           i.setting.icon
           .menu
             = link_to edit_user_registration_path, :class => "item"
-              i.user.icon
-              | 账户设置
+              i.lock.icon
+              | 用户安全设置
             = link_to edit_profile_path(current_user.id), :class => "item"
-              i.user.icon
+              i.info.icon
               | 用户信息设置
         = link_to destroy_user_session_path, class: "item", :method => :delete
           i.sign.out.icon

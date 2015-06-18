@@ -83,11 +83,6 @@ class ProfileController < ApplicationController
   def detail
     @user = User.find(params[:id])
     @profile = @user.profile
-    @items = []
-    @items += Image.all.map{|i| i.mo_item}
-    @items += Music.all.map{|i| i.mo_item}
-    @items += Video.all.map{|i| i.mo_item}
-    @items += Article.all.map{|i| i.mo_item}
   end
   
   def all

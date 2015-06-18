@@ -7,15 +7,15 @@
         .field
           label 
             | 电子邮箱 / E-Mail
-          .ui.left.labeled.icon.input
-            = f.email_field :email, autofocus: true, value: "#{current_user.email}"
+          .ui.left.labeled.icon.segment
             i.mail.icon
+            = "#{current_user.email}"
         .field
           label 
             | 账号名 / UserName
-          .ui.left.labeled.icon.input
-            = f.text_field :username, autofocus: true, value: "#{current_user.username}"
+          .ui.left.labeled.icon.segment
             i.user.icon
+            = "#{current_user.username}"
         .field
           label 
             | 新密码 / Password (如果不需更改请留空)
