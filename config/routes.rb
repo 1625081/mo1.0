@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get 'profile/follow'
   get 'profile/unfollow'
+  get 'item/favor'
+  get 'item/unfavor'
   get 'profile' => "profile#index",as: :profile
   get 'search' => "home#search",as: :search_items
   get 'profile/:id' => "profile#show", as: :show_profile

@@ -45,6 +45,22 @@ class VideosController < ApplicationController
   def upload
   end 
 
+  def favor
+    cu = User.where(id: params[:current_user].to_i).last
+    if params[:class] == "Video"
+      @treasure = Video.where("id = ?", params[:item_id].to_i).last
+      respond_to do |format|
+        if cu.favor @treasure
+          format.html { redirect_to show_profile_path(@user), notice: '已关注该用户！' }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to show_profile_path(@user), warning: '操作失败，请重试！' }
+          format.json { head :no_content }
+        end
+      end
+    end
+  end
+
   def update
     respond_to do |format|
       if @video.update(video_params)

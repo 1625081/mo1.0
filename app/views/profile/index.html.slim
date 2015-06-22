@@ -2,8 +2,8 @@
 .container#profile_content
   .ui.four.items
     - for item in @items
-      - if item[:score][:favors]
-        - if item[:score][:favors].include? @user.id
+      - if item[:score][:likers]
+        - if item[:score][:likers].include? @user.id
           .mo.item#squire
             .actions
             a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'

@@ -2,6 +2,7 @@ class Article < ActiveRecord::Base
   mount_uploader :cover, ThumbUploader 
   belongs_to :user
   has_one :thumb
+  has_one :score
   has_many :comments, dependent: :destroy
 
 

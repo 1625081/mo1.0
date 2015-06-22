@@ -76,6 +76,7 @@ class User < ActiveRecord::Base
     user.save
   end
 
+
   def unfollow(user)
     self.following -= [user.id]
     self.following.uniq!
@@ -84,6 +85,23 @@ class User < ActiveRecord::Base
     self.save
     user.save
   end
+
+  def favor(item)
+    @score = item.score
+    @score.liker += [id]
+    @score.liker.uniq!
+    @score.score = @score.generate_score
+    @score.save
+  end
+
+  def unfavor(item)
+    @score = item.score
+    @score.liker -= [id]
+    @score.liker.uniq!
+    @score.score = @score.generate_score
+    @score.save
+  end
+
 
   def is_verify?
     !!(pku_id)

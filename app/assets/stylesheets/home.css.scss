@@ -77,10 +77,7 @@
   margin-left:30%;
 }
 .bgblack{
-  background-color: blue;
-}
-.Mgirls{
-  margin-left: 4px;
+  background-color: black;
 }
 .fixplease{
   height:255px;
@@ -185,9 +182,12 @@ p a {
   box-shadow: 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
 }
 .overview.segment {
-  background-image:url(/flower.jpg);
+  //background-image:url(/flower.jpg);
+  background-image:url(/bgflower.gif);
   height:450px;
-
+  img{
+    margin-top: 10%;
+  }
 }
 .masthead.segment .column {
   position: relative;
@@ -213,7 +213,7 @@ p a {
   bottom: -110px;
 }
 
-.overview .divided.grid .header + p {
+.overview .divided.grid .header > p {
   min-height: 100px;
 }
 

@@ -10,3 +10,18 @@ header#show_page ng-controller="ScoreController as score"
         .author 
           | UP主：
           = @user.nickname
+      - if current_user #非AJAX版本数据传递
+        .score-control
+          - unless @element.score.liker.include? current_user.id
+            a.ui.blue.button href="/item/favor?item_id=#{@element.id}&class=#{@element.mo_item[:class]}"
+              i.star.icon
+              | 收藏
+          - else
+            a.ui.green.button href="/item/unfavor?item_id=#{@element.id}&class=#{@element.mo_item[:class]}"
+              i.star.icon
+              | 取消收藏
+      - else
+        .score-control
+          a.ui.blue.button
+           i.star.icon
+           | #{@element.score.liker.size}人已收藏

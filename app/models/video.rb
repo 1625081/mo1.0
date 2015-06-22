@@ -32,6 +32,7 @@ class Video < ActiveRecord::Base
       },
       :score => {
         :like => score.liker.size,
+        :likers => score.liker,
         :favors => score.favor,
         :favor => score.favor.size,
         :rate => score.generate_score

@@ -110,9 +110,8 @@ class ProfileController < ApplicationController
   end
 
   def unfollow
-    info = params
-    cu = User.where(id: info["current_user"].to_i).last
-    @user = User.where(id: info["user"].to_i).last
+    cu = User.where(id: params[:current_user].to_i).last
+    @user = User.where(id: params[:user].to_i).last
     respond_to do |format|
       if cu.unfollow @user
         format.html { redirect_to show_profile_path(@user), notice: '已取消关注该用户！' }

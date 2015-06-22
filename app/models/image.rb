@@ -43,6 +43,7 @@ class Image < ActiveRecord::Base
       :class => "Image",
       :score => {
         :like => score.liker.size,
+        :likers => score.liker,
         :favor => score.favor.size,
         :favors => score.favor,
         :rate => score.generate_score
