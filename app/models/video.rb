@@ -14,10 +14,18 @@ class Video < ActiveRecord::Base
     msplit = self.title.split("#{keyword}",2) 
     return msplit[0] != self.title    
   end
+    
+  def realid 
+    if 
+       youkuid.split("id_")[1] != nil
+       realid=youkuid.split("id_")[1].split(".html")[0]
+       return realid
+    else
+       return false
+    end
 
-  def youkuid2
-    return self.title
   end
+
   def mo_item
     {
       :thumb => cover.url,

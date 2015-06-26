@@ -32,6 +32,13 @@ class VideosController < ApplicationController
   def show
      @user = User.where("id = ?", @video.user_id.to_i).last
      @video.score.viewer.increment unless @user == current_user
+     if @video.realid == false
+        @video.delete
+        @video.save
+          respond_to do |format|
+            format.html { redirect_to new_video_path, notice: 'youkuID can not be nill' }
+          end
+      end
   end
 
   def destroy
