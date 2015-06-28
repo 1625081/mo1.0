@@ -4,6 +4,8 @@ class Video < ActiveRecord::Base
   has_one :thumb
   belongs_to :user
   has_many :comments, dependent: :destroy
+  validates :title , presence: true
+  validates :title , uniqueness: {case_sensitive: false}
   
   after_create do
     self.score = Score.new liker: [], favor: [], viewer: 0, editor_rec: []

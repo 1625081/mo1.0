@@ -36,7 +36,7 @@ class VideosController < ApplicationController
         @video.delete
         @video.save
           respond_to do |format|
-            format.html { redirect_to new_video_path, notice: 'youkuID can not be nill' }
+            format.html { redirect_to new_video_path, notice: 'youku视频ID有问题～' }
           end
       end
   end

@@ -12,7 +12,7 @@
 	        = f.text_field :title
 	      br
 	      .des_field
-	        =f.text_area :des
+	        = f.text_area :des
 	        coffee:
 	          editor = new Simditor(
 	            textarea: $('textarea')
@@ -24,7 +24,8 @@
 	              connectionCount: 1
 	              leaveConfirm: '正在上传文件，如果离开上传会自动取消'
 	            pasteImage: true
-	            toolbar: ['bold', 'italic', 'underline', '|', 'ol', 'ul', 'blockquote', 'code', '|', 'link',  '|','image', 'indent', 'outdent', '|', 'hr', 'table']
+	            toolbar: ['bold', 'italic', 'underline', '|', 'ol', 'ul', 'blockquote', 'code', '|', 'link',  '|','image', 'indent', 'outdent', '|', 'hr', 'table',]
+
 	          )
 	          
 	      hr
