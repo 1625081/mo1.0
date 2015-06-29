@@ -14,7 +14,7 @@
  *= require_self
  *= require home
  *= require font-awesome
- *= require simditor
+ * require simditor
  *= require semantic-new
  */
 
@@ -130,6 +130,7 @@ html {
 @import "item";
 @import "flash";
 @import "timeline";
+@import "simditor";
 
 .fileinput-button {
   position: relative;
