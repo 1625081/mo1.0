@@ -8,15 +8,20 @@
             i.cloud.upload.icon
             = "转载视频"
           br
-          .ui.fluid.input
-            = f.text_field :title, placeholder: "标题"
+            .ui.fluid.input
+              = f.text_field :title, placeholder: "标题"
+            .ui.divider
+            .ui.selection.dropdown
+              = f.hidden_field :vtype
+              .default.text 选择视频源
+              i.dropdown.icon
+              .menu.ui.transition.hidden
+                .item data-value="youku" 优酷视频源
+                .item data-value="bilibili" B站视频源
           br
-          .ui.divider
-          br
-          .ui.fluid.input
-            = f.text_field :youkuid ,placeholder: "优酷视频源："
-          br
-           //.ui.button [class="large ui button"  onclick="window.location.href='/youku/'"] 本地直传到优酷 
+            .ui.fluid.input
+              = f.text_field :youkuid ,placeholder: "输入视频网址："
+              //.ui.button [class="large ui button"  onclick="window.location.href='/youku/'"] 本地直传到优酷 
           br 
           .des_field
             =f.text_area :des 

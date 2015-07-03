@@ -32,7 +32,7 @@ class VideosController < ApplicationController
   def show
      @user = User.where("id = ?", @video.user_id.to_i).last
      @video.score.viewer.increment unless @user == current_user
-     if @video.realid == false
+     if @video.realid == false 
         @video.delete
         @video.save
           respond_to do |format|
@@ -91,6 +91,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:title,:youkuid,:des,:user_id,:cover)
+    params.require(:video).permit(:title,:youkuid,:des,:user_id,:cover, :vtype)
   end
 end

@@ -18,15 +18,23 @@ class Video < ActiveRecord::Base
   end
     
   def realid 
-    if 
-       youkuid.split("id_")[1] != nil
-       realid=youkuid.split("id_")[1].split(".html")[0]
-       return realid
-    else
-       return false
-    end
-
+    if vtype == "youku"
+       if youkuid.split("id_")[1]
+           realid=youkuid.split("id_")[1].split(".html")[0]
+           return realid
+        else
+          return false
+        end
+    elsif vtype == "bilibili"
+      if youkuid.split("av")[1]
+          realid=youkuid.split("av")[1].split("/")[0]
+          return realid
+        else
+          return false
+        end
+    end  
   end
+
 
   def mo_item
     {

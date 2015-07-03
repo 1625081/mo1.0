@@ -3,14 +3,17 @@
   .element
     .container
       #player
-        #youkuplayer style="width:100%;height:550px"
-        script type="text/javascript" src="http://player.youku.com/jsapi"
-        javascript:
-          player = new YKU.Player('youkuplayer',{
-            styleid: '0',
-            client_id: '24002f2d0b37924f',      
-            vid : "#{@video.realid}"    
-          });
+        - if @video.vtype == "youku"
+          #youkuplayer style="width:100%;height:550px"
+          script type="text/javascript" src="http://player.youku.com/jsapi"
+          javascript:
+            player = new YKU.Player('youkuplayer',{
+              styleid: '0',
+              client_id: '24002f2d0b37924f',      
+              vid : "#{@video.realid}"    
+            });
+        - elsif @video.vtype == "bilibili"
+          iframe src="http://static.hdslb.com/miniloader.swf?aid=#{@video.realid}" width="100%" height="524px" frameborder="0" scrolling="no" onload="window.securePlayerFrameLoaded=true"
   .detail
     .container
       .ui.grid
