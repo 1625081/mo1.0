@@ -31,7 +31,7 @@ class VideosController < ApplicationController
 
   def show
      @user = User.where("id = ?", @video.user_id.to_i).last
-     @video.score.viewer.increment unless @user == current_user
+     @video.score.viewer.increment
      if @video.realid == false 
         @video.delete
         @video.save

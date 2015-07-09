@@ -60,7 +60,8 @@ class Video < ActiveRecord::Base
       :url => {
         :show => "/videos/#{id}",
         :owner => "/profile/#{user_id}",
-      }
+      },
+      :item => self
     }
   end
 end

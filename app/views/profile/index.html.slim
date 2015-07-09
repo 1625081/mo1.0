@@ -5,7 +5,6 @@
       - if item[:score][:likers]
         - if item[:score][:likers].include? @user.id
           .mo.item#squire
-            .actions
             a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
               - if "#{item[:thumb]}".empty?
                 img src="/noimg.jpeg" 

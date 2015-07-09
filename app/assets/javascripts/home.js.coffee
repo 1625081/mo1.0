@@ -78,7 +78,7 @@
             min_H = Math.min.apply(null,h)
             minKey = getarraykey(h, min_H)
             h[minKey] += li_H+margin
-            li.eq(i).css("top", min_H + margin)
+            li.eq(i).css("top", min_H + margin + 20)
             li.eq(i).css("left", minKey * li_W + margin_width)
             #if i>(already-1)*10&&i<already*10&&already!=1
             #  li.eq(i).show()

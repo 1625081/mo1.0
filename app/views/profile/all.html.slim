@@ -1,18 +1,32 @@
 = render 'profile/header'
-.container#profile_content
+.container
   .ui.four.items
-    - for item in @items
-      - if "#{item[:author][:user_id]}" == "#{@user.id}"
-        .mo.item#squire
-          .actions
-          a.thumb href="#{item[:url][:show]}" data-no-turbolink='true'
-            - if "#{item[:thumb]}".empty?
-              img src="#{item[:thumb2]}" 
-            - else
-              img src="#{item[:thumb]}" 
-          .details
-            .inside
-              .title 
-                a href="#{item[:url][:show]}" data-no-turbolink='true'
-                    = item[:title]
-              .rating  = item[:score][:like]
+    - for @item in @items
+      - if "#{@item[:author][:user_id]}" == "#{@user.id}"
+        .item
+          .ui.vertically.divided.grid
+           .row
+             a href="#{@item[:url][:show]}"
+              img class="ui medium image" src="/noimg.jpeg"
+           .row
+             .ui.one.column.grid  
+              .column
+                = "#{@item[:title]}"
+           .row
+             .ui.one.column.grid  
+              .column
+                = "投稿日期：#{@item[:item].created_at.to_s}"
+           .row 
+            .ui.three.column.grid  
+              .column
+                | 点击：
+                = @item[:item].score.viewer
+              .column
+                | 收藏： 
+                = @item[:score][:like]
+              .column
+                | 评论：
+                - if @item[:item].comments.last
+                  = @item[:item].comments.last.id
+                - else
+                  = 0

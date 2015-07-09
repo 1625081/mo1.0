@@ -36,14 +36,15 @@ ActiveRecord::Schema.define(version: 20150703103133) do
     t.integer  "image_id"
     t.integer  "video_id"
     t.integer  "music_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_id"
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
   add_index "comments", ["image_id"], name: "index_comments_on_image_id", using: :btree
   add_index "comments", ["music_id"], name: "index_comments_on_music_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
   add_index "comments", ["video_id"], name: "index_comments_on_video_id", using: :btree
 
   create_table "dmvideos", force: true do |t|
@@ -157,7 +158,6 @@ ActiveRecord::Schema.define(version: 20150703103133) do
     t.datetime "updated_at"
     t.string   "cover"
     t.text     "des"
-    t.string   "type"
     t.string   "vtype"
   end
 
