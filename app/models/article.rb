@@ -37,7 +37,8 @@ class Article < ActiveRecord::Base
       :url => {
         :show => "/articles/#{id}",
         :owner => "/profile/#{user_id}",
-      }
+      },
+      :item => self
     }
   end
 end

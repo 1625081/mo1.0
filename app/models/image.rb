@@ -59,7 +59,8 @@ class Image < ActiveRecord::Base
         :hour => created_at.hour,
         :minute => created_at.min,
         :raw => created_at
-      }
+      },
+      :item => self
     }
   end
 

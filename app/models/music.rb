@@ -39,7 +39,8 @@ class Music < ActiveRecord::Base
       :url => {
         :show => "/musics/#{id}",
         :owner => "/profile/#{user_id}",
-      }
+      },
+      :item => self
     }
   end
 end
