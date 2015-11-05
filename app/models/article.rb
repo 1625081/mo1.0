@@ -5,8 +5,12 @@ class Article < ActiveRecord::Base
   has_one :score
   has_many :comments, dependent: :destroy
 
-
-	def owner
+  after_create do
+    self.score = Score.new liker: [], favor: [], viewer: 0, editor_rec: []
+    self.score.save
+  end
+	
+  def owner
 		User.where(id: user_id).last
 	end
 
@@ -29,9 +33,11 @@ class Article < ActiveRecord::Base
         :user_id => User.find(user_id).id
       },
       :score => {
-        :like => "",
-        :favor => "",
-        :rate => ""
+        :like => score.liker.size,
+        :likers => score.liker,
+        :favors => score.favor,
+        :favor => score.favor.size,
+        :rate => score.generate_score
       },
        :class => "Article",
       :url => {

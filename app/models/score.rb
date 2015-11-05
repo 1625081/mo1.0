@@ -6,6 +6,7 @@ class Score < ActiveRecord::Base
   belongs_to :music
   belongs_to :video
   belongs_to :dmvideo
+  belongs_to :article
 
   def generate_score
     return liker.size + favor.size + viewer.value + 5 * editor_rec.size

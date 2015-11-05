@@ -32,7 +32,7 @@ class Image < ActiveRecord::Base
   def mo_item
     {
       :updated_at => updated_at,
-      :thumb => "http://mosite.qiniudn.com/" + fixkey,  
+      :thumb => "http://mosite.qiniudn.com/" + fixkey + "-200square",  
       :title => title,
       :sub_title => description.gsub(/<\/?.*?>/,""),
       :author => {

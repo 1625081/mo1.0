@@ -59,41 +59,7 @@
       ()->
         $(this).hide()
     )
-    margin = 10
-    already = 1
-    console.log("XXX")
-    li = $("article")
-    li_W = li[0].offsetWidth+margin
-    liuxiaofan = () ->
-      h = []
-      n = document.documentElement.offsetWidth/li_W|0
-      margin_width = (document.documentElement.offsetWidth - n*li_W)/2 #使元素们居中
-      for element , i in li
-          li_H = li[i].offsetHeight
-          if i < n  
-            h[i] = li_H
-            li.eq(i).css("top",20)
-            li.eq(i).css("left",i * li_W + margin_width)
-          else
-            min_H = Math.min.apply(null,h)
-            minKey = getarraykey(h, min_H)
-            h[minKey] += li_H+margin
-            li.eq(i).css("top", min_H + margin + 20)
-            li.eq(i).css("left", minKey * li_W + margin_width)
-            #if i>(already-1)*10&&i<already*10&&already!=1
-            #  li.eq(i).show()
-            #if already==1&&i>already*10
-            #  li.eq(i).hide()                
-    getarraykey = (s, v) -> 
-      for k , len in s 
-        if k == v
-          return len
-    window.onload = () ->
-      liuxiaofan()
-    window.onresize = () ->
-      liuxiaofan() 
-  
-  
+
   $(window).scroll ( 
     () ->
       documentTop = $(document).scrollTop()

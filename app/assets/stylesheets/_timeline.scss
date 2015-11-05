@@ -21,12 +21,8 @@
 		}
 	}
 	.feed-item {
-		display: block;
-		position: relative;
 		margin-bottom: 30px;
 		article{
-			position:absolute;
-			left: 0px; 
 			// 因为太卡而不得不丢弃的CSS3动画
 			 -webkit-transition: all .7s ease-out .1s;
 			  -moz-transition: all .7s ease-out; -o-transition: all .7s ease-out .1s;
@@ -68,6 +64,7 @@
 				text-align: center;
 				img {
 					width: 200px;
+					height:180px;
 					vertical-align:middle;
 					margin-top: -20px;
 					margin-left: 10%;
