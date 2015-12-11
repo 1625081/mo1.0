@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
   root 'home#test',as: :home
   get 'timeline' => 'home#timeline'
-
+  get 'shadowsocks' => 'home#index'
   
   get 'upload' => 'videos#upload'
   get 'video' => 'home#video'

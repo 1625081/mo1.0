@@ -22,12 +22,6 @@
 	}
 	.feed-item {
 		margin-bottom: 30px;
-		article{
-			// 因为太卡而不得不丢弃的CSS3动画
-			 -webkit-transition: all .7s ease-out .1s;
-			  -moz-transition: all .7s ease-out; -o-transition: all .7s ease-out .1s;
-			  transition: all .7s ease-out .1s 
-		}
 		.ui.ribbon.label.red{
 			margin-left:20px;
 		}

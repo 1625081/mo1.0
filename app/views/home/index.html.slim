@@ -1,18 +1,44 @@
-- if current_user == nil
-	.container
-		.ui.circular.rotate.reveal.image 
-			img.visible.content src="/logo.png"
-			img.hidden.content src="/logo.png"
-- else
-	.intro_wrap
-		img src="/bg.jpg" height="100%" width="100%" style="z-index:-1000"
-		= link_to timeline_path,:class => "item #{'active' if action_name == 'timeline' && controller_name == 'home'}"
-			.ui.black.labeled.icon.button#homebt
-				i.user.icon
-				| update
-		.ui.circular.rotate.reveal.image
-			img.visible.content src="/logo.png"
-			img.hidden.content src="/logo.png"
-		.ui.circular.rotate.reveal.image
-			img.visible.content src="/logo.png"
-			img.hidden.content src="/logo.png"
+.intro_wrap
+	.ui.inverted.page.grid.masthead.segment
+		.column
+      		.ui.transition.information
+       			.ui.fade.reveal
+          			img class="visible content hatpot" src="/cmwtv.png"
+          			img class="hidden content hatpot2" src="/logo.png"
+
+          		.ui.inverted.header#headpot 
+          			h1 摸|SHADOWSOCKS
+          	.ui.header
+          		h4 什么是shadowsocks?
+          		p Shadowsocks（中文名稱：影梭）是一个安全的socks5代理，用于保护网络流量，是一个开源项目。
+          		p 通过客户端以指定的密码、加密方式和端口连接服务器，成功连接到服务器后，客户端在用户的电脑上构建一个本地socks5代理。使用时将流量分到本地socks5代理，客户端将自动加密并转发流量到服务器，服务器以同样的加密方式将流量回传给客户端，以此实现代理上网。
+          		p 简单来说就是一个基于摸的×墙代理（滑稽
+          		.ui.segment
+          			h4 重点：目前向外界开放的窗口
+          			p IP地址：45.56.104.139
+          			p 加密方法：AES-256-CFB
+          			p 本地端口：1080
+          			table.ui.definition.table
+					  thead
+					    tr
+					      th
+					      th 端口
+					      th 密码
+					  tbody
+					    tr
+					      td 一
+					      td 8382
+					      td cmwtest2
+					    tr
+					      td 二
+					      td 8383
+					      td cmwtest3
+					    tr
+					      td 三
+					      td 8384
+					      td cmwtest4
+					h4 那么说了这么多到底有卵用？
+					p Android客户端下载：http://pan.baidu.com/s/1gdVwQSN 密码：hvra
+					p IOS请到AppStore下载
+					p 有了这些APP就不用再花钱买VPN，担心网速慢了。摸网站服务器十分迅猛滴_(:з」∠)_
+					p style="float:right" by ZSJ 2015.12.11  
