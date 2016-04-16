@@ -5,7 +5,8 @@
       .left#go-left
       .right#go-right
       - @image.keys.each do |key|
-        img src="http://mosite.qiniudn.com/#{key}" class="full-img"
+        a href="http://mosite.qiniudn.com/#{key}" target="_blank"
+          img src="http://mosite.qiniudn.com/#{key}/suo" class="full-img link" data-content="点击查看原图" 
   .detail
     .container
       .ui.grid

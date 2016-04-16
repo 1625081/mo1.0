@@ -3,3 +3,4 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
   $('.ui.dropdown').dropdown on: 'hover'
+  $('.full-img').popup on: 'hover'
