@@ -35,7 +35,7 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-  config.assets.precompile += %w( js-template.js js-load_image.js mediaelementplayer.css mediaelementplayer.js)
+  # config.assets.precompile
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
