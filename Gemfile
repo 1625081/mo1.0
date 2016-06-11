@@ -86,7 +86,8 @@ end
 # gem 'unicorn'
 gem 'puma'
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# 实验一下cap用来解决js\css的bug
+# gem 'capistrano-rails'
 
 # Redis
 gem 'redis'

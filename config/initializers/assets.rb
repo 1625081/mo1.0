@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile += %w(home.js semantic.js home.css font-awesome.css semantic-new.css)

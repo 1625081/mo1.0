@@ -1,6 +1,6 @@
 #= require qiniu_direct_uploader
 
-  $(document).ready ->
+  $(document).on "page:change", ->
     photoForm = $("form#photograph-uploader")
     if photoForm.length > 0
       photoForm.QiniuUploader

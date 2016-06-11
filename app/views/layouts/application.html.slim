@@ -5,10 +5,12 @@ html
     title = content_for?(:title) ? yield(:title) : "|来自创意媒体工作室"
     link type="image/x-icon" rel="shortcut icon" href="/logo.png"
     meta content=(content_for?(:description) ? yield(:description) : "摸Mo, 来自创意媒体工作室的自由媒体平台。") name="description"
+    
     = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
+    /这是整个semantic_js的关键，不能删去
     = javascript_include_tag "semantic", "data-turbolinks-track" => true
-    = yield :home
+    / = yield :home
     = csrf_meta_tags
   body class=("#{controller_name} #{action_name}") data-controller-name="#{controller_name}" ng-app="Mo"
     = render 'layouts/nav'

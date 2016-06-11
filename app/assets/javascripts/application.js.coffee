@@ -18,18 +18,16 @@
 #= require nprogress-turbolinks
 # require_tree .
 #= require images
-# require home
+#= require home
 # require timeago
 # 
 # ---simditor配置信息JS--注意以下四位不能调换位置！---
-#= require module
-#= require hotkeys
-#= require uploader
-#= require simditor
+# require module
+# require hotkeys
+# require uploader
+# require simditor
 # ---simditor---
 # 
-# require timeline
-#= require semantic-ui
 #= require_self
 #
 
