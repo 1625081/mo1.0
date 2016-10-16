@@ -18,7 +18,6 @@
 #= require nprogress-turbolinks
 # require_tree .
 #= require images
-#= require home
 # require timeago
 # 
 # ---simditor配置信息JS--注意以下四位不能调换位置！---
@@ -27,7 +26,9 @@
 #= require uploader
 #= require simditor
 # ---simditor---
-# 
+#= require scrolloverflow
+#= require jquery.fullPage
+#= require home
 #= require_self
 #
 

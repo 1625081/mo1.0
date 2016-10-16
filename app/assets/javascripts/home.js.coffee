@@ -24,8 +24,24 @@
         console.log('failure')
         console.log(data)
     
-    console.log('xx')
-    already = 0
+    #console.log('xx')
+    #already = 0
+    $('#fullpage').fullpage
+        scrollOverflow: true
+        paddingTop: '50px'
+        afterLoad: (anchorLink, index)->
+          #console.log(index)
+          if index == 4
+            $('.bo2').fadeIn(1000,() ->
+              $('.bo3').fadeIn(1000,() ->
+                $('.bo4').fadeIn(1000,() ->
+                  $('.bo5').fadeIn(1000)
+                  $('.bo6').fadeIn(1000,() ->
+                    $('.bo7').fadeIn(3000)
+                  )
+                )
+              )
+            )
     $('.bo2').hide()
     $('.bo3').hide()
     $('.bo4').hide()
@@ -60,25 +76,14 @@
         $(this).hide()
     )
 
-  $(window).scroll ( 
-    () ->
-      documentTop = $(document).scrollTop()
-      windowHeight = $(window).height()
-      documentHeight = $(document).height()
+ # $(window).scroll ( 
+  #  () ->
+   #   documentTop = $(document).scrollTop()
+    #  windowHeight = $(window).height()
+     # documentHeight = $(document).height()
       #var txt = "windowHeight:"+windowHeight + " |*$*| documentTop:"+documentTop + " |*$*| documentHeight:"+documentHeight;
       #当 documentTop >= (documentHeight-windowHeight) 说明滚动条已经滚动到底部了
-      if documentTop >= (documentHeight-windowHeight)
+   #   if documentTop >= (documentHeight-windowHeight)
         #already++
         #liuxiaofan()
-        $('.bo2').fadeIn(1000,() ->
-         $('.bo3').fadeIn(1000,() ->
-          $('.bo4').fadeIn(1000,() ->
-            $('.bo5').fadeIn(1000)
-            $('.bo6').fadeIn(1000,() ->
-              $('.bo7').fadeIn(3000)
-            )
-          )
-         )
-        )
-  )
   #Image system
